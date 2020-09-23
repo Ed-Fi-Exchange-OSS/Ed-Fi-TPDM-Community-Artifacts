@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<CoteachingStyleObservedDescriptor>
+		<CodeValue>One Teach, One Assist</CodeValue>
+		<ShortDescription>One Teach, One Assist</ShortDescription>
+		<Description>One Teach, One Assist</Description>
+		<Namespace>uri://tpdm.ed-fi.org/CoteachingStyleObservedDescriptor</Namespace>
+	</CoteachingStyleObservedDescriptor>
+	<CoteachingStyleObservedDescriptor>
+		<CodeValue>One Teach, One Observe</CodeValue>
+		<ShortDescription>One Teach, One Observe</ShortDescription>
+		<Description>One Teach, One Observe</Description>
+		<Namespace>uri://tpdm.ed-fi.org/CoteachingStyleObservedDescriptor</Namespace>
+	</CoteachingStyleObservedDescriptor>
+	<CoteachingStyleObservedDescriptor>
+		<CodeValue>Parallel Teaching</CodeValue>
+		<ShortDescription>Parallel Teaching</ShortDescription>
+		<Description>Parallel Teaching</Description>
+		<Namespace>uri://tpdm.ed-fi.org/CoteachingStyleObservedDescriptor</Namespace>
+	</CoteachingStyleObservedDescriptor>
+	<CoteachingStyleObservedDescriptor>
+		<CodeValue>Station Teaching</CodeValue>
+		<ShortDescription>Station Teaching</ShortDescription>
+		<Description>Station Teaching</Description>
+		<Namespace>uri://tpdm.ed-fi.org/CoteachingStyleObservedDescriptor</Namespace>
+	</CoteachingStyleObservedDescriptor>
+	<CoteachingStyleObservedDescriptor>
+		<CodeValue>Other</CodeValue>
+		<ShortDescription>Other</ShortDescription>
+		<Description>Other</Description>
+		<Namespace>uri://tpdm.ed-fi.org/CoteachingStyleObservedDescriptor</Namespace>
+	</CoteachingStyleObservedDescriptor>
+	<CoteachingStyleObservedDescriptor>
+		<CodeValue>Team Teaching</CodeValue>
+		<ShortDescription>Team Teaching</ShortDescription>
+		<Description>Team Teaching</Description>
+		<Namespace>uri://tpdm.ed-fi.org/CoteachingStyleObservedDescriptor</Namespace>
+	</CoteachingStyleObservedDescriptor>
+	<CoteachingStyleObservedDescriptor>
+		<CodeValue>Alternative Teaching</CodeValue>
+		<ShortDescription>Alternative Teaching</ShortDescription>
+		<Description>Alternative Teaching</Description>
+		<Namespace>uri://tpdm.ed-fi.org/CoteachingStyleObservedDescriptor</Namespace>
+	</CoteachingStyleObservedDescriptor>
+</InterchangeDescriptors>

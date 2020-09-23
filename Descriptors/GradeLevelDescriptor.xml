@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<GradeLevelDescriptor>
+		<CodeValue>Master's</CodeValue>
+		<ShortDescription>Master's</ShortDescription>
+		<Description>Master's</Description>
+		<Namespace>uri://tpdm.ed-fi.org/GradeLevelDescriptor</Namespace>
+	</GradeLevelDescriptor>
+	<GradeLevelDescriptor>
+		<CodeValue>Professional Certification</CodeValue>
+		<ShortDescription>Professional Certification</ShortDescription>
+		<Description>Professional Certification</Description>
+		<Namespace>uri://tpdm.ed-fi.org/GradeLevelDescriptor</Namespace>
+	</GradeLevelDescriptor>
+	<GradeLevelDescriptor>
+		<CodeValue>Undergraduate</CodeValue>
+		<ShortDescription>Undergraduate</ShortDescription>
+		<Description>Undergraduate</Description>
+		<Namespace>uri://tpdm.ed-fi.org/GradeLevelDescriptor</Namespace>
+	</GradeLevelDescriptor>
+</InterchangeDescriptors>

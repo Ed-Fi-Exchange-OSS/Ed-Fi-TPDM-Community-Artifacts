@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<SalaryTypeDescriptor>
+		<CodeValue>Contract</CodeValue>
+		<ShortDescription>Contract</ShortDescription>
+		<Description>Contract</Description>
+		<Namespace>uri://tpdm.ed-fi.org/SalaryTypeDescriptor</Namespace>
+	</SalaryTypeDescriptor>
+	<SalaryTypeDescriptor>
+		<CodeValue>Full Time</CodeValue>
+		<ShortDescription>Full Time</ShortDescription>
+		<Description>Full Time</Description>
+		<Namespace>uri://tpdm.ed-fi.org/SalaryTypeDescriptor</Namespace>
+	</SalaryTypeDescriptor>
+	<SalaryTypeDescriptor>
+		<CodeValue>Hourly</CodeValue>
+		<ShortDescription>Hourly</ShortDescription>
+		<Description>Hourly</Description>
+		<Namespace>uri://tpdm.ed-fi.org/SalaryTypeDescriptor</Namespace>
+	</SalaryTypeDescriptor>
+	<SalaryTypeDescriptor>
+		<CodeValue>Part Time</CodeValue>
+		<ShortDescription>Part Time</ShortDescription>
+		<Description>Part Time</Description>
+		<Namespace>uri://tpdm.ed-fi.org/SalaryTypeDescriptor</Namespace>
+	</SalaryTypeDescriptor>
+	<SalaryTypeDescriptor>
+		<CodeValue>Other</CodeValue>
+		<ShortDescription>Other</ShortDescription>
+		<Description>Other</Description>
+		<Namespace>uri://tpdm.ed-fi.org/SalaryTypeDescriptor</Namespace>
+	</SalaryTypeDescriptor>
+</InterchangeDescriptors>

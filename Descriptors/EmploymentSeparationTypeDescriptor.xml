@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<EmploymentSeparationTypeDescriptor>
+		<CodeValue>Not Qualified</CodeValue>
+		<ShortDescription>Not Qualified</ShortDescription>
+		<Description>No longer meets requirements for employment</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentSeparationTypeDescriptor</Namespace>
+	</EmploymentSeparationTypeDescriptor>
+	<EmploymentSeparationTypeDescriptor>
+		<CodeValue>Resignation</CodeValue>
+		<ShortDescription>Resignation</ShortDescription>
+		<Description>Resignation</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentSeparationTypeDescriptor</Namespace>
+	</EmploymentSeparationTypeDescriptor>
+	<EmploymentSeparationTypeDescriptor>
+		<CodeValue>Retirement</CodeValue>
+		<ShortDescription>Retirement</ShortDescription>
+		<Description>Retirement</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentSeparationTypeDescriptor</Namespace>
+	</EmploymentSeparationTypeDescriptor>
+	<EmploymentSeparationTypeDescriptor>
+		<CodeValue>Terminated</CodeValue>
+		<ShortDescription>Terminated</ShortDescription>
+		<Description>District terminated</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentSeparationTypeDescriptor</Namespace>
+	</EmploymentSeparationTypeDescriptor>
+</InterchangeDescriptors>

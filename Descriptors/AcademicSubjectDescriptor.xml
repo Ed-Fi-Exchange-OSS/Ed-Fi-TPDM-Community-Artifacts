@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<AcademicSubjectDescriptor>
+		<CodeValue>Bilingual</CodeValue>
+		<ShortDescription>Bilingual</ShortDescription>
+		<Description>Bilingual</Description>
+		<Namespace>uri://tpdm.ed-fi.org/AcademicSubjectDescriptor</Namespace>
+	</AcademicSubjectDescriptor>
+	<AcademicSubjectDescriptor>
+		<CodeValue>ELL</CodeValue>
+		<ShortDescription>ELL</ShortDescription>
+		<Description>ELL</Description>
+		<Namespace>uri://tpdm.ed-fi.org/AcademicSubjectDescriptor</Namespace>
+	</AcademicSubjectDescriptor>
+	<AcademicSubjectDescriptor>
+		<CodeValue>Multiple Subjects</CodeValue>
+		<ShortDescription>Multiple Subjects</ShortDescription>
+		<Description>Multiple Subjects</Description>
+		<Namespace>uri://tpdm.ed-fi.org/AcademicSubjectDescriptor</Namespace>
+	</AcademicSubjectDescriptor>
+	<AcademicSubjectDescriptor>
+		<CodeValue>Special Education</CodeValue>
+		<ShortDescription>Special Education</ShortDescription>
+		<Description>Special Education</Description>
+		<Namespace>uri://tpdm.ed-fi.org/AcademicSubjectDescriptor</Namespace>
+	</AcademicSubjectDescriptor>
+</InterchangeDescriptors>

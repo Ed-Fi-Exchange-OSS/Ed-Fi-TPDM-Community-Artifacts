@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<QuantitativeMeasureDatatypeDescriptor>
+		<CodeValue>Integer</CodeValue>
+		<ShortDescription>Integer</ShortDescription>
+		<Description>Integer</Description>
+		<Namespace>uri://tpdm.ed-fi.org/QuantitativeMeasureDatatypeDescriptor</Namespace>
+	</QuantitativeMeasureDatatypeDescriptor>
+	<QuantitativeMeasureDatatypeDescriptor>
+		<CodeValue>Level</CodeValue>
+		<ShortDescription>Level</ShortDescription>
+		<Description>Level</Description>
+		<Namespace>uri://tpdm.ed-fi.org/QuantitativeMeasureDatatypeDescriptor</Namespace>
+	</QuantitativeMeasureDatatypeDescriptor>
+	<QuantitativeMeasureDatatypeDescriptor>
+		<CodeValue>Decimal</CodeValue>
+		<ShortDescription>Decimal</ShortDescription>
+		<Description>Decimal</Description>
+		<Namespace>uri://tpdm.ed-fi.org/QuantitativeMeasureDatatypeDescriptor</Namespace>
+	</QuantitativeMeasureDatatypeDescriptor>
+	<QuantitativeMeasureDatatypeDescriptor>
+		<CodeValue>Range</CodeValue>
+		<ShortDescription>Range</ShortDescription>
+		<Description>Range</Description>
+		<Namespace>uri://tpdm.ed-fi.org/QuantitativeMeasureDatatypeDescriptor</Namespace>
+	</QuantitativeMeasureDatatypeDescriptor>
+	<QuantitativeMeasureDatatypeDescriptor>
+		<CodeValue>Percentage</CodeValue>
+		<ShortDescription>Percentage</ShortDescription>
+		<Description>Percentage</Description>
+		<Namespace>uri://tpdm.ed-fi.org/QuantitativeMeasureDatatypeDescriptor</Namespace>
+	</QuantitativeMeasureDatatypeDescriptor>
+	<QuantitativeMeasureDatatypeDescriptor>
+		<CodeValue>Percentile</CodeValue>
+		<ShortDescription>Percentile</ShortDescription>
+		<Description>Percentile</Description>
+		<Namespace>uri://tpdm.ed-fi.org/QuantitativeMeasureDatatypeDescriptor</Namespace>
+	</QuantitativeMeasureDatatypeDescriptor>
+</InterchangeDescriptors>
