@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<LevelTypeDescriptor>
+		<CodeValue>1</CodeValue>
+		<ShortDescription>1</ShortDescription>
+		<Description>1</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelTypeDescriptor</Namespace>
+	</LevelTypeDescriptor>
+	<LevelTypeDescriptor>
+		<CodeValue>2</CodeValue>
+		<ShortDescription>2</ShortDescription>
+		<Description>2</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelTypeDescriptor</Namespace>
+	</LevelTypeDescriptor>
+	<LevelTypeDescriptor>
+		<CodeValue>3</CodeValue>
+		<ShortDescription>3</ShortDescription>
+		<Description>3</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelTypeDescriptor</Namespace>
+	</LevelTypeDescriptor>
+	<LevelTypeDescriptor>
+		<CodeValue>4</CodeValue>
+		<ShortDescription>4</ShortDescription>
+		<Description>4</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelTypeDescriptor</Namespace>
+	</LevelTypeDescriptor>
+	<LevelTypeDescriptor>
+		<CodeValue>5</CodeValue>
+		<ShortDescription>5</ShortDescription>
+		<Description>5</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelTypeDescriptor</Namespace>
+	</LevelTypeDescriptor>
+	<LevelTypeDescriptor>
+		<CodeValue>Other</CodeValue>
+		<ShortDescription>Other</ShortDescription>
+		<Description>Other</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelTypeDescriptor</Namespace>
+	</LevelTypeDescriptor>
+</InterchangeDescriptors>

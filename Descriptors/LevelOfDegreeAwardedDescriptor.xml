@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+<LevelOfDegreeAwardedDescriptor>
+		<CodeValue>Associate's</CodeValue>
+		<ShortDescription>Associate's</ShortDescription>
+		<Description>Associate's</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelOfDegreeAwardedDescriptor</Namespace>
+	</LevelOfDegreeAwardedDescriptor>
+	<LevelOfDegreeAwardedDescriptor>
+		<CodeValue>Bachelor's</CodeValue>
+		<ShortDescription>Bachelor's</ShortDescription>
+		<Description>Bachelor's</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelOfDegreeAwardedDescriptor</Namespace>
+	</LevelOfDegreeAwardedDescriptor>
+	<LevelOfDegreeAwardedDescriptor>
+		<CodeValue>Master's</CodeValue>
+		<ShortDescription>Master's</ShortDescription>
+		<Description>Master's</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelOfDegreeAwardedDescriptor</Namespace>
+	</LevelOfDegreeAwardedDescriptor>
+    	<LevelOfDegreeAwardedDescriptor>
+		<CodeValue>AA</CodeValue>
+		<ShortDescription>AA</ShortDescription>
+		<Description>Associates</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelOfDegreeAwardedDescriptor</Namespace>
+	</LevelOfDegreeAwardedDescriptor>
+	<LevelOfDegreeAwardedDescriptor>
+		<CodeValue>BA</CodeValue>
+		<ShortDescription>BA</ShortDescription>
+		<Description>Bachelor of Arts</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelOfDegreeAwardedDescriptor</Namespace>
+	</LevelOfDegreeAwardedDescriptor>
+	<LevelOfDegreeAwardedDescriptor>
+		<CodeValue>BS</CodeValue>
+		<ShortDescription>BS</ShortDescription>
+		<Description>Bachelor of Science</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelOfDegreeAwardedDescriptor</Namespace>
+	</LevelOfDegreeAwardedDescriptor>
+	<LevelOfDegreeAwardedDescriptor>
+		<CodeValue>MA</CodeValue>
+		<ShortDescription>MA</ShortDescription>
+		<Description>Masters</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelOfDegreeAwardedDescriptor</Namespace>
+	</LevelOfDegreeAwardedDescriptor>
+	<LevelOfDegreeAwardedDescriptor>
+		<CodeValue>MA+45</CodeValue>
+		<ShortDescription>MA+45</ShortDescription>
+		<Description>MA+45</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelOfDegreeAwardedDescriptor</Namespace>
+	</LevelOfDegreeAwardedDescriptor>
+	<LevelOfDegreeAwardedDescriptor>
+		<CodeValue>None</CodeValue>
+		<ShortDescription>None</ShortDescription>
+		<Description>None</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelOfDegreeAwardedDescriptor</Namespace>
+	</LevelOfDegreeAwardedDescriptor>
+	<LevelOfDegreeAwardedDescriptor>
+		<CodeValue>PhD</CodeValue>
+		<ShortDescription>PhD</ShortDescription>
+		<Description>PhD</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LevelOfDegreeAwardedDescriptor</Namespace>
+	</LevelOfDegreeAwardedDescriptor>
+</InterchangeDescriptors>

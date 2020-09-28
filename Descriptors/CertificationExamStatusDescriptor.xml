@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<CertificationExamStatusDescriptor>
+		<CodeValue>Planned</CodeValue>
+		<ShortDescription>Planned</ShortDescription>
+		<Description>Planned</Description>
+		<Namespace>uri://tpdm.ed-fi.org/CertificationExamStatusDescriptor</Namespace>
+	</CertificationExamStatusDescriptor>
+	<CertificationExamStatusDescriptor>
+		<CodeValue>Registered</CodeValue>
+		<ShortDescription>Registered</ShortDescription>
+		<Description>Registered</Description>
+		<Namespace>uri://tpdm.ed-fi.org/CertificationExamStatusDescriptor</Namespace>
+	</CertificationExamStatusDescriptor>
+	<CertificationExamStatusDescriptor>
+		<CodeValue>Taken</CodeValue>
+		<ShortDescription>Taken</ShortDescription>
+		<Description>Taken</Description>
+		<Namespace>uri://tpdm.ed-fi.org/CertificationExamStatusDescriptor</Namespace>
+	</CertificationExamStatusDescriptor>
+	<CertificationExamStatusDescriptor>
+		<CodeValue>Passed</CodeValue>
+		<ShortDescription>Passed</ShortDescription>
+		<Description>Passed</Description>
+		<Namespace>uri://tpdm.ed-fi.org/CertificationExamStatusDescriptor</Namespace>
+	</CertificationExamStatusDescriptor>
+	<CertificationExamStatusDescriptor>
+		<CodeValue>Failed</CodeValue>
+		<ShortDescription>Failed</ShortDescription>
+		<Description>Failed</Description>
+		<Namespace>uri://tpdm.ed-fi.org/CertificationExamStatusDescriptor</Namespace>
+	</CertificationExamStatusDescriptor>
+</InterchangeDescriptors>

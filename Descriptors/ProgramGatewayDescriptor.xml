@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<ProgramGatewayDescriptor>
+		<CodeValue>Gateway 1</CodeValue>
+		<ShortDescription>Gateway 1</ShortDescription>
+		<Description>Gateway 1</Description>
+		<Namespace>uri://tpdm.ed-fi.org/ProgramGatewayDescriptor</Namespace>
+	</ProgramGatewayDescriptor>
+	<ProgramGatewayDescriptor>
+		<CodeValue>Gateway 2</CodeValue>
+		<ShortDescription>Gateway 2</ShortDescription>
+		<Description>Gateway 2</Description>
+		<Namespace>uri://tpdm.ed-fi.org/ProgramGatewayDescriptor</Namespace>
+	</ProgramGatewayDescriptor>
+	<ProgramGatewayDescriptor>
+		<CodeValue>Gateway 3</CodeValue>
+		<ShortDescription>Gateway 3</ShortDescription>
+		<Description>Gateway 3</Description>
+		<Namespace>uri://tpdm.ed-fi.org/ProgramGatewayDescriptor</Namespace>
+	</ProgramGatewayDescriptor>
+	<ProgramGatewayDescriptor>
+		<CodeValue>Gateway 4</CodeValue>
+		<ShortDescription>Gateway 4</ShortDescription>
+		<Description>Gateway 4</Description>
+		<Namespace>uri://tpdm.ed-fi.org/ProgramGatewayDescriptor</Namespace>
+	</ProgramGatewayDescriptor>
+	<ProgramGatewayDescriptor>
+		<CodeValue>Gateway 5</CodeValue>
+		<ShortDescription>Gateway 5</ShortDescription>
+		<Description>Gateway 5</Description>
+		<Namespace>uri://tpdm.ed-fi.org/ProgramGatewayDescriptor</Namespace>
+	</ProgramGatewayDescriptor>
+</InterchangeDescriptors>

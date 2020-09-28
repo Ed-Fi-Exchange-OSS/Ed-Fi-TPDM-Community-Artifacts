@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+<StaffClassificationDescriptor>
+		<CodeValue>Adjunct Professor</CodeValue>
+		<ShortDescription>Adjunct Professor</ShortDescription>
+		<Description>Adjunct Professor</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffClassificationDescriptor</Namespace>
+	</StaffClassificationDescriptor>
+	<StaffClassificationDescriptor>
+		<CodeValue>Assistant Professor</CodeValue>
+		<ShortDescription>Assistant Professor</ShortDescription>
+		<Description>Assistant Professor</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffClassificationDescriptor</Namespace>
+	</StaffClassificationDescriptor>
+	<StaffClassificationDescriptor>
+		<CodeValue>Associate Professor</CodeValue>
+		<ShortDescription>Associate Professor</ShortDescription>
+		<Description>Associate Professor</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffClassificationDescriptor</Namespace>
+	</StaffClassificationDescriptor>
+	<StaffClassificationDescriptor>
+		<CodeValue>Audiologist</CodeValue>
+		<ShortDescription>Audiologist</ShortDescription>
+		<Description>Audiologist</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffClassificationDescriptor</Namespace>
+	</StaffClassificationDescriptor>
+	<StaffClassificationDescriptor>
+		<CodeValue>Clinical Professor</CodeValue>
+		<ShortDescription>Clinical Professor</ShortDescription>
+		<Description>Clinical Professor</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffClassificationDescriptor</Namespace>
+	</StaffClassificationDescriptor>
+	<StaffClassificationDescriptor>
+		<CodeValue>Full Professor</CodeValue>
+		<ShortDescription>Full Professor</ShortDescription>
+		<Description>Full Professor</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffClassificationDescriptor</Namespace>
+	</StaffClassificationDescriptor>
+	<StaffClassificationDescriptor>
+		<CodeValue>Mentor Teacher</CodeValue>
+		<ShortDescription>Mentor Teacher</ShortDescription>
+		<Description>Mentor Teacher</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffClassificationDescriptor</Namespace>
+	</StaffClassificationDescriptor>
+	<StaffClassificationDescriptor>
+		<CodeValue>Psychologist</CodeValue>
+		<ShortDescription>Psychologist</ShortDescription>
+		<Description>Psychologist</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffClassificationDescriptor</Namespace>
+	</StaffClassificationDescriptor>
+	<StaffClassificationDescriptor>
+		<CodeValue>School Nurse</CodeValue>
+		<ShortDescription>School Nurse</ShortDescription>
+		<Description>School Nurse</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffClassificationDescriptor</Namespace>
+	</StaffClassificationDescriptor>
+	<StaffClassificationDescriptor>
+		<CodeValue>School Social Worker</CodeValue>
+		<ShortDescription>School Social Worker</ShortDescription>
+		<Description>School Social Worker</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffClassificationDescriptor</Namespace>
+	</StaffClassificationDescriptor>
+	<StaffClassificationDescriptor>
+		<CodeValue>Site Coordinator</CodeValue>
+		<ShortDescription>Site Coordinator</ShortDescription>
+		<Description>Site Coordinator</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffClassificationDescriptor</Namespace>
+	</StaffClassificationDescriptor>
+	<StaffClassificationDescriptor>
+		<CodeValue>Speech Language Pathologist</CodeValue>
+		<ShortDescription>Speech Language Pathologist</ShortDescription>
+		<Description>Speech Language Pathologist</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffClassificationDescriptor</Namespace>
+	</StaffClassificationDescriptor>
+</InterchangeDescriptors>

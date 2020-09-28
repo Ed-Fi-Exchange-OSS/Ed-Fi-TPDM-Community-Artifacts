@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<EmploymentStatusDescriptor>
+		<CodeValue>Permanent</CodeValue>
+		<ShortDescription>Permanent</ShortDescription>
+		<Description>Permanent</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentStatusDescriptor</Namespace>
+	</EmploymentStatusDescriptor>
+	<EmploymentStatusDescriptor>
+		<CodeValue>Probationary</CodeValue>
+		<ShortDescription>Probationary</ShortDescription>
+		<Description>Probationary</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentStatusDescriptor</Namespace>
+	</EmploymentStatusDescriptor>
+	<EmploymentStatusDescriptor>
+		<CodeValue>Substitute</CodeValue>
+		<ShortDescription>Substitute</ShortDescription>
+		<Description>Substitute</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentStatusDescriptor</Namespace>
+	</EmploymentStatusDescriptor>
+	<EmploymentStatusDescriptor>
+		<CodeValue>Temporary</CodeValue>
+		<ShortDescription>Temporary</ShortDescription>
+		<Description>Temporary</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentStatusDescriptor</Namespace>
+	</EmploymentStatusDescriptor>
+	<EmploymentStatusDescriptor>
+		<CodeValue>Unknown</CodeValue>
+		<ShortDescription>Unknown</ShortDescription>
+		<Description>Unknown</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentStatusDescriptor</Namespace>
+	</EmploymentStatusDescriptor>
+	<EmploymentStatusDescriptor>
+		<CodeValue>Volunteer</CodeValue>
+		<ShortDescription>Volunteer</ShortDescription>
+		<Description>Volunteer</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentStatusDescriptor</Namespace>
+	</EmploymentStatusDescriptor>
+</InterchangeDescriptors>

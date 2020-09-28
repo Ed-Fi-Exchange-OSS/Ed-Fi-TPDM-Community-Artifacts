@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<EmploymentSeparationReasonDescriptor>
+		<CodeValue>Family</CodeValue>
+		<ShortDescription>Family</ShortDescription>
+		<Description>Family reasons</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentSeparationReasonDescriptor</Namespace>
+	</EmploymentSeparationReasonDescriptor>
+	<EmploymentSeparationReasonDescriptor>
+		<CodeValue>Health</CodeValue>
+		<ShortDescription>Health</ShortDescription>
+		<Description>Health reasons</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentSeparationReasonDescriptor</Namespace>
+	</EmploymentSeparationReasonDescriptor>
+	<EmploymentSeparationReasonDescriptor>
+		<CodeValue>Leaving district</CodeValue>
+		<ShortDescription>Leaving district</ShortDescription>
+		<Description>Transferring to another district in the state</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentSeparationReasonDescriptor</Namespace>
+	</EmploymentSeparationReasonDescriptor>
+	<EmploymentSeparationReasonDescriptor>
+		<CodeValue>Leaving state</CodeValue>
+		<ShortDescription>Leaving state</ShortDescription>
+		<Description>Transferring to another district outside of the state</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentSeparationReasonDescriptor</Namespace>
+	</EmploymentSeparationReasonDescriptor>
+	<EmploymentSeparationReasonDescriptor>
+		<CodeValue>Other</CodeValue>
+		<ShortDescription>Other</ShortDescription>
+		<Description>Other</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentSeparationReasonDescriptor</Namespace>
+	</EmploymentSeparationReasonDescriptor>
+	<EmploymentSeparationReasonDescriptor>
+		<CodeValue>Quitting</CodeValue>
+		<ShortDescription>Quitting</ShortDescription>
+		<Description>Leaving the profession</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentSeparationReasonDescriptor</Namespace>
+	</EmploymentSeparationReasonDescriptor>
+	<EmploymentSeparationReasonDescriptor>
+		<CodeValue>Reduction in force</CodeValue>
+		<ShortDescription>Reduction in force</ShortDescription>
+		<Description>Reduction in force</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentSeparationReasonDescriptor</Namespace>
+	</EmploymentSeparationReasonDescriptor>
+	<EmploymentSeparationReasonDescriptor>
+		<CodeValue>Retiring</CodeValue>
+		<ShortDescription>Retiring</ShortDescription>
+		<Description>Retiring</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentSeparationReasonDescriptor</Namespace>
+	</EmploymentSeparationReasonDescriptor>
+	<EmploymentSeparationReasonDescriptor>
+		<CodeValue>Transfer</CodeValue>
+		<ShortDescription>Transfer</ShortDescription>
+		<Description>Transfer</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EmploymentSeparationReasonDescriptor</Namespace>
+	</EmploymentSeparationReasonDescriptor>
+</InterchangeDescriptors>

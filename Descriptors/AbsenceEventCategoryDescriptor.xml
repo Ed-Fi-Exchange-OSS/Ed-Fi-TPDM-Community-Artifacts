@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+    <AbsenceEventCategoryDescriptor>
+		<CodeValue>Doctor</CodeValue>
+		<ShortDescription>Doctor</ShortDescription>
+		<Description>Sick with doctor's note</Description>
+		<Namespace>uri://tpdm.ed-fi.org/AbsenceEventCategoryDescriptor</Namespace>
+	</AbsenceEventCategoryDescriptor>
+	<AbsenceEventCategoryDescriptor>
+		<CodeValue>Family</CodeValue>
+		<ShortDescription>Family</ShortDescription>
+		<Description>Family care</Description>
+		<Namespace>uri://tpdm.ed-fi.org/AbsenceEventCategoryDescriptor</Namespace>
+	</AbsenceEventCategoryDescriptor>
+	<AbsenceEventCategoryDescriptor>
+		<CodeValue>Injured</CodeValue>
+		<ShortDescription>Injured</ShortDescription>
+		<Description>Injured</Description>
+		<Namespace>uri://tpdm.ed-fi.org/AbsenceEventCategoryDescriptor</Namespace>
+	</AbsenceEventCategoryDescriptor>
+	<AbsenceEventCategoryDescriptor>
+		<CodeValue>Other</CodeValue>
+		<ShortDescription>Other</ShortDescription>
+		<Description>Other</Description>
+		<Namespace>uri://tpdm.ed-fi.org/AbsenceEventCategoryDescriptor</Namespace>
+	</AbsenceEventCategoryDescriptor>
+	<AbsenceEventCategoryDescriptor>
+		<CodeValue>Personal</CodeValue>
+		<ShortDescription>Personal</ShortDescription>
+		<Description>Personal day</Description>
+		<Namespace>uri://tpdm.ed-fi.org/AbsenceEventCategoryDescriptor</Namespace>
+	</AbsenceEventCategoryDescriptor>
+	<AbsenceEventCategoryDescriptor>
+		<CodeValue>Sick</CodeValue>
+		<ShortDescription>Sick</ShortDescription>
+		<Description>Sick</Description>
+		<Namespace>uri://tpdm.ed-fi.org/AbsenceEventCategoryDescriptor</Namespace>
+	</AbsenceEventCategoryDescriptor>
+	<AbsenceEventCategoryDescriptor>
+		<CodeValue>Vacation</CodeValue>
+		<ShortDescription>Vacation</ShortDescription>
+		<Description>Vacation</Description>
+		<Namespace>uri://tpdm.ed-fi.org/AbsenceEventCategoryDescriptor</Namespace>
+	</AbsenceEventCategoryDescriptor>
+</InterchangeDescriptors>
