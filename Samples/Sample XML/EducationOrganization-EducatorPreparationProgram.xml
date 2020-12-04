@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<InterchangeEducationOrganization xmlns:ann="http://ed-fi.org/annotation" xmlns="http://ed-fi.org/3.2.0-c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<TeacherPreparationProviderProgram>
+<InterchangeEducationOrganization xmlns:ann="http://ed-fi.org/annotation" xsi:schemaLocation="http://ed-fi.org/3.2.0-c C:/GitHub/Ed-Fi-TPDM-Model/MetaEdOutput/TPDM/Interchange/EXTENSION-Interchange-EducationOrganization-Extension.xsd" xmlns="http://ed-fi.org/3.2.0-c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>5</EducationOrganizationId>
@@ -9,8 +9,8 @@
 		<ProgramId>96953</ProgramId>
 		<ProgramName>English Education Secondary</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Kindergarten - Extended Day</ProgramType>
-	</TeacherPreparationProviderProgram>
-	<TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>5</EducationOrganizationId>
@@ -19,8 +19,8 @@
 		<ProgramId>70223</ProgramId>
 		<ProgramName>Mathematics Education Secondary</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Kindergarten - Extended Day</ProgramType>
-	</TeacherPreparationProviderProgram>
-	<TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>5</EducationOrganizationId>
@@ -29,8 +29,8 @@
 		<ProgramId>07721</ProgramId>
 		<ProgramName>Elementary Education</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Section 504 Placement</ProgramType>
-	</TeacherPreparationProviderProgram>
-	<TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>5</EducationOrganizationId>
@@ -39,8 +39,8 @@
 		<ProgramId>79361</ProgramId>
 		<ProgramName>Mathematics Education Middle Grades</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Section 504 Placement</ProgramType>
-	</TeacherPreparationProviderProgram>
-	<TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>5</EducationOrganizationId>
@@ -49,8 +49,8 @@
 		<ProgramId>08997</ProgramId>
 		<ProgramName>Science Education Secondary</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Section 504 Placement</ProgramType>
-	</TeacherPreparationProviderProgram>
-	<TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>6</EducationOrganizationId>
@@ -59,8 +59,8 @@
 		<ProgramId>08135</ProgramId>
 		<ProgramName>Elementary Education</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Kindergarten - Extended Day</ProgramType>
-	</TeacherPreparationProviderProgram>
-	<TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>6</EducationOrganizationId>
@@ -69,8 +69,8 @@
 		<ProgramId>17936</ProgramId>
 		<ProgramName>Mathematics Education Middle Grades</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Kindergarten - Extended Day</ProgramType>
-	</TeacherPreparationProviderProgram>
-	<TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>6</EducationOrganizationId>
@@ -79,8 +79,8 @@
 		<ProgramId>45348</ProgramId>
 		<ProgramName>English Education Secondary</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Section 504 Placement</ProgramType>
-	</TeacherPreparationProviderProgram>
-	<TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>6</EducationOrganizationId>
@@ -89,8 +89,8 @@
 		<ProgramId>78678</ProgramId>
 		<ProgramName>Mathematics Education Secondary</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Section 504 Placement</ProgramType>
-	</TeacherPreparationProviderProgram>
-	<TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>6</EducationOrganizationId>
@@ -99,8 +99,8 @@
 		<ProgramId>05609</ProgramId>
 		<ProgramName>Science Education Secondary</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Section 504 Placement</ProgramType>
-	</TeacherPreparationProviderProgram>
-	<TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>7</EducationOrganizationId>
@@ -109,8 +109,8 @@
 		<ProgramId>64725</ProgramId>
 		<ProgramName>English Education Secondary</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Kindergarten - Extended Day</ProgramType>
-	</TeacherPreparationProviderProgram>
-	<TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>7</EducationOrganizationId>
@@ -119,8 +119,8 @@
 		<ProgramId>92302</ProgramId>
 		<ProgramName>Mathematics Education Middle Grades</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Kindergarten - Extended Day</ProgramType>
-	</TeacherPreparationProviderProgram>
-	<TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>7</EducationOrganizationId>
@@ -129,8 +129,8 @@
 		<ProgramId>22987</ProgramId>
 		<ProgramName>Science Education Secondary</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Kindergarten - Extended Day</ProgramType>
-	</TeacherPreparationProviderProgram>
-	<TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>7</EducationOrganizationId>
@@ -139,8 +139,8 @@
 		<ProgramId>11408</ProgramId>
 		<ProgramName>Elementary Education</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Section 504 Placement</ProgramType>
-	</TeacherPreparationProviderProgram>
-	<TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
+	<EducatorPreparationProgram>
 		<EducationOrganizationReference>
 			<EducationOrganizationIdentity>
 				<EducationOrganizationId>7</EducationOrganizationId>
@@ -149,5 +149,5 @@
 		<ProgramId>68688</ProgramId>
 		<ProgramName>Mathematics Education Secondary</ProgramName>
 		<ProgramType>uri://ed-fi.org/ProgramTypeDescriptor#Section 504 Placement</ProgramType>
-	</TeacherPreparationProviderProgram>
+	</EducatorPreparationProgram>
 </InterchangeEducationOrganization>
