@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<StaffToCandidateRelationshipDescriptor>
+		<CodeValue>Supervising Principal</CodeValue>
+		<ShortDescription>Supervising Principal</ShortDescription>
+		<Description>Supervising Principal</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffToCandidateRelationshipDescriptor</Namespace>
+	</StaffToCandidateRelationshipDescriptor>
+	<StaffToCandidateRelationshipDescriptor>
+		<CodeValue>Mentor</CodeValue>
+		<ShortDescription>Mentor</ShortDescription>
+		<Description>Mentor</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffToCandidateRelationshipDescriptor</Namespace>
+	</StaffToCandidateRelationshipDescriptor>
+	<StaffToCandidateRelationshipDescriptor>
+		<CodeValue>Coordinating Teacher</CodeValue>
+		<ShortDescription>Coordinating Teacher</ShortDescription>
+		<Description>Coordinating Teacher</Description>
+		<Namespace>uri://tpdm.ed-fi.org/StaffToCandidateRelationshipDescriptor</Namespace>
+	</StaffToCandidateRelationshipDescriptor>
+</InterchangeDescriptors>
