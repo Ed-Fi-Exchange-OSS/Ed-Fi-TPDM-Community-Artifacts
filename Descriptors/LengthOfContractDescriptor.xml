@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.2.0-c" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.2.0-c ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<LengthOfContractDescriptor>
+		<CodeValue>12 months</CodeValue>
+		<ShortDescription>12 months</ShortDescription>
+		<Description>12 months</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LengthOfContractDescriptor</Namespace>
+	</LengthOfContractDescriptor>
+	<LengthOfContractDescriptor>
+		<CodeValue>9 months</CodeValue>
+		<ShortDescription>9 months</ShortDescription>
+		<Description>9 months</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LengthOfContractDescriptor</Namespace>
+	</LengthOfContractDescriptor>
+	<LengthOfContractDescriptor>
+		<CodeValue>6 months</CodeValue>
+		<ShortDescription>6 months</ShortDescription>
+		<Description>6 months</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LengthOfContractDescriptor</Namespace>
+	</LengthOfContractDescriptor>	
+	<LengthOfContractDescriptor>
+		<CodeValue>Summer</CodeValue>
+		<ShortDescription>Summer</ShortDescription>
+		<Description>Summer</Description>
+		<Namespace>uri://tpdm.ed-fi.org/LengthOfContractDescriptor</Namespace>
+	</LengthOfContractDescriptor>	
+</InterchangeDescriptors>
