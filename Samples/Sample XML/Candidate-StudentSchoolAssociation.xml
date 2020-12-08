@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<InterchangeTeacherCandidate xmlns:ann="http://ed-fi.org/annotation" xmlns="http://ed-fi.org/3.2.0-c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<InterchangeCandidate xmlns:ann="http://ed-fi.org/annotation" xmlns="http://ed-fi.org/3.2.0-c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <StudentSchoolAssociation>
     <StudentReference>
       <StudentIdentity>
@@ -14985,4 +14985,4 @@
     <EntryDate>2011-05-20</EntryDate>
     <EntryGradeLevel>uri://tpdm.ed-fi.org/GradeLevelDescriptor#Master's</EntryGradeLevel>
   </StudentSchoolAssociation>
-</InterchangeTeacherCandidate>
+</InterchangeCandidate>

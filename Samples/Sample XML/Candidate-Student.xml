@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<InterchangeTeacherCandidate xmlns:ann="http://ed-fi.org/annotation" xmlns="http://ed-fi.org/3.2.0-c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<InterchangeCandidate xmlns:ann="http://ed-fi.org/annotation" xmlns="http://ed-fi.org/3.2.0-c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Student>
 		<StudentUniqueId>1000042</StudentUniqueId>
 		<Name>
@@ -20914,4 +20914,4 @@
 			<BirthSex>uri://ed-fi.org/SexDescriptor#Female</BirthSex>
 		</BirthData>
 	</Student>
-</InterchangeTeacherCandidate>
+</InterchangeCandidate>

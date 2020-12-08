@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<InterchangeTeacherCandidate xmlns:ann="http://ed-fi.org/annotation" xsi:schemaLocation="http://ed-fi.org/3.2.0-c C:/GitHub/Ed-Fi-TPDM-Model/MetaEdOutput/TPDM/Interchange/EXTENSION-Interchange-TeacherCandidate-Extension.xsd" xmlns="http://ed-fi.org/3.2.0-c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<InterchangeCandidate xmlns:ann="http://ed-fi.org/annotation" xsi:schemaLocation="http://ed-fi.org/3.2.0-c C:/GitHub/Ed-Fi-TPDM-Model/MetaEdOutput/TPDM/Interchange/EXTENSION-Interchange-TeacherCandidate-Extension.xsd" xmlns="http://ed-fi.org/3.2.0-c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<StudentAcademicRecord>
 		<ProjectedGraduationDate>2018-06-22</ProjectedGraduationDate>
 		<GradePointAverage>
@@ -39946,4 +39946,4 @@
 		<SchoolYear>2010-2011</SchoolYear>
 		<Term>uri://ed-fi.org/TermDescriptor#Spring Semester</Term>
 	</StudentAcademicRecord>
-</InterchangeTeacherCandidate>
+</InterchangeCandidate>
