@@ -19,27 +19,9 @@
 		<Namespace>uri://tpdm.ed-fi.org/AbsenceEventCategoryDescriptor</Namespace>
 	</AbsenceEventCategoryDescriptor>
 	<AbsenceEventCategoryDescriptor>
-		<CodeValue>Other</CodeValue>
-		<ShortDescription>Other</ShortDescription>
-		<Description>Other</Description>
-		<Namespace>uri://tpdm.ed-fi.org/AbsenceEventCategoryDescriptor</Namespace>
-	</AbsenceEventCategoryDescriptor>
-	<AbsenceEventCategoryDescriptor>
-		<CodeValue>Personal</CodeValue>
-		<ShortDescription>Personal</ShortDescription>
-		<Description>Personal day</Description>
-		<Namespace>uri://tpdm.ed-fi.org/AbsenceEventCategoryDescriptor</Namespace>
-	</AbsenceEventCategoryDescriptor>
-	<AbsenceEventCategoryDescriptor>
 		<CodeValue>Sick</CodeValue>
 		<ShortDescription>Sick</ShortDescription>
 		<Description>Sick</Description>
-		<Namespace>uri://tpdm.ed-fi.org/AbsenceEventCategoryDescriptor</Namespace>
-	</AbsenceEventCategoryDescriptor>
-	<AbsenceEventCategoryDescriptor>
-		<CodeValue>Vacation</CodeValue>
-		<ShortDescription>Vacation</ShortDescription>
-		<Description>Vacation</Description>
 		<Namespace>uri://tpdm.ed-fi.org/AbsenceEventCategoryDescriptor</Namespace>
 	</AbsenceEventCategoryDescriptor>
 </InterchangeDescriptors>
