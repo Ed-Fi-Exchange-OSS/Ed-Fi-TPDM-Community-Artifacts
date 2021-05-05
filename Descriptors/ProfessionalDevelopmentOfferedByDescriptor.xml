@@ -19,9 +19,9 @@
 		<Namespace>uri://tpdm.ed-fi.org/ProfessionalDevelopmentOfferedByDescriptor</Namespace>
 	</ProfessionalDevelopmentOfferedByDescriptor>
 	<ProfessionalDevelopmentOfferedByDescriptor>
-		<CodeValue>Teacher Preparation Provider</CodeValue>
-		<ShortDescription>Teacher Preparation Provider</ShortDescription>
-		<Description>Teacher Preparation Provider</Description>
+		<CodeValue>Educator Preparation Provider</CodeValue>
+		<ShortDescription>Educator Preparation Provider</ShortDescription>
+		<Description>Educator Preparation Provider</Description>
 		<Namespace>uri://tpdm.ed-fi.org/ProfessionalDevelopmentOfferedByDescriptor</Namespace>
 	</ProfessionalDevelopmentOfferedByDescriptor>
 </InterchangeDescriptors>
