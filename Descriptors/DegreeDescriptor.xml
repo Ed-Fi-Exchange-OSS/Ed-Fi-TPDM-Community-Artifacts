@@ -31,9 +31,9 @@
 		<Namespace>uri://tpdm.ed-fi.org/DegreeDescriptor</Namespace>
 	</DegreeDescriptor>
 	<DegreeDescriptor>
-		<CodeValue>Doctorial degree</CodeValue>
-		<ShortDescription>Doctorial degree</ShortDescription>
-		<Description>Doctorial degree</Description>
+		<CodeValue>Doctorate degree</CodeValue>
+		<ShortDescription>Doctorate degree</ShortDescription>
+		<Description>Doctorate degree</Description>
 		<Namespace>uri://tpdm.ed-fi.org/DegreeDescriptor</Namespace>
 	</DegreeDescriptor>
 </InterchangeDescriptors>

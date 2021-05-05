@@ -18,4 +18,40 @@
 		<Description>Undergraduate</Description>
 		<Namespace>uri://tpdm.ed-fi.org/GradeLevelDescriptor</Namespace>
 	</GradeLevelDescriptor>
+	<GradeLevelDescriptor>
+		<CodeValue>Freshman</CodeValue>
+		<ShortDescription>Freshman</ShortDescription>
+		<Description>Freshman</Description>
+		<Namespace>uri://tpdm.ed-fi.org/GradeLevelDescriptor</Namespace>
+	</GradeLevelDescriptor>
+	<GradeLevelDescriptor>
+		<CodeValue>Sophomore</CodeValue>
+		<ShortDescription>Sophomore</ShortDescription>
+		<Description>Sophomore</Description>
+		<Namespace>uri://tpdm.ed-fi.org/GradeLevelDescriptor</Namespace>
+	</GradeLevelDescriptor>
+	<GradeLevelDescriptor>
+		<CodeValue>Junior</CodeValue>
+		<ShortDescription>Junior</ShortDescription>
+		<Description>Junior</Description>
+		<Namespace>uri://tpdm.ed-fi.org/GradeLevelDescriptor</Namespace>
+	</GradeLevelDescriptor>
+	<GradeLevelDescriptor>
+		<CodeValue>Senior</CodeValue>
+		<ShortDescription>Senior</ShortDescription>
+		<Description>Senior</Description>
+		<Namespace>uri://tpdm.ed-fi.org/GradeLevelDescriptor</Namespace>
+	</GradeLevelDescriptor>
+	<GradeLevelDescriptor>
+		<CodeValue>Postbaccalaureate</CodeValue>
+		<ShortDescription>Postbaccalaureate</ShortDescription>
+		<Description>Postbaccalaureate</Description>
+		<Namespace>uri://tpdm.ed-fi.org/GradeLevelDescriptor</Namespace>
+	</GradeLevelDescriptor>
+	<GradeLevelDescriptor>
+		<CodeValue>Doctoral Program</CodeValue>
+		<ShortDescription>Doctoral Program</ShortDescription>
+		<Description>Doctoral Program</Description>
+		<Namespace>uri://tpdm.ed-fi.org/GradeLevelDescriptor</Namespace>
+	</GradeLevelDescriptor>
 </InterchangeDescriptors>
