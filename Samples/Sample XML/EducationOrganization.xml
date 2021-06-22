@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<InterchangeEducationOrganization xmlns:ann="http://ed-fi.org/annotation" xsi:schemaLocation="http://ed-fi.org/3.2.0-c C:/GitHub/Ed-Fi-TPDM-Model/MetaEdOutput/TPDM/Interchange/EXTENSION-Interchange-EducationOrganization-Extension.xsd" xmlns="http://ed-fi.org/3.2.0-c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<InterchangeEducationOrganization xmlns:ann="http://ed-fi.org/annotation" xsi:schemaLocation="http://ed-fi.org/3.3.0-a C:/GitHub/Ed-Fi-TPDM-Model/MetaEdOutput/TPDM/Interchange/EXTENSION-Interchange-EducationOrganization-Extension.xsd" xmlns="http://ed-fi.org/3.3.0-a" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<School>
 		<NameOfInstitution>TU Collge of Education Graduate</NameOfInstitution>
 		<EducationOrganizationCategory>uri://ed-fi.org/EducationOrganizationCategoryDescriptor#School</EducationOrganizationCategory>
@@ -68,7 +68,7 @@
 	</School>
 	<School>
 		<NameOfInstitution>TU Collge of Education Graduate</NameOfInstitution>
-		<EducationOrganizationCategory>uri://tpdm.ed-fi.org/EducationOrganizationCategoryDescriptor#Teacher Preparation Provider</EducationOrganizationCategory>
+		<EducationOrganizationCategory>uri://tpdm.ed-fi.org/EducationOrganizationCategoryDescriptor#Educator Preparation Provider</EducationOrganizationCategory>
 		<Address>
 			<StreetNumberName>19463 West Way</StreetNumberName>
 			<City>Northridge</City>
@@ -88,7 +88,7 @@
 	</School>
 	<School>
 		<NameOfInstitution>TU Collge of Education Under Graduate</NameOfInstitution>
-		<EducationOrganizationCategory>uri://tpdm.ed-fi.org/EducationOrganizationCategoryDescriptor#Teacher Preparation Provider</EducationOrganizationCategory>
+		<EducationOrganizationCategory>uri://tpdm.ed-fi.org/EducationOrganizationCategoryDescriptor#Educator Preparation Provider</EducationOrganizationCategory>
 		<Address>
 			<StreetNumberName>19464 West Way</StreetNumberName>
 			<City>Northridge</City>
@@ -108,7 +108,7 @@
 	</School>
 	<School>
 		<NameOfInstitution>NMU College of Education</NameOfInstitution>
-		<EducationOrganizationCategory>uri://tpdm.ed-fi.org/EducationOrganizationCategoryDescriptor#Teacher Preparation Provider</EducationOrganizationCategory>
+		<EducationOrganizationCategory>uri://tpdm.ed-fi.org/EducationOrganizationCategoryDescriptor#Educator Preparation Provider</EducationOrganizationCategory>
 		<Address>
 			<StreetNumberName>789 Austin Trail</StreetNumberName>
 			<City>Santa Fe</City>

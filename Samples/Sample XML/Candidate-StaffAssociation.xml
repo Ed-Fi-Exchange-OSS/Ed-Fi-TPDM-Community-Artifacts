@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<InterchangeCandidate xmlns:ann="http://ed-fi.org/annotation" xsi:schemaLocation="http://ed-fi.org/3.2.0-c C:/GitHub/Ed-Fi-TPDM-Model/MetaEdOutput/TPDM/Interchange/EXTENSION-Interchange-TeacherCandidate-Extension.xsd" xmlns="http://ed-fi.org/3.2.0-c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<InterchangeCandidate xmlns:ann="http://ed-fi.org/annotation" xsi:schemaLocation="http://ed-fi.org/3.3.0-a C:/GitHub/Ed-Fi-TPDM-Model/MetaEdOutput/TPDM/Interchange/EXTENSION-Interchange-TeacherCandidate-Extension.xsd" xmlns="http://ed-fi.org/3.3.0-a" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CandidateRelationshipToStaffAssociation>
 		<CandidateReference>
 			<CandidateIdentity>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<InterchangeStudentGradebook xmlns:ann="http://ed-fi.org/annotation" xmlns="http://ed-fi.org/3.2.0-c" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<InterchangeStudentGradebook xmlns:ann="http://ed-fi.org/annotation" xmlns="http://ed-fi.org/3.3.0-a" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<GradebookEntry>
 		<GradebookEntryTitle>Assignment 1</GradebookEntryTitle>
 		<DateAssigned>2010-08-23</DateAssigned>
@@ -16,8 +16,8 @@
 						</SchoolReference>
 						<SessionReference>
 							<SessionIdentity>
-								<SessionName>2010-2011 Fall Semester</SessionName>
-								<SchoolYear>2010-2011</SchoolYear>
+								<SessionName>2021-2022 Fall Semester</SessionName>
+								<SchoolYear>2021-2022</SchoolYear>
 								<SchoolReference>
 									<SchoolIdentity>
 										<SchoolId>255901001</SchoolId>
@@ -47,8 +47,8 @@
 						</SchoolReference>
 						<SessionReference>
 							<SessionIdentity>
-								<SessionName>2010-2011 Fall Semester</SessionName>
-								<SchoolYear>2010-2011</SchoolYear>
+								<SessionName>2021-2022 Fall Semester</SessionName>
+								<SchoolYear>2021-2022</SchoolYear>
 								<SchoolReference>
 									<SchoolIdentity>
 										<SchoolId>255901001</SchoolId>
@@ -78,8 +78,8 @@
 						</SchoolReference>
 						<SessionReference>
 							<SessionIdentity>
-								<SessionName>2010-2011 Fall Semester</SessionName>
-								<SchoolYear>2010-2011</SchoolYear>
+								<SessionName>2021-2022 Fall Semester</SessionName>
+								<SchoolYear>2021-2022</SchoolYear>
 								<SchoolReference>
 									<SchoolIdentity>
 										<SchoolId>255901001</SchoolId>
@@ -109,8 +109,8 @@
 						</SchoolReference>
 						<SessionReference>
 							<SessionIdentity>
-								<SessionName>2010-2011 Fall Semester</SessionName>
-								<SchoolYear>2010-2011</SchoolYear>
+								<SessionName>2021-2022 Fall Semester</SessionName>
+								<SchoolYear>2021-2022</SchoolYear>
 								<SchoolReference>
 									<SchoolIdentity>
 										<SchoolId>255901001</SchoolId>
@@ -140,8 +140,8 @@
 						</SchoolReference>
 						<SessionReference>
 							<SessionIdentity>
-								<SessionName>2010-2011 Fall Semester</SessionName>
-								<SchoolYear>2010-2011</SchoolYear>
+								<SessionName>2021-2022 Fall Semester</SessionName>
+								<SchoolYear>2021-2022</SchoolYear>
 								<SchoolReference>
 									<SchoolIdentity>
 										<SchoolId>255901001</SchoolId>
@@ -171,8 +171,8 @@
 						</SchoolReference>
 						<SessionReference>
 							<SessionIdentity>
-								<SessionName>2010-2011 Fall Semester</SessionName>
-								<SchoolYear>2010-2011</SchoolYear>
+								<SessionName>2021-2022 Fall Semester</SessionName>
+								<SchoolYear>2021-2022</SchoolYear>
 								<SchoolReference>
 									<SchoolIdentity>
 										<SchoolId>255901001</SchoolId>
@@ -202,8 +202,8 @@
 						</SchoolReference>
 						<SessionReference>
 							<SessionIdentity>
-								<SessionName>2010-2011 Fall Semester</SessionName>
-								<SchoolYear>2010-2011</SchoolYear>
+								<SessionName>2021-2022 Fall Semester</SessionName>
+								<SchoolYear>2021-2022</SchoolYear>
 								<SchoolReference>
 									<SchoolIdentity>
 										<SchoolId>255901001</SchoolId>
@@ -233,8 +233,8 @@
 						</SchoolReference>
 						<SessionReference>
 							<SessionIdentity>
-								<SessionName>2010-2011 Fall Semester</SessionName>
-								<SchoolYear>2010-2011</SchoolYear>
+								<SessionName>2021-2022 Fall Semester</SessionName>
+								<SchoolYear>2021-2022</SchoolYear>
 								<SchoolReference>
 									<SchoolIdentity>
 										<SchoolId>255901001</SchoolId>
@@ -264,8 +264,8 @@
 						</SchoolReference>
 						<SessionReference>
 							<SessionIdentity>
-								<SessionName>2010-2011 Fall Semester</SessionName>
-								<SchoolYear>2010-2011</SchoolYear>
+								<SessionName>2021-2022 Fall Semester</SessionName>
+								<SchoolYear>2021-2022</SchoolYear>
 								<SchoolReference>
 									<SchoolIdentity>
 										<SchoolId>255901001</SchoolId>
@@ -295,8 +295,8 @@
 						</SchoolReference>
 						<SessionReference>
 							<SessionIdentity>
-								<SessionName>2010-2011 Fall Semester</SessionName>
-								<SchoolYear>2010-2011</SchoolYear>
+								<SessionName>2021-2022 Fall Semester</SessionName>
+								<SchoolYear>2021-2022</SchoolYear>
 								<SchoolReference>
 									<SchoolIdentity>
 										<SchoolId>255901001</SchoolId>
