@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <InterchangeDescriptors xmlns="http://ed-fi.org/3.3.0-a" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.3.0-a ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
 	<EducationOrganizationCategoryDescriptor>
-		<CodeValue>Education Preparation Provider</CodeValue>
-		<ShortDescription>Education Preparation Provider</ShortDescription>
-		<Description>Education Preparation Provider</Description>
+		<CodeValue>Educator Preparation Provider</CodeValue>
+		<ShortDescription>Educator Preparation Provider</ShortDescription>
+		<Description>Educator Preparation Provider</Description>
 		<Namespace>uri://tpdm.ed-fi.org/EducationOrganizationCategoryDescriptor</Namespace>
 	</EducationOrganizationCategoryDescriptor>
 	<EducationOrganizationCategoryDescriptor>

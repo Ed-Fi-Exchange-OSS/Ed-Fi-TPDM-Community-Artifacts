@@ -68,7 +68,7 @@
 	</School>
 	<School>
 		<NameOfInstitution>TU Collge of Education Graduate</NameOfInstitution>
-		<EducationOrganizationCategory>uri://tpdm.ed-fi.org/EducationOrganizationCategoryDescriptor#Education Preparation Provider</EducationOrganizationCategory>
+		<EducationOrganizationCategory>uri://tpdm.ed-fi.org/EducationOrganizationCategoryDescriptor#Educator Preparation Provider</EducationOrganizationCategory>
 		<Address>
 			<StreetNumberName>19463 West Way</StreetNumberName>
 			<City>Northridge</City>
@@ -88,7 +88,7 @@
 	</School>
 	<School>
 		<NameOfInstitution>TU Collge of Education Under Graduate</NameOfInstitution>
-		<EducationOrganizationCategory>uri://tpdm.ed-fi.org/EducationOrganizationCategoryDescriptor#Education Preparation Provider</EducationOrganizationCategory>
+		<EducationOrganizationCategory>uri://tpdm.ed-fi.org/EducationOrganizationCategoryDescriptor#Educator Preparation Provider</EducationOrganizationCategory>
 		<Address>
 			<StreetNumberName>19464 West Way</StreetNumberName>
 			<City>Northridge</City>
@@ -108,7 +108,7 @@
 	</School>
 	<School>
 		<NameOfInstitution>NMU College of Education</NameOfInstitution>
-		<EducationOrganizationCategory>uri://tpdm.ed-fi.org/EducationOrganizationCategoryDescriptor#Education Preparation Provider</EducationOrganizationCategory>
+		<EducationOrganizationCategory>uri://tpdm.ed-fi.org/EducationOrganizationCategoryDescriptor#Educator Preparation Provider</EducationOrganizationCategory>
 		<Address>
 			<StreetNumberName>789 Austin Trail</StreetNumberName>
 			<City>Santa Fe</City>
