@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <InterchangeEducationOrgCalendar xmlns:ann="http://ed-fi.org/annotation" xmlns="http://ed-fi.org/3.3.0-a" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Session>
-    <SessionName>2010-2011 Fall Semester</SessionName>
+    <SessionName>2021-2022 Fall Semester</SessionName>
     <SchoolYear>2010-2011</SchoolYear>
     <BeginDate>2010-08-22</BeginDate>
     <EndDate>2011-05-08</EndDate>
@@ -14,7 +14,7 @@
     </SchoolReference>
   </Session>
   <Session>
-    <SessionName>2010-2011 Spring Semester</SessionName>
+    <SessionName>2021-2022 Spring Semester</SessionName>
     <SchoolYear>2010-2011</SchoolYear>
     <BeginDate>2010-08-22</BeginDate>
     <EndDate>2011-05-08</EndDate>
@@ -27,7 +27,7 @@
     </SchoolReference>
   </Session>
   <Session>
-    <SessionName>2010-2011 Fall Semester</SessionName>
+    <SessionName>2021-2022 Fall Semester</SessionName>
     <SchoolYear>2010-2011</SchoolYear>
     <BeginDate>2010-08-22</BeginDate>
     <EndDate>2011-05-08</EndDate>
@@ -40,7 +40,7 @@
     </SchoolReference>
   </Session>
   <Session>
-    <SessionName>2010-2011 Spring Semester</SessionName>
+    <SessionName>2021-2022 Spring Semester</SessionName>
     <SchoolYear>2010-2011</SchoolYear>
     <BeginDate>2010-08-22</BeginDate>
     <EndDate>2011-05-08</EndDate>
@@ -53,7 +53,7 @@
     </SchoolReference>
   </Session>
   <Session>
-    <SessionName>2010-2011 Fall Semester</SessionName>
+    <SessionName>2021-2022 Fall Semester</SessionName>
     <SchoolYear>2010-2011</SchoolYear>
     <BeginDate>2010-08-22</BeginDate>
     <EndDate>2011-05-08</EndDate>
@@ -66,7 +66,7 @@
     </SchoolReference>
   </Session>
   <Session>
-    <SessionName>2010-2011 Spring Semester</SessionName>
+    <SessionName>2021-2022 Spring Semester</SessionName>
     <SchoolYear>2010-2011</SchoolYear>
     <BeginDate>2010-08-22</BeginDate>
     <EndDate>2011-05-08</EndDate>
