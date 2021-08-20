@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeCandidate xmlns:ann="http://ed-fi.org/annotation" xmlns="http://ed-fi.org/3.3.0-a">
+	<FinancialAid>
+		<StudentReference>
+			<StudentIdentity>
+				<StudentUniqueId>1000050</StudentUniqueId>
+			</StudentIdentity>
+		</StudentReference>
+		<BeginDate>2011-01-24</BeginDate>
+		<AidType>uri://tpdm.ed-fi.org/AidTypeDescriptor#Pell Grants</AidType>
+		<AidAmount>3675.21</AidAmount>
+		<PellGrantRecipient>true</PellGrantRecipient>
+	</FinancialAid>
+	<FinancialAid>
+		<StudentReference>
+			<StudentIdentity>
+				<StudentUniqueId>1000051</StudentUniqueId>
+			</StudentIdentity>
+		</StudentReference>
+		<BeginDate>2010-08-23</BeginDate>
+		<EndDate>2011-01-06</EndDate>
+		<AidType>uri://tpdm.ed-fi.org/AidTypeDescriptor#State and Local Scholarships</AidType>
+	</FinancialAid>
+	<FinancialAid>
+		<StudentReference>
+			<StudentIdentity>
+				<StudentUniqueId>1000052</StudentUniqueId>
+			</StudentIdentity>
+		</StudentReference>
+		<BeginDate>2011-05-20</BeginDate>
+		<AidType>uri://tpdm.ed-fi.org/AidTypeDescriptor#Teach Grants</AidType>
+		<AidAmount>4017.68</AidAmount>
+	</FinancialAid>
+	<FinancialAid>
+		<StudentReference>
+			<StudentIdentity>
+				<StudentUniqueId>1000053</StudentUniqueId>
+			</StudentIdentity>
+		</StudentReference>
+		<BeginDate>2010-10-08</BeginDate>
+		<AidConditionDescription>placement in a high need school</AidConditionDescription>
+		<AidType>uri://tpdm.ed-fi.org/AidTypeDescriptor#Pell Grants</AidType>
+		<AidAmount>1891.45</AidAmount>
+		<PellGrantRecipient>true</PellGrantRecipient>
+	</FinancialAid>
+	<FinancialAid>
+		<StudentReference>
+			<StudentIdentity>
+				<StudentUniqueId>1000054</StudentUniqueId>
+			</StudentIdentity>
+		</StudentReference>
+		<BeginDate>2010-11-29</BeginDate>
+		<AidType>uri://tpdm.ed-fi.org/AidTypeDescriptor#State and Local Scholarships</AidType>
+	</FinancialAid>
+	<FinancialAid>
+		<StudentReference>
+			<StudentIdentity>
+				<StudentUniqueId>1000055</StudentUniqueId>
+			</StudentIdentity>
+		</StudentReference>
+		<BeginDate>2011-05-08</BeginDate>
+		<AidType>uri://tpdm.ed-fi.org/AidTypeDescriptor#Private Loans</AidType>
+	</FinancialAid>
+	<FinancialAid>
+		<StudentReference>
+			<StudentIdentity>
+				<StudentUniqueId>1000056</StudentUniqueId>
+			</StudentIdentity>
+		</StudentReference>
+		<BeginDate>2011-02-19</BeginDate>
+		<AidType>uri://tpdm.ed-fi.org/AidTypeDescriptor#Pell Grants</AidType>
+		<AidAmount>4371.09</AidAmount>
+		<PellGrantRecipient>true</PellGrantRecipient>
+	</FinancialAid>
+	<FinancialAid>
+		<StudentReference>
+			<StudentIdentity>
+				<StudentUniqueId>1000057</StudentUniqueId>
+			</StudentIdentity>
+		</StudentReference>
+		<BeginDate>2011-02-19</BeginDate>
+		<EndDate>2012-06-01</EndDate>
+		<AidType>uri://tpdm.ed-fi.org/AidTypeDescriptor#Teach Grants</AidType>
+	</FinancialAid>
+	<FinancialAid>
+		<StudentReference>
+			<StudentIdentity>
+				<StudentUniqueId>1000058</StudentUniqueId>
+			</StudentIdentity>
+		</StudentReference>
+		<BeginDate>2011-05-14</BeginDate>
+		<AidConditionDescription>placement in a high need school</AidConditionDescription>
+		<AidType>uri://tpdm.ed-fi.org/AidTypeDescriptor#Pell Grants</AidType>
+		<AidAmount>5760.06</AidAmount>
+		<PellGrantRecipient>true</PellGrantRecipient>
+	</FinancialAid>
+	<FinancialAid>
+		<StudentReference>
+			<StudentIdentity>
+				<StudentUniqueId>1000059</StudentUniqueId>
+			</StudentIdentity>
+		</StudentReference>
+		<BeginDate>2010-08-23</BeginDate>
+		<AidType>uri://tpdm.ed-fi.org/AidTypeDescriptor#Teach Grants</AidType>
+	</FinancialAid>
+	<FinancialAid>
+		<StudentReference>
+			<StudentIdentity>
+				<StudentUniqueId>1000060</StudentUniqueId>
+			</StudentIdentity>
+		</StudentReference>
+		<BeginDate>2010-11-21</BeginDate>
+		<AidType>uri://tpdm.ed-fi.org/AidTypeDescriptor#Pell Grants</AidType>
+		<PellGrantRecipient>true</PellGrantRecipient>
+	</FinancialAid>
+</InterchangeCandidate>
