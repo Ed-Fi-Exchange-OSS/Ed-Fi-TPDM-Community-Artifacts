@@ -19,6 +19,12 @@
 		<Namespace>uri://tpdm.ed-fi.org/FieldworkTypeDescriptor</Namespace>
 	</FieldworkTypeDescriptor>
 	<FieldworkTypeDescriptor>
+		<CodeValue>Internship</CodeValue>
+		<ShortDescription>Internship</ShortDescription>
+		<Description>Internship</Description>
+		<Namespace>uri://tpdm.ed-fi.org/FieldworkTypeDescriptor</Namespace>
+	</FieldworkTypeDescriptor>
+	<FieldworkTypeDescriptor>
 		<CodeValue>Other</CodeValue>
 		<ShortDescription>Other</ShortDescription>
 		<Description>Other</Description>
