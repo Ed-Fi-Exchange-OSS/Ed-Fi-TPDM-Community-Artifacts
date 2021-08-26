@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.3.0-a" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.3.0-a ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<ProgramTypeDescriptor>
+		<CodeValue>Traditional</CodeValue>
+		<ShortDescription>Traditional</ShortDescription>
+		<Description>Traditional Certification Program</Description>
+		<Namespace>uri://tpdm.ed-fi.org/ProgramTypeDescriptor</Namespace>
+	</ProgramTypeDescriptor>
+	<ProgramTypeDescriptor>
+		<CodeValue>Post-Baccalaureate</CodeValue>
+		<ShortDescription>Post-Baccalaureate</ShortDescription>
+		<Description>Master's + Teaching certificate</Description>
+		<Namespace>uri://tpdm.ed-fi.org/ProgramTypeDescriptor</Namespace>
+	</ProgramTypeDescriptor>
+	<ProgramTypeDescriptor>
+		<CodeValue>Continuing Education Certificate</CodeValue>
+		<ShortDescription>Continuing Education Certificate</ShortDescription>
+		<Description>Certificates offered by education institution</Description>
+		<Namespace>uri://tpdm.ed-fi.org/ProgramTypeDescriptor</Namespace>
+	</ProgramTypeDescriptor>
+	<ProgramTypeDescriptor>
+		<CodeValue>Alternative</CodeValue>
+		<ShortDescription>Alternative</ShortDescription>
+		<Description>Training offered in ESC's, community colleges, private vendors, etc.</Description>
+		<Namespace>uri://tpdm.ed-fi.org/ProgramTypeDescriptor</Namespace>
+	</ProgramTypeDescriptor>
+</InterchangeDescriptors>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.3.0-a" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.3.0-a">
+	<ReasonExitedDescriptor>
+		<CodeValue>Completed</CodeValue>
+		<ShortDescription>Completed</ShortDescription>
+		<Description>Completed</Description>
+		<Namespace>uri://tpdm.ed-fi.org/ReasonExitedDescriptor</Namespace>
+	</ReasonExitedDescriptor>
+	<ReasonExitedDescriptor>
+		<CodeValue>Received Degree</CodeValue>
+		<ShortDescription>Received Degree</ShortDescription>
+		<Description>Received Degree</Description>
+		<Namespace>uri://tpdm.ed-fi.org/ReasonExitedDescriptor</Namespace>
+	</ReasonExitedDescriptor>
+</InterchangeDescriptors>
