@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/3.3.1-b" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.3.1-b ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<EvaluationRatingStatusDescriptor>
+		<CodeValue>Not Started</CodeValue>
+		<ShortDescription>Not Started</ShortDescription>
+		<Description>Not Started</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EvaluationRatingStatusDescriptor</Namespace>
+	</EvaluationRatingStatusDescriptor>
+	<EvaluationRatingStatusDescriptor>
+		<CodeValue>In Progress</CodeValue>
+		<ShortDescription>In Progress</ShortDescription>
+		<Description>In Progress</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EvaluationRatingStatusDescriptor</Namespace>
+	</EvaluationRatingStatusDescriptor>
+	<EvaluationRatingStatusDescriptor>
+		<CodeValue>Draft</CodeValue>
+		<ShortDescription>Draft</ShortDescription>
+		<Description>Draft</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EvaluationRatingStatusDescriptor</Namespace>
+	</EvaluationRatingStatusDescriptor>
+	<EvaluationRatingStatusDescriptor>
+		<CodeValue>Queued</CodeValue>
+		<ShortDescription>Queued</ShortDescription>
+		<Description>Queued</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EvaluationRatingStatusDescriptor</Namespace>
+	</EvaluationRatingStatusDescriptor>
+	<EvaluationRatingStatusDescriptor>
+		<CodeValue>Completed</CodeValue>
+		<ShortDescription>Completed</ShortDescription>
+		<Description>Completed</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EvaluationRatingStatusDescriptor</Namespace>
+	</EvaluationRatingStatusDescriptor>
+	<EvaluationRatingStatusDescriptor>
+		<CodeValue>Incomplete</CodeValue>
+		<ShortDescription>Incomplete</ShortDescription>
+		<Description>Incomplete</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EvaluationRatingStatusDescriptor</Namespace>
+	</EvaluationRatingStatusDescriptor>
+</InterchangeDescriptors>
