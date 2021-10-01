@@ -102,4 +102,16 @@
 		<Description>Educational Aide</Description>
 		<Namespace>uri://tpdm.ed-fi.org/EducatorRoleDescriptor</Namespace>
 	</EducatorRoleDescriptor>
+	<EducatorRoleDescriptor>
+		<CodeValue>Special Education</CodeValue>
+		<ShortDescription>Special Education</ShortDescription>
+		<Description>Special Education</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EducatorRoleDescriptor</Namespace>
+	</EducatorRoleDescriptor>
+	<EducatorRoleDescriptor>
+		<CodeValue>Generalist</CodeValue>
+		<ShortDescription>Generalist</ShortDescription>
+		<Description>Generalist</Description>
+		<Namespace>uri://tpdm.ed-fi.org/EducatorRoleDescriptor</Namespace>
+	</EducatorRoleDescriptor>
 </InterchangeDescriptors>
