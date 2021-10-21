@@ -6,7 +6,7 @@
   </xs:annotation>
   <xs:element name="InterchangePerformanceEvaluation">
     <xs:annotation>
-      <xs:documentation></xs:documentation>
+      <xs:documentation>This interchange defines performance evaluations and contains all their identifying information</xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:choice maxOccurs="unbounded">

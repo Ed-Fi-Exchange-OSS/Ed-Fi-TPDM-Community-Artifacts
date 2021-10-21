@@ -21,6 +21,7 @@
         <xs:element name="CertificationExamResult" type="EXTENSION-CertificationExamResult" />
         <xs:element name="CredentialEvent" type="EXTENSION-CredentialEvent" />
         <xs:element name="Person" type="Person" />
+        <xs:element name="FinancialAid" type="EXTENSION-FinancialAid" />
         <xs:element name="CandidateRelationshipToStaffAssociation" type="EXTENSION-CandidateRelationshipToStaffAssociation" />
         <xs:element name="CandidateEducatorPreparationProgramAssociation" type="EXTENSION-CandidateEducatorPreparationProgramAssociation" />
         <xs:element name="StudentSchoolAssociation" type="StudentSchoolAssociation" />

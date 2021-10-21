@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<InterchangeRecruitmentAndStaffing xmlns:ann="http://ed-fi.org/annotation" xsi:schemaLocation="http://ed-fi.org/3.3.1-b C:/GitHub/Ed-Fi-TPDM-Model/MetaEdOutput/TPDM/Interchange/EXTENSION-Interchange-RecruitmentAndStaffing-Extension.xsd" xmlns="http://ed-fi.org/3.3.1-b" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<InterchangeRecruitmentAndStaffing <InterchangeEdu1cationOrganization xmlns:ann="http://ed-fi.org/annotation" xmlns="http://ed-fi.org/3.3.1-b" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.3.1-b ../../Schemas/Bulk/EXTENSION-Interchange-RecruitmentAndStaffing-Extension.xsd">
 	<RecruitmentEventAttendance>
 		<RecruitmentEventAttendeeIdentifier>00433</RecruitmentEventAttendeeIdentifier>
 		<Applied>false</Applied>
