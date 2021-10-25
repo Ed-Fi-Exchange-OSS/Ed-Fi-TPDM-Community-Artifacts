@@ -387,7 +387,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-Candidate">
     <xs:annotation>
-      <xs:documentation>A candidate is a person is enrolled in a educator preparation program and is a candidate to become an educator.</xs:documentation>
+      <xs:documentation>A candidate is both a person enrolled in a educator preparation program and a candidate to become an educator.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Domain Entity</ann:TypeGroup>
       </xs:appinfo>
@@ -417,7 +417,7 @@
           </xs:element>
           <xs:element name="Sex" type="SexDescriptorReferenceType">
             <xs:annotation>
-              <xs:documentation>A person's gender.</xs:documentation>
+              <xs:documentation>The sex of the candidate.</xs:documentation>
               <xs:appinfo>
                 <ann:Descriptor>SexDescriptor</ann:Descriptor>
               </xs:appinfo>
@@ -529,13 +529,13 @@
           </xs:element>
           <xs:element name="Gender" type="EXTENSION-GenderDescriptorReferenceType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>The gender with which a person associates.</xs:documentation>
+              <xs:documentation>The gender of the candidate.</xs:documentation>
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-GenderDescriptor</ann:Descriptor>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
-          <xs:element name="TuitionCost" type="Currency" minOccurs="0">
+          <xs:element name="TuitionCost" type="EXTENSION-TuitionCost" minOccurs="0">
             <xs:annotation>
               <xs:documentation>The tuition for a person's participation in a program, service. or course.</xs:documentation>
             </xs:annotation>
@@ -581,7 +581,7 @@
               <xs:documentation>Indicator of whether individual is a first generation college student.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="EPPProgramDegree" type="EXTENSION-EPPProgramDegree" maxOccurs="unbounded">
+          <xs:element name="EPPProgramDegree" type="EXTENSION-EPPProgramDegree" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>Details of the degree.</xs:documentation>
             </xs:annotation>
@@ -872,12 +872,12 @@
     <xs:complexContent>
       <xs:extension base="Credential">
         <xs:sequence>
-          <xs:element name="PersonReference" type="PersonReferenceType">
+          <xs:element name="PersonReference" type="PersonReferenceType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>The person who obtained and is holding the credential.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="CertificationTitle" type="EXTENSION-CertificationTitle">
+          <xs:element name="CertificationTitle" type="EXTENSION-CertificationTitle" minOccurs="0">
             <xs:annotation>
               <xs:documentation>The title of the certification obtained by the educator.</xs:documentation>
             </xs:annotation>
@@ -902,7 +902,7 @@
           </xs:element>
           <xs:element name="CredentialStatus" type="EXTENSION-CredentialStatusDescriptorReferenceType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>The most recent status of the credential (e.g., active, suspended, etc.).</xs:documentation>
+              <xs:documentation>The current status of the credential (e.g., active, suspended, etc.).</xs:documentation>
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-CredentialStatusDescriptor</ann:Descriptor>
               </xs:appinfo>
@@ -916,6 +916,14 @@
           <xs:element name="StudentAcademicRecordReference" type="StudentAcademicRecordReferenceType" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>Reference to the person's Student Academic Records for the school(s) with which the Credential is associated.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EducatorRole" type="EXTENSION-EducatorRoleDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The specific roles or positions within an organization that the credential is intended to authorize (e.g., Principal, Reading Specialist), typically associated with service and administrative certifications.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-EducatorRoleDescriptor</ann:Descriptor>
+              </xs:appinfo>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -973,7 +981,7 @@
           </xs:element>
           <xs:element name="AccreditationStatus" type="EXTENSION-AccreditationStatusDescriptorReferenceType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>The current accreditation status of the Educator Preparation Program (e.g., active, pending, revoked,...).</xs:documentation>
+              <xs:documentation>The current accreditation status of the Educator Preparation Program.</xs:documentation>
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-AccreditationStatusDescriptor</ann:Descriptor>
               </xs:appinfo>
@@ -1003,6 +1011,11 @@
               <xs:documentation>The name or title of the evaluation.</xs:documentation>
             </xs:annotation>
           </xs:element>
+          <xs:element name="EvaluationDescription" type="EXTENSION-EvaluationDescription" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The long description of the Evaluation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element name="MinRating" type="EXTENSION-Rating" minOccurs="0">
             <xs:annotation>
               <xs:documentation>The minimum summary numerical rating or score for the evaluation. If omitted, assumed to be 0.0.</xs:documentation>
@@ -1028,7 +1041,7 @@
           </xs:element>
           <xs:element name="InterRaterReliabilityScore" type="xs:int" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>A score indicating how much homogeneity, or consensus, there is in the ratings given by judges.</xs:documentation>
+              <xs:documentation>A score indicating how much homogeneity, or consensus, there is in the ratings given by judges. Most commonly a percentage scale (1-100)</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1122,12 +1135,12 @@
           </xs:element>
           <xs:element name="AreaOfRefinement" type="EXTENSION-Comments" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>Area(s) identified for person to refine or improve as part of the evaluation.</xs:documentation>
+              <xs:documentation>Area identified for person to refine or improve as part of the evaluation.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="AreaOfReinforcement" type="EXTENSION-Comments" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>Area(s) identified for reinforcement or positive feedback as part of the evaluation.</xs:documentation>
+              <xs:documentation>Area identified for reinforcement or positive feedback as part of the evaluation.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="Comments" type="EXTENSION-Comments" minOccurs="0">
@@ -1135,7 +1148,7 @@
               <xs:documentation>Any comments about the performance evaluation to be captured.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="Feedback" type="EXTENSION-Comments" minOccurs="0">
+          <xs:element name="Feedback" type="EXTENSION-Feedback" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Feedback provided to the evaluated person.</xs:documentation>
             </xs:annotation>
@@ -1146,7 +1159,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-EvaluationObjective">
     <xs:annotation>
-      <xs:documentation>A subcomponent of an Evaluation, a specific educator Objective or domain of performance that is being evaluated.  </xs:documentation>
+      <xs:documentation>A subcomponent of an Evaluation, a specific educator Objective or domain of performance that is being evaluated.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Domain Entity</ann:TypeGroup>
       </xs:appinfo>
@@ -1162,6 +1175,11 @@
           <xs:element name="EvaluationObjectiveTitle" type="EXTENSION-EvaluationObjectiveTitle">
             <xs:annotation>
               <xs:documentation>The name or title of the evaluation Objective.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EvaluationObjectiveDescription" type="EXTENSION-EvaluationDescription" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The long description of the Evaluation Objective.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="SortOrder" type="xs:int" minOccurs="0">
@@ -1258,7 +1276,7 @@
               <xs:documentation>The Evaluation applied for the person.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="EvaluationDate" type="xs:date">
+          <xs:element name="EvaluationDate" type="xs:dateTime">
             <xs:annotation>
               <xs:documentation>The date for the person's evaluation.</xs:documentation>
             </xs:annotation>
@@ -1284,6 +1302,14 @@
           <xs:element name="SectionReference" type="SectionReferenceType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>The section associated with a classroom evaluation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EvaluationRatingStatus" type="EXTENSION-EvaluationRatingStatusDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The Status of the poerformance evaluation.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-EvaluationRatingStatusDescriptor</ann:Descriptor>
+              </xs:appinfo>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1360,6 +1386,58 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-FinancialAid">
+    <xs:annotation>
+      <xs:documentation>This entity represents the financial aid a person is awarded.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="StudentReference" type="StudentReferenceType">
+            <xs:annotation>
+              <xs:documentation>The student receiving aid.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="BeginDate" type="xs:date">
+            <xs:annotation>
+              <xs:documentation>The date the award was designated.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EndDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The date the award was removed.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="AidConditionDescription" type="Description" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The description of the condition (e.g., placement in a high need school) under which the aid was given.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="AidType" type="EXTENSION-AidTypeDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>The classification of financial aid awarded to a person for the academic term/year.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-AidTypeDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="AidAmount" type="EXTENSION-AidAmount" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The amount of financial aid awarded to a person for the term/year.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PellGrantRecipient" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicates a person who receives Pell Grant aid.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-Goal">
     <xs:annotation>
       <xs:documentation>Goal for performance improvement assigned to an educator associated with an Evaluation Element.</xs:documentation>
@@ -1388,6 +1466,11 @@
           <xs:element name="EvaluationElementReference" type="EXTENSION-EvaluationElementReferenceType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>The Evaluation Element associated with the goal.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EvaluationObjectiveReference" type="EXTENSION-EvaluationObjectiveReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The Evaluation Objective associated with the goal.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="GoalType" type="EXTENSION-GoalTypeDescriptorReferenceType" minOccurs="0">
@@ -1421,6 +1504,11 @@
           <xs:element name="Comments" type="EXTENSION-Comments" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Any comments about the goal or its completion to be captured.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ParentGoalReference" type="EXTENSION-GoalReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The parent goal with which this goal is associated (for hierarchical goals or action steps)</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1588,7 +1676,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-PerformanceEvaluation">
     <xs:annotation>
-      <xs:documentation>A performance evaluation of an educator, typically regularly scheduled and uniformly applied, comporsed of one or more Evaluations.</xs:documentation>
+      <xs:documentation>A performance evaluation of an educator, typically regularly scheduled and uniformly applied, composed of one or more Evaluations.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Domain Entity</ann:TypeGroup>
       </xs:appinfo>
@@ -1601,6 +1689,11 @@
               <xs:documentation>An assigned unique identifier for the performance evaluation.</xs:documentation>
             </xs:annotation>
           </xs:element>
+          <xs:element name="PerformanceEvaluationDescription" type="EXTENSION-EvaluationDescription" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The long description of the Performance Evaluation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element name="Term" type="TermDescriptorReferenceType">
             <xs:annotation>
               <xs:documentation>The term for the session during the school year.</xs:documentation>
@@ -1611,7 +1704,7 @@
           </xs:element>
           <xs:element name="PerformanceEvaluationType" type="EXTENSION-PerformanceEvaluationTypeDescriptorReferenceType">
             <xs:annotation>
-              <xs:documentation>The type (e.g., walkthrough, summative) of performance evaluation conducted.</xs:documentation>
+              <xs:documentation>The type of performance evaluation conducted.</xs:documentation>
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-PerformanceEvaluationTypeDescriptor</ann:Descriptor>
               </xs:appinfo>
@@ -1629,7 +1722,7 @@
           </xs:element>
           <xs:element name="EvaluationPeriod" type="EXTENSION-EvaluationPeriodDescriptorReferenceType">
             <xs:annotation>
-              <xs:documentation>The period for the evaluation (e.g., BOY, MOY, EOY, Summer).</xs:documentation>
+              <xs:documentation>The period for the evaluation.</xs:documentation>
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-EvaluationPeriodDescriptor</ann:Descriptor>
               </xs:appinfo>
@@ -1637,12 +1730,12 @@
           </xs:element>
           <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
             <xs:annotation>
-              <xs:documentation>Provides user information to lookup and link to an existing educational organization record.</xs:documentation>
+              <xs:documentation>The EducationOrganization for which the evaluation was developed and in which it was employed.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="AcademicSubject" type="AcademicSubjectDescriptorReferenceType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>The description of the content or subject area (e.g., arts, mathematics, reading, stenography, or a foreign language) of a performance evaluation.</xs:documentation>
+              <xs:documentation>The description of the content or subject area of a performance evaluation.</xs:documentation>
               <xs:appinfo>
                 <ann:Descriptor>AcademicSubjectDescriptor</ann:Descriptor>
               </xs:appinfo>
@@ -1736,7 +1829,7 @@
           </xs:element>
           <xs:element name="ScheduleDate" type="xs:date" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>The month, day, and year on which the performance evaluation was to be conducted.</xs:documentation>
+              <xs:documentation>The month, day, and year on which the performance evaluation was scheduled.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="ActualTime" type="xs:time" minOccurs="0">
@@ -2513,7 +2606,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-CertificationRouteDescriptor">
     <xs:annotation>
-      <xs:documentation>The process, program ,or pathway used to obtain a certification.</xs:documentation>
+      <xs:documentation>The process, program, or pathway used to obtain a certification.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2557,7 +2650,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-CredentialStatusDescriptor">
     <xs:annotation>
-      <xs:documentation>The most recent status of the credential (e.g., active, suspended, etc.).</xs:documentation>
+      <xs:documentation>The current status of the credential.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2590,7 +2683,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-EducatorRoleDescriptor">
     <xs:annotation>
-      <xs:documentation>The role authorized by the Certification (e.g., Principal, Reading Specialist), typically associated with service and administrative certifications.</xs:documentation>
+      <xs:documentation>The role authorized by the Credential or Certification (e.g., Principal, Reading Specialist), typically associated with service and administrative certifications.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2601,7 +2694,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-EnglishLanguageExamDescriptor">
     <xs:annotation>
-      <xs:documentation>Indicates that a person passed, failed, or did not take an English Language assessment (e.g., TOEFFL).</xs:documentation>
+      <xs:documentation>Indicates that a person passed, failed, or did not take an English Language assessment.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2623,7 +2716,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-EPPProgramPathwayDescriptor">
     <xs:annotation>
-      <xs:documentation>A code for describing the program pathway, for example: Residency, Internship, Traditional</xs:documentation>
+      <xs:documentation>The description of the program pathway, for example: Residency, Internship, Traditional</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2634,7 +2727,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-EvaluationElementRatingLevelDescriptor">
     <xs:annotation>
-      <xs:documentation>The rating level achieved based upon the rating or score.</xs:documentation>
+      <xs:documentation>Rating levels for Evaluation Elements.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2645,7 +2738,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-EvaluationPeriodDescriptor">
     <xs:annotation>
-      <xs:documentation>The period for the evaluation (e.g., BOY, MOY, EOY, Summer).</xs:documentation>
+      <xs:documentation>The period for the evaluation.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2656,7 +2749,18 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-EvaluationRatingLevelDescriptor">
     <xs:annotation>
-      <xs:documentation>The rating level achieved based upon the rating or score.</xs:documentation>
+      <xs:documentation>Rating levels for Evaluations.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-EvaluationRatingStatusDescriptor">
+    <xs:annotation>
+      <xs:documentation>Represents the status of a Evaluation Rating.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2711,7 +2815,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-GenderDescriptor">
     <xs:annotation>
-      <xs:documentation>The gender with with a person associates.</xs:documentation>
+      <xs:documentation>A person's gender.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2777,7 +2881,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-ObjectiveRatingLevelDescriptor">
     <xs:annotation>
-      <xs:documentation>The rating level achieved based upon the rating or score.</xs:documentation>
+      <xs:documentation>Rating levels for Evaluation Objectives.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2821,7 +2925,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-PerformanceEvaluationRatingLevelDescriptor">
     <xs:annotation>
-      <xs:documentation>The rating level achieved based upon the rating or score.</xs:documentation>
+      <xs:documentation>Rating levels for Performance Evaluations.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2832,7 +2936,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-PerformanceEvaluationTypeDescriptor">
     <xs:annotation>
-      <xs:documentation>The type (e.g., walkthrough, summative) of performance evaluation conducted.</xs:documentation>
+      <xs:documentation>The type of performance evaluation conducted (e.g., walkthrough, summative).</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2920,7 +3024,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-RubricRatingLevelDescriptor">
     <xs:annotation>
-      <xs:documentation>The rating level achieved for the rubric dimension.</xs:documentation>
+      <xs:documentation>Rating levels for Rubric Dimensions.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -3003,14 +3107,14 @@
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
-          <xs:element name="CandidateIndicator" type="EXTENSION-CandidateIndicator" minOccurs="0">
+          <xs:element name="CandidateIndicator" type="EXTENSION-CandidateIndicator" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>Indicator(s) or metric(s) computed for the candidate in the EPP.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="EPPProgramPathway" type="EXTENSION-EPPProgramPathwayDescriptorReferenceType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>A code for describing the program pathway, for example: Residency, Internship, Traditional</xs:documentation>
+              <xs:documentation>The program pathway the candidate is following; for example: Residency, Internship, Traditional</xs:documentation>
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-EPPProgramPathwayDescriptor</ann:Descriptor>
               </xs:appinfo>
@@ -3024,6 +3128,21 @@
           <xs:element name="MinorSpecialization" type="EXTENSION-Specialization" minOccurs="0">
             <xs:annotation>
               <xs:documentation>The major area for a degree or area of specialization for a certificate.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="DegreeSpecialization" type="EXTENSION-DegreeSpecialization" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>Information around the area(s) of specialization for an individual.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CohortYear" type="CohortYear" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The type and year of a cohort the student belongs to as determined by the year that student entered a specific grade.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ApplicationReference" type="EXTENSION-ApplicationReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The EPP application submitted by the accepted Candidate.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -3259,7 +3378,7 @@
   </xs:annotation>
   <xs:complexType name="EXTENSION-ApplicantProfileIdentityType">
     <xs:annotation>
-      <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of an ApplicantProfile.</xs:documentation>
+      <xs:documentation>Identity of an ApplicantProfile.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Identity</ann:TypeGroup>
       </xs:appinfo>
@@ -3284,7 +3403,7 @@
         <xs:sequence>
           <xs:element name="ApplicantProfileIdentity" type="EXTENSION-ApplicantProfileIdentityType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of an ApplicantProfile.</xs:documentation>
+              <xs:documentation>Identity of an ApplicantProfile.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -3345,7 +3464,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-ApplicationIdentityType">
     <xs:annotation>
-      <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of an Application.</xs:documentation>
+      <xs:documentation>Identity of an Application.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Identity</ann:TypeGroup>
       </xs:appinfo>
@@ -3380,7 +3499,7 @@
         <xs:sequence>
           <xs:element name="ApplicationIdentity" type="EXTENSION-ApplicationIdentityType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of an Application.</xs:documentation>
+              <xs:documentation>Identity of an Application.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -3433,7 +3552,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-CandidateIdentityType">
     <xs:annotation>
-      <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of a Candidate.</xs:documentation>
+      <xs:documentation>Identity of a Candidate.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Identity</ann:TypeGroup>
       </xs:appinfo>
@@ -3458,7 +3577,7 @@
         <xs:sequence>
           <xs:element name="CandidateIdentity" type="EXTENSION-CandidateIdentityType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of a Candidate.</xs:documentation>
+              <xs:documentation>Identity of a Candidate.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -3675,7 +3794,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-EducatorPreparationProgramIdentityType">
     <xs:annotation>
-      <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of an EducatorPreparationProgram.</xs:documentation>
+      <xs:documentation>Identity of an EducatorPreparationProgram.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Identity</ann:TypeGroup>
       </xs:appinfo>
@@ -3713,7 +3832,7 @@
         <xs:sequence>
           <xs:element name="EducatorPreparationProgramIdentity" type="EXTENSION-EducatorPreparationProgramIdentityType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of an EducatorPreparationProgram.</xs:documentation>
+              <xs:documentation>Identity of an EducatorPreparationProgram.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -3914,7 +4033,7 @@
           <xs:documentation>The Evaluation applied for the person.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="EvaluationDate" type="xs:date">
+      <xs:element name="EvaluationDate" type="xs:dateTime">
         <xs:annotation>
           <xs:documentation>The date for the person's evaluation.</xs:documentation>
         </xs:annotation>
@@ -3961,7 +4080,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-FieldworkExperienceIdentityType">
     <xs:annotation>
-      <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of a FieldworkExperience.</xs:documentation>
+      <xs:documentation>Identity of a FieldworkExperience.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Identity</ann:TypeGroup>
       </xs:appinfo>
@@ -3996,7 +4115,7 @@
         <xs:sequence>
           <xs:element name="FieldworkExperienceIdentity" type="EXTENSION-FieldworkExperienceIdentityType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of a FieldworkExperience.</xs:documentation>
+              <xs:documentation>Identity of a FieldworkExperience.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -4036,6 +4155,53 @@
           <xs:element name="FieldworkExperienceSectionAssociationIdentity" type="EXTENSION-FieldworkExperienceSectionAssociationIdentityType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Identity of a FieldworkExperienceSectionAssociation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-FinancialAidIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a FinancialAid.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StudentReference" type="StudentReferenceType">
+        <xs:annotation>
+          <xs:documentation>The student receiving aid.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BeginDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The date the award was designated.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AidType" type="EXTENSION-AidTypeDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>The classification of financial aid awarded to a person for the academic term/year.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-AidTypeDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-FinancialAidReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a FinancialAid. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="FinancialAidIdentity" type="EXTENSION-FinancialAidIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a FinancialAid.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -4156,7 +4322,7 @@
       </xs:element>
       <xs:element name="PerformanceEvaluationType" type="EXTENSION-PerformanceEvaluationTypeDescriptorReferenceType">
         <xs:annotation>
-          <xs:documentation>The type (e.g., walkthrough, summative) of performance evaluation conducted.</xs:documentation>
+          <xs:documentation>The type of performance evaluation conducted.</xs:documentation>
           <xs:appinfo>
             <ann:Descriptor>EXTENSION-PerformanceEvaluationTypeDescriptor</ann:Descriptor>
           </xs:appinfo>
@@ -4169,7 +4335,7 @@
       </xs:element>
       <xs:element name="EvaluationPeriod" type="EXTENSION-EvaluationPeriodDescriptorReferenceType">
         <xs:annotation>
-          <xs:documentation>The period for the evaluation (e.g., BOY, MOY, EOY, Summer).</xs:documentation>
+          <xs:documentation>The period for the evaluation.</xs:documentation>
           <xs:appinfo>
             <ann:Descriptor>EXTENSION-EvaluationPeriodDescriptor</ann:Descriptor>
           </xs:appinfo>
@@ -4177,7 +4343,7 @@
       </xs:element>
       <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
         <xs:annotation>
-          <xs:documentation>Provides user information to lookup and link to an existing educational organization record.</xs:documentation>
+          <xs:documentation>The EducationOrganization for which the evaluation was developed and in which it was employed.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -4403,7 +4569,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-RecruitmentEventAttendanceIdentityType">
     <xs:annotation>
-      <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of a RecruitmentEventAttendance.</xs:documentation>
+      <xs:documentation>Identity of a RecruitmentEventAttendance.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Identity</ann:TypeGroup>
       </xs:appinfo>
@@ -4433,7 +4599,7 @@
         <xs:sequence>
           <xs:element name="RecruitmentEventAttendanceIdentity" type="EXTENSION-RecruitmentEventAttendanceIdentityType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of a RecruitmentEventAttendance.</xs:documentation>
+              <xs:documentation>Identity of a RecruitmentEventAttendance.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -4801,7 +4967,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-CertificationRouteDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>The process, program ,or pathway used to obtain a certification.</xs:documentation>
+      <xs:documentation>The process, program, or pathway used to obtain a certification.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -4837,7 +5003,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-CredentialStatusDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>The most recent status of the credential (e.g., active, suspended, etc.).</xs:documentation>
+      <xs:documentation>The current status of the credential.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -4864,7 +5030,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-EducatorRoleDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>The role authorized by the Certification (e.g., Principal, Reading Specialist), typically associated with service and administrative certifications.</xs:documentation>
+      <xs:documentation>The role authorized by the Credential or Certification (e.g., Principal, Reading Specialist), typically associated with service and administrative certifications.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -4873,7 +5039,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-EnglishLanguageExamDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>Indicates that a person passed, failed, or did not take an English Language assessment (e.g., TOEFFL).</xs:documentation>
+      <xs:documentation>Indicates that a person passed, failed, or did not take an English Language assessment.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -4891,7 +5057,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-EPPProgramPathwayDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>A code for describing the program pathway, for example: Residency, Internship, Traditional</xs:documentation>
+      <xs:documentation>The description of the program pathway, for example: Residency, Internship, Traditional</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -4900,7 +5066,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-EvaluationElementRatingLevelDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>The rating level achieved based upon the rating or score.</xs:documentation>
+      <xs:documentation>Rating levels for Evaluation Elements.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -4909,7 +5075,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-EvaluationPeriodDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>The period for the evaluation (e.g., BOY, MOY, EOY, Summer).</xs:documentation>
+      <xs:documentation>The period for the evaluation.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -4918,7 +5084,16 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-EvaluationRatingLevelDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>The rating level achieved based upon the rating or score.</xs:documentation>
+      <xs:documentation>Rating levels for Evaluations.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-EvaluationRatingStatusDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>Represents the status of a Evaluation Rating.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -4963,7 +5138,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-GenderDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>The gender with with a person associates.</xs:documentation>
+      <xs:documentation>A person's gender.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -5017,7 +5192,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-ObjectiveRatingLevelDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>The rating level achieved based upon the rating or score.</xs:documentation>
+      <xs:documentation>Rating levels for Evaluation Objectives.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -5053,7 +5228,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-PerformanceEvaluationRatingLevelDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>The rating level achieved based upon the rating or score.</xs:documentation>
+      <xs:documentation>Rating levels for Performance Evaluations.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -5062,7 +5237,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-PerformanceEvaluationTypeDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>The type (e.g., walkthrough, summative) of performance evaluation conducted.</xs:documentation>
+      <xs:documentation>The type of performance evaluation conducted (e.g., walkthrough, summative).</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -5134,7 +5309,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-RubricRatingLevelDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>The rating level achieved for the rubric dimension.</xs:documentation>
+      <xs:documentation>Rating levels for Rubric Dimensions.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -5397,6 +5572,16 @@
           <xs:documentation>The name of the indicator or metric.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="BeginDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The month, day, and year when the indicator value is valid</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EndDate" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The month, day, and year when the indicator value is no longer valid</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="Indicator" type="Indicator">
         <xs:annotation>
           <xs:documentation>The value of the indicator or metric.</xs:documentation>
@@ -5490,7 +5675,7 @@
       </xs:element>
       <xs:element name="MinorSpecialization" type="EXTENSION-Specialization" minOccurs="0">
         <xs:annotation>
-          <xs:documentation>The major area for a degree or area of specialization for a certificate.</xs:documentation>
+          <xs:documentation>The minor area for a degree or area of specialization for a certificate.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="BeginDate" type="xs:date">
@@ -5594,7 +5779,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-RatingResult">
     <xs:annotation>
-      <xs:documentation>One or more ratings or score for a level or topic of the evaluation.</xs:documentation>
+      <xs:documentation>A rating or score for a level or topic of an evaluation.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Common</ann:TypeGroup>
       </xs:appinfo>
@@ -5612,7 +5797,7 @@
       </xs:element>
       <xs:element name="ResultDatatypeType" type="ResultDatatypeTypeDescriptorReferenceType">
         <xs:annotation>
-          <xs:documentation>The datatype of the result. The results can be expressed as a number, percentile, range, level, etc.</xs:documentation>
+          <xs:documentation>The datatype of the result.</xs:documentation>
           <xs:appinfo>
             <ann:Descriptor>ResultDatatypeTypeDescriptor</ann:Descriptor>
           </xs:appinfo>
@@ -5635,7 +5820,7 @@
       </xs:element>
       <xs:element name="InterRaterReliabilityScore" type="xs:int" minOccurs="0">
         <xs:annotation>
-          <xs:documentation>A score indicating how much homogeneity, or consensus, there is in the ratings given by judges.</xs:documentation>
+          <xs:documentation>A score indicating how much homogeneity, or consensus, there is in the ratings given by judges. Most commonly a percentage scale (1-100)</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -5754,7 +5939,7 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <xs:element name="SalaryAmount" type="Currency" minOccurs="0">
+      <xs:element name="SalaryAmount" type="EXTENSION-SalaryAmount" minOccurs="0">
         <xs:annotation>
           <xs:documentation>The salary of a staff member.</xs:documentation>
         </xs:annotation>
@@ -5960,6 +6145,17 @@
       <xs:maxLength value="255" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-EvaluationDescription">
+    <xs:annotation>
+      <xs:documentation>The long description of the Evaluation.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="255" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-EvaluationElementTitle">
     <xs:annotation>
       <xs:documentation>The name or title of the evaluation element.</xs:documentation>
@@ -6027,6 +6223,18 @@
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-Feedback">
+    <xs:annotation>
+      <xs:documentation>Any feedback to be captured.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="2048" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-FieldworkIdentifier">
@@ -6194,7 +6402,7 @@
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:minLength value="1" />
-      <xs:maxLength value="75" />
+      <xs:maxLength value="255" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-TouchpointContent">
@@ -6212,6 +6420,18 @@
   <xs:annotation>
     <xs:documentation>===== Numeric Simple Types =====</xs:documentation>
   </xs:annotation>
+  <xs:simpleType name="EXTENSION-AidAmount">
+    <xs:annotation>
+      <xs:documentation>The amount of financial aid awarded to a person for the term/year.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="19" />
+      <xs:fractionDigits value="4" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-ApplicationEvaluationScore">
     <xs:annotation>
       <xs:documentation>Application evaluation score, if applicable.</xs:documentation>
@@ -6286,6 +6506,18 @@
       <xs:fractionDigits value="3" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-SalaryAmount">
+    <xs:annotation>
+      <xs:documentation>The salary of a staff member.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="19" />
+      <xs:fractionDigits value="4" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-ScoreResultAverage">
     <xs:annotation>
       <xs:documentation>A meaningful average score or statistical expression of the performance of an group. The results can be expressed as a number, percentile, range, level, etc.</xs:documentation>
@@ -6331,6 +6563,18 @@
     <xs:restriction base="xs:decimal">
       <xs:totalDigits value="6" />
       <xs:fractionDigits value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-TuitionCost">
+    <xs:annotation>
+      <xs:documentation>The tuition for a person's participation in a program, service. or course.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="19" />
+      <xs:fractionDigits value="4" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-YearsOfService">
