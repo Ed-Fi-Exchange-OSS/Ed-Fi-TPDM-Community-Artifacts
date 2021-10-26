@@ -25,6 +25,7 @@
         <xs:element name="CandidateRelationshipToStaffAssociation" type="EXTENSION-CandidateRelationshipToStaffAssociation" />
         <xs:element name="CandidateEducatorPreparationProgramAssociation" type="EXTENSION-CandidateEducatorPreparationProgramAssociation" />
         <xs:element name="StudentSchoolAssociation" type="StudentSchoolAssociation" />
+        <xs:element name="StudentSectionAssociation" type="StudentSectionAssociation" />
         <xs:element name="StudentEducationOrganizationAssociation" type="StudentEducationOrganizationAssociation" />
         <xs:element name="StudentEducationOrganizationResponsibilityAssociation" type="StudentEducationOrganizationResponsibilityAssociation" />
         <xs:element name="FieldworkExperienceSectionAssociation" type="EXTENSION-FieldworkExperienceSectionAssociation" />
