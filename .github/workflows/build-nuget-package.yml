@@ -11,9 +11,10 @@ env:
   version_patch: ${{ format('{0}{1}', github.run_number , github.run_attempt) }}
   tpdm_version: 1.1.0
   standard_version: v3.3.1-b
+
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     services:
       sql.data:
         image: mcr.microsoft.com/mssql/server:2019-latest
@@ -22,8 +23,10 @@ jobs:
           ACCEPT_EULA: Y
         ports:
           - "1433:1433"
+          
     steps:
-      - name: Set env variables 
+      - name: Set env variables
+        shell: pwsh
         run: |
           echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
           echo "version_core=${{ format('{0}.{1}.{2}', env.version_major, env.version_minor , env.version_patch) }}" >> $env:GITHUB_ENV
@@ -54,6 +57,7 @@ jobs:
           path: Ed-Fi-TPDM-Extension
      
       - name: Replace package name in packages config
+        shell: pwsh
         run: |
           (Get-Content configuration.packages.json) `
           -replace 'EdFi.Suite3.Ods.Extensions.TPDM.Core.${{ env.tpdm_version }}', 'EdFi.Suite3.Ods.Extensions.TPDM.Community.${{ env.tpdm_version }}' `
@@ -63,6 +67,7 @@ jobs:
         working-directory: Ed-Fi-ODS-Implementation
       
       - name: Replace package name in create script
+        shell: pwsh
         run: |
           (Get-Content DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
           -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Minimal.Template.TPDM.Community' ` |
@@ -72,12 +77,14 @@ jobs:
         
       
       - name: Remove Ed-Fi Databases
+        shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
           Import-Module Ed-Fi-ODS-Implementation\logistics\scripts\modules\build-management.psm1
           Remove-EdFiDatabases -Force
       
       - name: Restore NuGet packages
+        shell: pwsh
         run: |
           dotnet restore Ed-Fi-ODS/Application/EdFi.Ods.Common/EdFi.Ods.Common.csproj
           dotnet restore Ed-Fi-ODS/Application/EdFi.Ods.Api/EdFi.Ods.Api.csproj
