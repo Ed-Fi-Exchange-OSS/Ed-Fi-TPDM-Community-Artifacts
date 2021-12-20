@@ -14,6 +14,14 @@ env:
 jobs:
   build:
     runs-on: windows-latest
+    services:
+      sql.data:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        env:
+          SA_PASSWORD: EdFiSqlServer
+          ACCEPT_EULA: Y
+        ports:
+          - "1433:1433"
     steps:
       - name: Set env variables 
         run: |
@@ -62,12 +70,7 @@ jobs:
           get-content DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
         working-directory: Ed-Fi-Ods-Implementation
         
-      - name: Start SqlServer
-        uses: 280780363/sqlserver-action@v1.0
-        with:
-          accept eula: Y
-          sa password: SqlServer
-        
+      
       - name: Remove Ed-Fi Databases
         run: |
           $ErrorActionPreference = 'Stop'
