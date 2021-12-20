@@ -1,0 +1,115 @@
+name: build Nuget package
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  version_suite: 3
+  version_major: 5
+  version_minor: 3
+  version_patch: ${{ format('{0}{1}', github.run_number , github.run_attempt) }}
+  tpdm_version: 1.1.0
+  standard_version: v3.3.1-b
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Set env variables 
+        run: |
+          echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
+          echo "version_core=${{ format('{0}.{1}.{2}', env.version_major, env.version_minor , env.version_patch) }}" >> $env:GITHUB_ENV
+          
+      - name: Git long filename support
+        run: git config --system core.longpaths true
+        
+      - uses: actions/checkout@v2
+        with:
+          repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS
+          ref: ${{ env.version_informational }}
+          path: Ed-Fi-ODS
+
+      - uses: actions/checkout@v2
+        with:
+          repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation
+          ref: ${{ env.version_informational }}
+          path: Ed-Fi-ODS-Implementation
+
+      - uses: actions/checkout@v2
+        with:
+          repository: Ed-Fi-Alliance-OSS/Ed-Fi-Standard
+          ref: ${{ env.standard_version }}
+          path: Ed-Fi-ODS-Standard
+
+      - uses: actions/checkout@v2
+        with:
+          path: Ed-Fi-TPDM-Extension
+     
+      - name: Replace package name in packages config
+        run: |
+          (Get-Content configuration.packages.json) `
+          -replace 'EdFi.Suite3.Ods.Extensions.TPDM.Core.${{ env.tpdm_version }}', 'EdFi.Suite3.Ods.Extensions.TPDM.Community.${{ env.tpdm_version }}' `
+          -replace '"PackageVersion": "5.3.38",','"PackageVersion": "5.3.67",' |
+          Out-File configuration.packages.json
+          get-content configuration.packages.json
+        working-directory: Ed-Fi-ODS-Implementation
+      
+      - name: Replace package name in create script
+        run: |
+          (Get-Content DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
+          -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Minimal.Template.TPDM.Community' `
+          Out-File DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
+          get-content DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
+        working-directory: Ed-Fi-Ods-Implementation
+        
+      - name: Start SqlServer
+        uses: 280780363/sqlserver-action@v1.0
+        with:
+          accept eula: Y
+          sa password: SqlServer
+        
+      - name: Remove Ed-Fi Databases
+        run: |
+          $ErrorActionPreference = 'Stop'
+          Import-Module Ed-Fi-ODS-Implementation\logistics\scripts\modules\build-management.psm1
+          Remove-EdFiDatabases -Force
+      
+      - name: Restore NuGet packages
+        run: |
+          dotnet restore Ed-Fi-ODS/Application/EdFi.Ods.Common/EdFi.Ods.Common.csproj
+          dotnet restore Ed-Fi-ODS/Application/EdFi.Ods.Api/EdFi.Ods.Api.csproj
+          dotnet restore Ed-Fi-ODS/Application/EdFi.Ods.Standard/EdFi.Ods.Standard.csproj
+          dotnet restore Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.TPDM/EdFi.Ods.Extensions.TPDM.csproj
+          
+      - name: Run CodeGen
+        run: |
+          (Get-ChildItem -File .).FullName
+          $ErrorActionPreference = 'Stop'
+          ./Initialize-PowershellForDevelopment.ps1
+          Invoke-CodeGen -Engine SQLServer  -ExtensionPaths  ${{ github.workspace }}/Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.TPDM
+        working-directory: Ed-Fi-ODS-Implementation
+        
+      - name: Build
+        run: dotnet build --configuration release --version-suffix ${{ env.version_core }} --no-restore
+        working-directory: ${{ github.workspace }}/Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.TPDM
+
+      - name: Pack
+        run: | 
+          nuget pack EdFi.Ods.Extensions.TPDM.nuspec `
+          -OutputDirectory ${{ github.workspace }}\NugetPackages `
+          -Version ${{ env.version_core }} `
+          -Properties configuration=release `
+          -Properties "authors=Ed-Fi Alliance" `
+          -Properties "owners=Ed-Fi Alliance" `
+          -Properties "copyright=Copyright ©Ed-Fi Alliance, LLC. 2020" `
+          -Properties id=EdFi.Suite${{ env.version_suite }}.Ods.Extensions.TPDM.Community.${{ env.tpdm_version }} `
+          -Properties title=EdFi.Suite${{ env.version_suite }}.Ods.Extensions.TPDM.Community.${{ env.tpdm_version }} `
+          -Properties "description=EdFi.Ods.Extensions.TPDM.Community testing" `
+          -NoPackageAnalysis -NoDefaultExcludes
+        working-directory: ${{ github.workspace }}/Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.TPDM
+        
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2.3.0
+        with:
+          name: EdFi.Suite3.Ods.Extensions.TPDM.Community.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
+          path: NugetPackages\EdFi.Suite${{ env.version_suite }}.Ods.Extensions.TPDM.Community.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
