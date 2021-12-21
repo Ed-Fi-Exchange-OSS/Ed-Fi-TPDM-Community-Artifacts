@@ -74,10 +74,32 @@ jobs:
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
           get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
      
+      - name: Add function
+        shell: pwsh
+        run: |
+          Function Get-CanonicalPath
+          {
+              param($currentPath)
+              $pathInfo = [System.IO.DirectoryInfo]$currentPath
+              $parent = $pathInfo.Parent
+              if($null -eq $parent){
+                  return $pathInfo.Name
+              }
+              $ParentCanonicalPath = Get-CanonicalPath $parent
+              $LeafCanonicalPath = if($currentPath -is [System.IO.DirectoryInfo]) {
+                                          $parent.GetDirectories($pathInfo.Name).Name
+                                      } else {
+                                          $parent.GetFiles($pathInfo.Name).Name
+                                      }
+              return Join-Path $ParentCanonicalPath $LeafCanonicalPath
+          }
+        
       - name: Remove Ed-Fi Databases
         shell: pwsh
         run: |
-          ls -laR ./Ed-Fi-ODS-Implementation/logistics/scripts/modules
+          (Get-Content ./Ed-Fi-ODS-Implementation/logistics/scripts/modules/load-path-resolver.ps1) `
+          -replace '$PSScriptRoot', 'Get-CanonicalPath($PSScriptRoot)' ` |
+          Out-File ./Ed-Fi-ODS-Implementation/logistics/scripts/modules/load-path-resolver.ps1
           $ErrorActionPreference = 'Stop'
           Import-Module ./Ed-Fi-ODS-Implementation/logistics/scripts/modules/build-management.psm1
           Remove-EdFiDatabases -Force
