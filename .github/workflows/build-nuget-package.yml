@@ -57,8 +57,7 @@ jobs:
           path: Ed-Fi-TPDM-Extension
           
       - name: list files
-        shell: pwsh
-        run: dir .
+        run: ls -la
         working-directory: Ed-Fi-Ods-Implementation     
         
       - name: Replace package name in packages config
