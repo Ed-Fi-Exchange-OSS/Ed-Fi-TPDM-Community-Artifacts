@@ -58,6 +58,7 @@ jobs:
           
       - name: list files
         run: ls -laR
+        working-directory: ./Ed-Fi-ODS-Implementation
         
       - name: Replace package name in packages config
         shell: pwsh
