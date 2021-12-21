@@ -69,7 +69,6 @@ jobs:
       - name: Replace package name in create script
         shell: pwsh
         run: |
-          ls -laR ./Ed-Fi-ODS-Implementation
           (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
           -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Minimal.Template.TPDM.Community' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
@@ -78,8 +77,9 @@ jobs:
       - name: Remove Ed-Fi Databases
         shell: pwsh
         run: |
+          ls -laR ./ed-fi-ods-implementation/logistics/scripts/modules
           $ErrorActionPreference = 'Stop'
-          Import-Module .\Ed-Fi-ODS-Implementation\logistics\scripts\modules\build-management.psm1
+          Import-Module ./Ed-Fi-ODS-Implementation/logistics/scripts/modules/build-management.psm1
           Remove-EdFiDatabases -Force
       
       - name: Restore NuGet packages
