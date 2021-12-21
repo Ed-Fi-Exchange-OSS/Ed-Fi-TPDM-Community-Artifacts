@@ -55,7 +55,12 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: Ed-Fi-TPDM-Extension
-     
+          
+      - name: list files
+        shell: pwsh
+        run: dir .
+        working-directory: Ed-Fi-Ods-Implementation     
+        
       - name: Replace package name in packages config
         shell: pwsh
         run: |
@@ -66,10 +71,7 @@ jobs:
           get-content configuration.packages.json
         working-directory: Ed-Fi-ODS-Implementation
       
-      - name: list files
-        shell: pwsh
-        run: dir .
-        working-directory: Ed-Fi-Ods-Implementation
+
         
       - name: Replace package name in create script
         shell: pwsh
