@@ -56,10 +56,6 @@ jobs:
         with:
           path: Ed-Fi-TPDM-Extension
           
-      - name: list files
-        run: ls -laR
-        working-directory: ./Ed-Fi-ODS-Implementation
-        
       - name: Replace package name in packages config
         shell: pwsh
         run: |
@@ -68,7 +64,7 @@ jobs:
           -replace '"PackageVersion": "5.3.38",','"PackageVersion": "5.3.67",' |
           Out-File configuration.packages.json
           get-content configuration.packages.json
-        working-directory: Ed-Fi-ODS-Implementation
+        working-directory: ./Ed-Fi-ODS-Implementation
       
 
         
@@ -79,7 +75,7 @@ jobs:
           -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Minimal.Template.TPDM.Community' ` |
           Out-File ./DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
           get-content ./DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
-        working-directory: Ed-Fi-Ods-Implementation
+        working-directory: ./Ed-Fi-Ods-Implementation
         
       
       - name: Remove Ed-Fi Databases
