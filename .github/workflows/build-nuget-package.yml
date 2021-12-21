@@ -79,7 +79,7 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
-          Import-Module Ed-Fi-ODS-Implementation\logistics\scripts\modules\build-management.psm1
+          Import-Module .\Ed-Fi-ODS-Implementation\logistics\scripts\modules\build-management.psm1
           Remove-EdFiDatabases -Force
       
       - name: Restore NuGet packages
