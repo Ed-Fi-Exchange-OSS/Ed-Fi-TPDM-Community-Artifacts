@@ -69,10 +69,10 @@ jobs:
       - name: Replace package name in create script
         shell: pwsh
         run: |
-          (Get-Content DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
+          (Get-Content ./DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
           -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Minimal.Template.TPDM.Community' ` |
-          Out-File DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
-          get-content DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
+          Out-File ./DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
+          get-content ./DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
         working-directory: Ed-Fi-Ods-Implementation
         
       
