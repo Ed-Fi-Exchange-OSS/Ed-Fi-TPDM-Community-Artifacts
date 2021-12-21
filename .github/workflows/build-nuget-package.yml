@@ -66,10 +66,14 @@ jobs:
           get-content configuration.packages.json
         working-directory: Ed-Fi-ODS-Implementation
       
+      - name: list files
+        shell: pwsh
+        run: dir .
+        working-directory: Ed-Fi-Ods-Implementation
+        
       - name: Replace package name in create script
         shell: pwsh
         run: |
-          dir .
           (Get-Content ./DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
           -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Minimal.Template.TPDM.Community' ` |
           Out-File ./DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
