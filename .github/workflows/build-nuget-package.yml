@@ -77,7 +77,7 @@ jobs:
       - name: Remove Ed-Fi Databases
         shell: pwsh
         run: |
-          ls -laR ./ed-fi-ods-implementation/logistics/scripts/modules
+          ls -laR ./Ed-Fi-ODS-Implementation/logistics/scripts/modules
           $ErrorActionPreference = 'Stop'
           Import-Module ./Ed-Fi-ODS-Implementation/logistics/scripts/modules/build-management.psm1
           Remove-EdFiDatabases -Force
