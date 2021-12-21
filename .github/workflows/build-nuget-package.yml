@@ -65,20 +65,16 @@ jobs:
           Out-File configuration.packages.json
           get-content configuration.packages.json
         working-directory: ./Ed-Fi-ODS-Implementation
-      
-
         
       - name: Replace package name in create script
         shell: pwsh
         run: |
-          ls -laR
-          (Get-Content ./DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
+          ls -laR ./Ed-Fi-ODS-Implementation
+          (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
           -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Minimal.Template.TPDM.Community' ` |
-          Out-File ./DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
-          get-content ./DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
-        working-directory: ./Ed-Fi-Ods-Implementation
-        
-      
+          Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
+          get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
+     
       - name: Remove Ed-Fi Databases
         shell: pwsh
         run: |
