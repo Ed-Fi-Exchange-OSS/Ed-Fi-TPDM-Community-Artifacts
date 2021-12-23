@@ -22,6 +22,7 @@ jobs:
         run: |
           echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
           echo "version_core=${{ format('{0}.{1}.{2}', env.version_major, env.version_minor , env.version_patch) }}" >> $env:GITHUB_ENV
+          echo "temp=${{ github.workspace }}\temp" >> $env:GITHUB_ENV
           
       - name: Git long filename support
         run: git config --system core.longpaths true
