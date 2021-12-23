@@ -33,9 +33,9 @@ jobs:
           ref: ${{ env.version_informational }}
           path: Ed-Fi-ODS-Implementation
         
-      - name: debug
+      - name: Workaround
         run: |
-          (get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1 -Raw).replace('Write-Host "copy to $($directory.Name)\$($xmlFile.Name) " -NoNewline', 'Write-Host $xmlFile.FullName "$directory\$xmlFile"') | set-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
+          (get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1 -Raw).replace('"$directory\$xmlFile"', '"$directory\$($xmlFile.Name)"', 'Write-Host $xmlFile.FullName "$directory\$xmlFile"') | set-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
           get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
         
       - uses: actions/checkout@v2
