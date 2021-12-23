@@ -33,9 +33,10 @@ jobs:
           ref: ${{ env.version_informational }}
           path: Ed-Fi-ODS-Implementation
         
-      - name: Workaround
+      - name: Workarounds for file copy
         run: |
-          (get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1 -Raw).replace('-Destination "$directory\$xmlFile"', '-Destination "$directory\$($xmlFile.Name)"') | set-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
+          (get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1 -Raw).replace('-Destination "$directory\$xmlFile"', '-Destination "$directory\$($xmlFile.Name)"') `
+          .replace('-Destination "$directory\$xsdFile"', '-Destination "$directory\$($xsdFile.Name)"') | set-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
           get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
         
       - uses: actions/checkout@v2
