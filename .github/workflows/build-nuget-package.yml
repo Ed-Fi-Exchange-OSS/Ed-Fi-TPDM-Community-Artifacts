@@ -14,15 +14,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    services:
-      sql.data:
-        image: mcr.microsoft.com/mssql/server:2019-latest
-        env:
-          SA_PASSWORD: EdFiSqlServer
-          ACCEPT_EULA: Y
-        ports:
-          - "1433:1433"
+    runs-on: windows-latest
           
     steps:
       - name: Set env variables
@@ -31,8 +23,8 @@ jobs:
           echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
           echo "version_core=${{ format('{0}.{1}.{2}', env.version_major, env.version_minor , env.version_patch) }}" >> $env:GITHUB_ENV
           
-      #- name: Git long filename support
-      #  run: git config --system core.longpaths true
+      - name: Git long filename support
+        run: git config --system core.longpaths true
         
       - uses: actions/checkout@v2
         with:
@@ -56,8 +48,10 @@ jobs:
         with:
           path: Ed-Fi-TPDM-Extension
           
+      - name: Install SQL Server
+        run: choco install --verbose sql-server-2019 
+          
       - name: Replace package name in packages config
-        shell: pwsh
         run: |
           (Get-Content configuration.packages.json) `
           -replace 'EdFi.Suite3.Ods.Extensions.TPDM.Core.${{ env.tpdm_version }}', 'EdFi.Suite3.Ods.Extensions.TPDM.Community.${{ env.tpdm_version }}' `
@@ -67,39 +61,14 @@ jobs:
         working-directory: ./Ed-Fi-ODS-Implementation
         
       - name: Replace package name in create script
-        shell: pwsh
         run: |
           (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
           -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Minimal.Template.TPDM.Community' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
           get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
      
-      - name: Add function
-        shell: pwsh
-        run: |
-          Function Get-CanonicalPath
-          {
-              param($currentPath)
-              $pathInfo = [System.IO.DirectoryInfo]$currentPath
-              $parent = $pathInfo.Parent
-              if($null -eq $parent){
-                  return $pathInfo.Name
-              }
-              $ParentCanonicalPath = Get-CanonicalPath $parent
-              $LeafCanonicalPath = if($currentPath -is [System.IO.DirectoryInfo]) {
-                                          $parent.GetDirectories($pathInfo.Name).Name
-                                      } else {
-                                          $parent.GetFiles($pathInfo.Name).Name
-                                      }
-              return Join-Path $ParentCanonicalPath $LeafCanonicalPath
-          }
-        
       - name: Remove Ed-Fi Databases
-        shell: pwsh
         run: |
-          (Get-Content ./Ed-Fi-ODS-Implementation/logistics/scripts/modules/load-path-resolver.ps1) `
-          -replace '$PSScriptRoot', 'Get-CanonicalPath($PSScriptRoot)' ` |
-          Out-File ./Ed-Fi-ODS-Implementation/logistics/scripts/modules/load-path-resolver.ps1
           $ErrorActionPreference = 'Stop'
           Import-Module ./Ed-Fi-ODS-Implementation/logistics/scripts/modules/build-management.psm1
           Remove-EdFiDatabases -Force
