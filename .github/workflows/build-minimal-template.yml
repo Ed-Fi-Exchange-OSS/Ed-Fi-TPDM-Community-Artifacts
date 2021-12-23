@@ -36,7 +36,6 @@ jobs:
       - name: Workarounds for file copy
         run: |
           (get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1 -Raw).replace('-Destination "$directory\$xmlFile"', '-Destination "$directory\$($xmlFile.Name)"').replace('-Destination "$directory\$xsdFile"', '-Destination "$directory\$($xsdFile.Name)"') | set-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
-          get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
         
       - uses: actions/checkout@v2
         with:
@@ -63,7 +62,6 @@ jobs:
           -replace 'EdFi.Suite${{ env.version_suite }}.Ods.Extensions.TPDM.Core.${{ env.tpdm_version }}', 'EdFi.Suite${{ env.version_suite }}.Ods.Extensions.TPDM.Community.${{ env.tpdm_version }}' `
           -replace '"PackageVersion": "5.3.38",','"PackageVersion": "5.3.67",' |
           Out-File configuration.packages.json
-          get-content configuration.packages.json
         working-directory: ./Ed-Fi-ODS-Implementation
         
       - name: Replace package name in create script
@@ -71,7 +69,6 @@ jobs:
           (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
           -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Minimal.Template.TPDM.Community' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
-          get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
           
       - name: Remove Ed-Fi Databases
         run: |
