@@ -1,4 +1,4 @@
-name: Test MetaEd deploy
+name: Deploy TPDM Minimal Template SQLServer
 
 on: 
   workflow_dispatch:
@@ -28,4 +28,4 @@ jobs:
           path: publish
       
       - name: Publish
-        run: dotnet nuget push publish/*/*.nupkg --api-key AzureArtifacts
+        run: dotnet nuget push publish/*/*.nupkg --api-key AzureArtifacts --source ${{ env.AZURE_ARTIFACTS_FEED_URL }} 
