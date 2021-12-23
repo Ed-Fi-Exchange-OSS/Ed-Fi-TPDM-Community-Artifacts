@@ -82,9 +82,9 @@ jobs:
           
       - name: Create Database Template
         run: |
-          Import-Module -Force -Scope Global .\DatabaseTemplate\Modules\create-tpdm-minimal-template.psm1
-          Initialize-TPDMMinimalTemplate -samplePath "..\Ed-Fi-TPDM-Extension\"
-        working-directory: ./Ed-Fi-ODS-Implementation
+          Import-Module -Force -Scope Global ${{ github.workspace }}\Ed-Fi-ODS-Implementation\DatabaseTemplate\Modules\create-tpdm-minimal-template.psm1
+          Initialize-TPDMMinimalTemplate
+        working-directory: ./Ed-Fi-TPDM-Extension
 
       - name: Pack
         run: | 
