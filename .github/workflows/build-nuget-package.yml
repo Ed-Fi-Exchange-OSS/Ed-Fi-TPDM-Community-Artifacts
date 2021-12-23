@@ -70,7 +70,7 @@ jobs:
           
       - name: debug
         run: |
-          Write-Host "replacing $($directory.Name)\$($xmlFile.Name) with $xmlFile.FullName `"$directory\$xmlFile`""
+          Write-Host 'replacing $($directory.Name)\$($xmlFile.Name) with $xmlFile.FullName "$directory\$xmlFile"'
           (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1) `
           -replace '$($directory.Name)\$($xmlFile.Name)', '$xmlFile.FullName "$directory\$xmlFile"' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
