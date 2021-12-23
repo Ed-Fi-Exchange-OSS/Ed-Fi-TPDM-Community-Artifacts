@@ -1,4 +1,4 @@
-name: build Nuget package
+name: build TPDM Minimal Template sqlServer
 
 on:
   push:
