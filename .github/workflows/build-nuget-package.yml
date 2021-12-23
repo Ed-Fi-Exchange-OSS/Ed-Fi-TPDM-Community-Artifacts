@@ -49,10 +49,6 @@ jobs:
         with:
           path: Ed-Fi-TPDM-Extension
           
-      - run: |
-          $xmlFiles = Get-ChildItem "D:\a\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Extension\" -Recurse -Filter "*.xml"
-          foreach ($xmlFile in $xmlFiles) { Write-Host $xmlFile.FullName }
-          
       - name: Install SQL Server
         run: choco install sql-server-2019 
           
@@ -71,6 +67,13 @@ jobs:
           -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Minimal.Template.TPDM.Community' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
           get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
+          
+      - name: debug
+        run: |
+          (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1) `
+          -replace 'Write-Host "copy to $($directory.Name)\$($xmlFile.Name) " -NoNewline', 'Write-Host "-Path $xmlFile.FullName -Destination `"$directory\$xmlFile`""' ` |
+          Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
+          get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
      
       - name: Remove Ed-Fi Databases
         run: |
