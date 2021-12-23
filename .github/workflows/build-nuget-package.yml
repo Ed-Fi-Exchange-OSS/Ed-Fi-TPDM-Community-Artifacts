@@ -49,7 +49,7 @@ jobs:
           path: Ed-Fi-TPDM-Extension
           
       - name: Install SQL Server
-        run: choco install --verbose sql-server-2019 
+        run: choco install sql-server-2019 
           
       - name: Replace package name in packages config
         run: |
@@ -73,43 +73,34 @@ jobs:
           Import-Module ./Ed-Fi-ODS-Implementation/logistics/scripts/modules/build-management.psm1
           Remove-EdFiDatabases -Force
       
-      - name: Restore NuGet packages
-        shell: pwsh
+      - name: Initialize-DevelopmentEnvironment
         run: |
-          dotnet restore Ed-Fi-ODS/Application/EdFi.Ods.Common/EdFi.Ods.Common.csproj
-          dotnet restore Ed-Fi-ODS/Application/EdFi.Ods.Api/EdFi.Ods.Api.csproj
-          dotnet restore Ed-Fi-ODS/Application/EdFi.Ods.Standard/EdFi.Ods.Standard.csproj
-          dotnet restore Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.TPDM/EdFi.Ods.Extensions.TPDM.csproj
+          $ErrorActionPreference = 'Stop'
+          ./Initialize-PowershellForDevelopment.ps1
+        working-directory: ./Ed-Fi-ODS-Implementation
           
       - name: Run CodeGen
         run: |
-          (Get-ChildItem -File .).FullName
-          $ErrorActionPreference = 'Stop'
-          ./Initialize-PowershellForDevelopment.ps1
-          Invoke-CodeGen -Engine SQLServer  -ExtensionPaths  ${{ github.workspace }}/Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.TPDM
-        working-directory: Ed-Fi-ODS-Implementation
-        
-      - name: Build
-        run: dotnet build --configuration release --version-suffix ${{ env.version_core }} --no-restore
-        working-directory: ${{ github.workspace }}/Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.TPDM
+          Import-Module -Force -Scope Global ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
+          Initialize-TPDMMinimalTemplate -samplePath ./Ed-Fi-TPDM-Extension/
 
       - name: Pack
         run: | 
-          nuget pack EdFi.Ods.Extensions.TPDM.nuspec `
-          -OutputDirectory ${{ github.workspace }}\NugetPackages `
+          nuget pack ${{ github.workspace }}/Ed-Fi-ODS-Implementation/DatabaseTemplate/Database/EdFi.Ods.Minimal.Template.TPDM.Community.nuspec `
+          -OutputDirectory ${{ github.workspace }}/NugetPackages `
           -Version ${{ env.version_core }} `
           -Properties configuration=release `
           -Properties "authors=Ed-Fi Alliance" `
           -Properties "owners=Ed-Fi Alliance" `
           -Properties "copyright=Copyright ©Ed-Fi Alliance, LLC. 2020" `
-          -Properties id=EdFi.Suite${{ env.version_suite }}.Ods.Extensions.TPDM.Community.${{ env.tpdm_version }} `
-          -Properties title=EdFi.Suite${{ env.version_suite }}.Ods.Extensions.TPDM.Community.${{ env.tpdm_version }} `
-          -Properties "description=EdFi.Ods.Extensions.TPDM.Community testing" `
+          -Properties id=EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }} `
+          -Properties title=EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }} `
+          -Properties "description=EdFi Ods Minimal Template TPDM Community Database" `
           -NoPackageAnalysis -NoDefaultExcludes
-        working-directory: ${{ github.workspace }}/Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.TPDM
+        working-directory: ${{ github.workspace }}/Ed-Fi-TPDM-Extension
         
       - name: Upload artifact
         uses: actions/upload-artifact@v2.3.0
         with:
-          name: EdFi.Suite3.Ods.Extensions.TPDM.Community.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
-          path: NugetPackages\EdFi.Suite${{ env.version_suite }}.Ods.Extensions.TPDM.Community.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
+          name: EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
+          path: NugetPackages\EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
