@@ -53,7 +53,7 @@ jobs:
         with:
           path: Ed-Fi-TPDM-Extension
           
-      - name: Install SQL Server
+      - name: Install PostgreSQL
         run: choco install postgresql11
           
       - name: Replace package name in packages config
@@ -74,7 +74,7 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           Import-Module ./Ed-Fi-ODS-Implementation/logistics/scripts/modules/build-management.psm1
-          Remove-EdFiDatabases -Force
+          Remove-EdFiDatabases -Force -Engine PostgreSQL
       
       - name: Initialize-DevelopmentEnvironment
         run: |
