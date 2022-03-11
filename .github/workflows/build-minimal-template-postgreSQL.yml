@@ -56,8 +56,9 @@ jobs:
         run: | 
           choco install postgresql11 --no-progress
           Stop-Service postgresql*
-          #Set-Content -Path "C:\Program Files\PostgreSQL\11\data\pg_hba.conf" -Value 'host    all    all    all    md5'
+          Set-Content -Path "C:\Program Files\PostgreSQL\11\data\pg_hba.conf" -Value 'host    all    all    all    md5'
           Get-Content -Path "C:\Program Files\PostgreSQL\11\data\pg_hba.conf"
+          Get-Service -Name postgre*
           Start-Service postgresql*
           
       - name: Replace package name in packages config
