@@ -101,8 +101,8 @@ jobs:
           -Properties "authors=Ed-Fi Alliance" `
           -Properties "owners=Ed-Fi Alliance" `
           -Properties "copyright=Copyright ©Ed-Fi Alliance, LLC. 2020" `
-          -Properties id=EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.PostgreSQL `
-          -Properties title=EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.PostgreSQL `
+          -Properties id=EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.PostgreSQL.${{ env.tpdm_version }} `
+          -Properties title=EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.PostgreSQL.${{ env.tpdm_version }} `
           -Properties "description=EdFi Ods Minimal Template TPDM Community Database for PostgreSQL" `
           -NoPackageAnalysis -NoDefaultExcludes
         working-directory: ${{ github.workspace }}/Ed-Fi-TPDM-Extension
