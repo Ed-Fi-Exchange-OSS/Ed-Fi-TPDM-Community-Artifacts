@@ -53,8 +53,7 @@ jobs:
           path: Ed-Fi-TPDM-Extension
           
       - name: Install SQL Server
-        run: choco install sql-server-2019 /IgnorePendingReboot 
-          
+        run: choco install sql-server-2019 --params="'/IgnorePendingReboot'"          
       - name: Replace package name in packages config
         run: |
           (Get-Content configuration.packages.json) `
