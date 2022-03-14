@@ -1,0 +1,29 @@
+name: Deploy TPDM Minimal Template postgreSQL
+
+on: 
+  workflow_dispatch:
+  
+env:
+  AZURE_ARTIFACTS_FEED_URL: https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
+  NUGET_AUTH_TOKEN: ${{ secrets.TPDM_AA_PUBLISH }} 
+
+jobs:
+  publish:
+    runs-on: windows-latest
+
+    steps:
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          source-url: ${{ env.AZURE_ARTIFACTS_FEED_URL }}
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.TPDM_AA_PUBLISH }} 
+
+      - name: Download package
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: build-minimal-template-postgreSQL.yml
+          path: publish
+      
+      - name: Publish
+        run: dotnet nuget push publish/*/*.nupkg --api-key AzureArtifacts
