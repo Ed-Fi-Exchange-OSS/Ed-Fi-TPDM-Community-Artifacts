@@ -70,7 +70,7 @@ jobs:
       - name: Replace package name in create script
         run: |
           (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1) `
-          -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Populated.Template.TPDM.Community' ` |
+          -replace 'EdFi.Ods.Populated.Template.TPDM.Core', 'EdFi.Ods.Populated.Template.TPDM.Community' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1
           
       - name: Remove Ed-Fi Databases
