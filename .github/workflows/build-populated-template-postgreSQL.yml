@@ -52,8 +52,13 @@ jobs:
         with:
           path: Ed-Fi-TPDM-Extension
           
-      - name: Install SQL Server
-        run: choco install sql-server-2019 --params="'/IgnorePendingReboot'"          
+      - name: Install PostgreSQL
+        run: | 
+          choco install postgresql11 --no-progress
+          Stop-Service postgresql*
+          Set-Content -Path "C:\Program Files\PostgreSQL\11\data\pg_hba.conf" -Value 'host    all    all    all    trust'
+          Start-Service postgresql-x64-11
+          
       - name: Replace package name in packages config
         run: |
           (Get-Content configuration.packages.json) `
@@ -65,45 +70,45 @@ jobs:
       - name: Replace package name in create script
         run: |
           (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1) `
-          -replace 'EdFi.Ods.Populated.Template.TPDM.Core', 'EdFi.Ods.Populated.Template.TPDM.Community' ` |
+          -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Populated.Template.TPDM.Community' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1
           
       - name: Remove Ed-Fi Databases
         run: |
           $ErrorActionPreference = 'Stop'
           Import-Module ./Ed-Fi-ODS-Implementation/logistics/scripts/modules/build-management.psm1
-          Remove-EdFiDatabases -Force
+          Remove-EdFiDatabases -Force -Engine PostgreSQL
       
       - name: Initialize-DevelopmentEnvironment
         run: |
           $ErrorActionPreference = 'Stop'
           ./Initialize-PowershellForDevelopment.ps1
-          Initialize-DevelopmentEnvironment -UsePlugins -NoDeploy
+          Initialize-DevelopmentEnvironment -UsePlugins -NoDeploy -Engine PostgreSQL
         working-directory: ./Ed-Fi-ODS-Implementation
           
       - name: Create Database Template
         run: |
           Import-Module -Force -Scope Global ${{ github.workspace }}\Ed-Fi-ODS-Implementation\DatabaseTemplate\Modules\create-tpdm-template.psm1
-          Initialize-TPDMTemplate -samplePath "D:\a\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Extension\"
+          Initialize-TPDMTemplate -samplePath "D:\a\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Extension\"  -Engine PostgreSQL
         working-directory: ./Ed-Fi-TPDM-Extension
 
       - name: Pack
         run: | 
-          nuget pack ${{ github.workspace }}/Ed-Fi-ODS-Implementation/DatabaseTemplate/Database/EdFi.Ods.Populated.Template.TPDM.Community.nuspec `
+          nuget pack ${{ github.workspace }}/Ed-Fi-ODS-Implementation/DatabaseTemplate/Database/EdFi.Ods.Populated.Template.TPDM.Community.PostgreSQL.nuspec `
           -OutputDirectory ${{ github.workspace }}/NugetPackages `
           -Version ${{ env.version_core }} `
           -Properties configuration=release `
           -Properties "authors=Ed-Fi Alliance" `
           -Properties "owners=Ed-Fi Alliance" `
           -Properties "copyright=Copyright ©Ed-Fi Alliance, LLC. 2020" `
-          -Properties id=EdFi.Suite${{ env.version_suite }}.Ods.Populated.Template.TPDM.Community.${{ env.tpdm_version }} `
-          -Properties title=EdFi.Suite${{ env.version_suite }}.Ods.Populated.Template.TPDM.Community.${{ env.tpdm_version }} `
-          -Properties "description=EdFi Ods Populated Template TPDM Community Database" `
+          -Properties id=EdFi.Suite${{ env.version_suite }}.Ods.Populated.Template.TPDM.Community.PostgreSQL.${{ env.tpdm_version }} `
+          -Properties title=EdFi.Suite${{ env.version_suite }}.Ods.Populated.Template.TPDM.Community.PostgreSQL.${{ env.tpdm_version }} `
+          -Properties "description=EdFi Ods Populated Template TPDM Community Database for PostgreSQL" `
           -NoPackageAnalysis -NoDefaultExcludes
         working-directory: ${{ github.workspace }}/Ed-Fi-TPDM-Extension
         
       - name: Upload artifact
         uses: actions/upload-artifact@v2.3.0
         with:
-          name: EdFi.Suite${{ env.version_suite }}.Ods.Populated.Template.TPDM.Community.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
-          path: NugetPackages\EdFi.Suite${{ env.version_suite }}.Ods.Populated.Template.TPDM.Community.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
+          name: EdFi.Suite${{ env.version_suite }}.Ods.Populated.Template.TPDM.Community.PostgreSQL.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
+          path: NugetPackages\EdFi.Suite${{ env.version_suite }}.Ods.Populated.Template.TPDM.Community.PostgreSQL.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
