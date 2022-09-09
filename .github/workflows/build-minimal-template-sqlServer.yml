@@ -2,20 +2,36 @@ name: build TPDM Minimal Template sqlServer
 
 on:
   workflow_dispatch:
+    inputs:
+      version_suite:
+        type: number
+        required: true
+      version_major:
+        type: number
+        required: true
+      version_minor:
+        type: number
+        required: true
+      standard_version:
+        type: string
+        required: true
 
 env:
   version_suite: 3
-  version_major: 5
-  version_minor: 3
+  version_major: 6
+  version_minor: 0
   version_patch: ${{ format('{0}{1}', github.run_number , github.run_attempt) }}
   tpdm_version: 1.1.0
-  standard_version: v3.3.1-b
+  standard_version: v4.0.0-a
 
 jobs:
   build:
     runs-on: windows-latest
           
     steps:
+      - name: debug
+        uses: shaowenchen/debugger-action@v2
+    
       - name: Set env variables
         shell: pwsh
         run: |
