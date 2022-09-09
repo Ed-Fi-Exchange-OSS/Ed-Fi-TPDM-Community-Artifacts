@@ -31,6 +31,11 @@ jobs:
     steps:
       - name: debug
         uses: shaowenchen/debugger-action@v2
+        timeout-minutes: 30
+        continue-on-error: true
+        with:
+          ngrok_token: ${{ secrets.NGROK_TOKEN }}
+  
     
       - name: Set env variables
         shell: pwsh
