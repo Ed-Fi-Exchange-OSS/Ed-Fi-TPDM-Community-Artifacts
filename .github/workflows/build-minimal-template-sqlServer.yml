@@ -29,13 +29,10 @@ jobs:
     runs-on: windows-latest
           
     steps:
-      - name: debug
-        uses: mxschmitt/action-tmate@v3.11
-        timeout-minutes: 15
-  
       - name: Set env variables
         shell: pwsh
         run: |
+          echo "Event" + "${{ github.event_name }}"
           echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
           echo "version_core=${{ format('{0}.{1}.{2}', env.version_major, env.version_minor , env.version_patch) }}" >> $env:GITHUB_ENV
           echo "temp=${{ github.workspace }}\temp" >> $env:GITHUB_ENV
