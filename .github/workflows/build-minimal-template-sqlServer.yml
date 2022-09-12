@@ -18,11 +18,10 @@ on:
 
 env:
   version_suite: 3
-  version_major: 6
-  version_minor: 0
-  version_patch: ${{ format('{0}{1}', github.run_number , github.run_attempt) }}
+  version_major: 5
+  version_minor: 3
   tpdm_version: 1.1.0
-  standard_version: v4.0.0-a
+  standard_version: v3.3.1-b
 
 jobs:
   build:
@@ -32,12 +31,13 @@ jobs:
       - name: Set env variables
         shell: pwsh
         run: |
+          $version_patch = ${{ format('{0}{1}', github.run_number , github.run_attempt) }}
           if ("${{ github.event_name }}" -eq "workflow_dispatch") {
             echo "version_informational=${{ format('v{0}.{1}', github.event.inputs.version_major , github.event.inputs.version_minor ) }}" >> $env:GITHUB_ENV
-            echo "version_core=${{ format('{0}.{1}.{2}', github.event.inputs.version_major, github.event.inputs.version_minor , github.event.inputs.version_patch) }}" >> $env:GITHUB_ENV
+            echo "version_core=${{ format('{0}.{1}.{2}', github.event.inputs.version_major, github.event.inputs.version_minor) }}" + "$version_patch" >> $env:GITHUB_ENV
           } else {
             echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
-            echo "version_core=${{ format('{0}.{1}.{2}', env.version_major, env.version_minor , env.version_patch) }}" >> $env:GITHUB_ENV
+            echo "version_core=${{ format('{0}.{1}.{2}', env.version_major, env.version_minor) }}" + "$version_patch" >> $env:GITHUB_ENV
           }
           echo "temp=${{ github.workspace }}\temp" >> $env:GITHUB_ENV
           
