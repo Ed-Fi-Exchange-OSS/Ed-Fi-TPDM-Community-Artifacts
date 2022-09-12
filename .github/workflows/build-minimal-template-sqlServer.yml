@@ -34,19 +34,13 @@ jobs:
           $version_patch = ${{ format('{0}{1}', github.run_number , github.run_attempt) }}
           if ("${{ github.event_name }}" -eq "workflow_dispatch") {
             echo "version_informational=${{ format('v{0}.{1}', github.event.inputs.version_major , github.event.inputs.version_minor ) }}" >> $env:GITHUB_ENV
-            echo ("version_core=${{ format('{0}.{1}', github.event.inputs.version_major, github.event.inputs.version_minor) }}" + "$version_patch") >> $env:GITHUB_ENV
+            echo ("version_core=${{ format('{0}.{1}', github.event.inputs.version_major, github.event.inputs.version_minor) }}." + "$version_patch") >> $env:GITHUB_ENV
+            echo "standard_version=${{ github.event.input.standard_version }}" >> $enb:GITHUB_ENV
           } else {
             echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
-            echo ("version_core=${{ format('{0}.{1}', env.version_major, env.version_minor) }}" + "$version_patch") >> $env:GITHUB_ENV
+            echo ("version_core=${{ format('{0}.{1}', env.version_major, env.version_minor) }}." + "$version_patch") >> $env:GITHUB_ENV
           }
           echo "temp=${{ github.workspace }}\temp" >> $env:GITHUB_ENV
-          
-      - name: Debugging with tmate
-        # You may pin to the exact commit or the version.
-        # uses: mxschmitt/action-tmate@8b4e4ac71822ed7e0ad5fb3d1c33483e9e8fb270
-        uses: mxschmitt/action-tmate@v3.11
-        with:
-          timeout-minutes: 15
           
       - name: Git long filename support
         run: |
@@ -78,9 +72,13 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: Ed-Fi-TPDM-Extension
-          
-      - name: Install SQL Server
-        run: choco install sql-server-2019 
+         
+      - name: Debugging with tmate
+        # You may pin to the exact commit or the version.
+        # uses: mxschmitt/action-tmate@8b4e4ac71822ed7e0ad5fb3d1c33483e9e8fb270
+        uses: mxschmitt/action-tmate@v3.11
+        with:
+          timeout-minutes: 15
           
       - name: Replace package name in packages config
         run: |
@@ -95,7 +93,10 @@ jobs:
           (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
           -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Minimal.Template.TPDM.Community' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
-          
+
+      - name: Install SQL Server
+        run: choco install sql-server-2019 --no-progress --params="'/IgnorePendingReboot'"
+        
       - name: Remove Ed-Fi Databases
         run: |
           $ErrorActionPreference = 'Stop'
