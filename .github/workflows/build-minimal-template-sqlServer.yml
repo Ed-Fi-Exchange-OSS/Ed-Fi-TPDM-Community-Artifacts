@@ -32,10 +32,13 @@ jobs:
       - name: Set env variables
         shell: pwsh
         run: |
-          if ("${{ github.event_name }}" -eq "workflow_dispatch")
-            
-          echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
-          echo "version_core=${{ format('{0}.{1}.{2}', env.version_major, env.version_minor , env.version_patch) }}" >> $env:GITHUB_ENV
+          if ("${{ github.event_name }}" -eq "workflow_dispatch") {
+            echo "version_informational=${{ format('v{0}.{1}', github.event.inputs.version_major , github.event.inputs.version_minor ) }}" >> $env:GITHUB_ENV
+            echo "version_core=${{ format('{0}.{1}.{2}', github.event.inputs.version_major, github.event.inputs.version_minor , github.event.inputs.version_patch) }}" >> $env:GITHUB_ENV
+          } else {
+            echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
+            echo "version_core=${{ format('{0}.{1}.{2}', env.version_major, env.version_minor , env.version_patch) }}" >> $env:GITHUB_ENV
+          }
           echo "temp=${{ github.workspace }}\temp" >> $env:GITHUB_ENV
           
       - name: Git long filename support
