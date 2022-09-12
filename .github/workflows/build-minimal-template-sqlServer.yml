@@ -35,7 +35,7 @@ jobs:
           if ("${{ github.event_name }}" -eq "workflow_dispatch") {
             echo "version_informational=${{ format('v{0}.{1}', github.event.inputs.version_major , github.event.inputs.version_minor ) }}" >> $env:GITHUB_ENV
             echo ("version_core=${{ format('{0}.{1}', github.event.inputs.version_major, github.event.inputs.version_minor) }}." + "$version_patch") >> $env:GITHUB_ENV
-            echo "standard_version=${{ github.event.input.standard_version }}" >> $enb:GITHUB_ENV
+            echo "standard_version=${{ github.event.inputs.standard_version }}" >> $env:GITHUB_ENV
           } else {
             echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
             echo ("version_core=${{ format('{0}.{1}', env.version_major, env.version_minor) }}." + "$version_patch") >> $env:GITHUB_ENV
