@@ -40,7 +40,7 @@ jobs:
             echo ("version_core=${{ format('{0}.{1}', env.version_major, env.version_minor) }}" + "$version_patch") >> $env:GITHUB_ENV
           }
           echo "temp=${{ github.workspace }}\temp" >> $env:GITHUB_ENV
-          Write-Host $env:GITHUB_ENV
+          gci env: | where name -like '*version*'
           
       - name: Debugging with tmate
         # You may pin to the exact commit or the version.
