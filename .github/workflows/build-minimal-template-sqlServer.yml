@@ -34,12 +34,13 @@ jobs:
           $version_patch = ${{ format('{0}{1}', github.run_number , github.run_attempt) }}
           if ("${{ github.event_name }}" -eq "workflow_dispatch") {
             echo "version_informational=${{ format('v{0}.{1}', github.event.inputs.version_major , github.event.inputs.version_minor ) }}" >> $env:GITHUB_ENV
-            echo "version_core=${{ format('{0}.{1}', github.event.inputs.version_major, github.event.inputs.version_minor) }}" + "$version_patch" >> $env:GITHUB_ENV
+            echo ("version_core=${{ format('{0}.{1}', github.event.inputs.version_major, github.event.inputs.version_minor) }}" + "$version_patch") >> $env:GITHUB_ENV
           } else {
             echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
-            echo "version_core=${{ format('{0}.{1}', env.version_major, env.version_minor) }}" + "$version_patch" >> $env:GITHUB_ENV
+            echo ("version_core=${{ format('{0}.{1}', env.version_major, env.version_minor) }}" + "$version_patch") >> $env:GITHUB_ENV
           }
           echo "temp=${{ github.workspace }}\temp" >> $env:GITHUB_ENV
+          Write-Host $env:GITHUB_ENV
           
       - name: Git long filename support
         run: git config --system core.longpaths true
