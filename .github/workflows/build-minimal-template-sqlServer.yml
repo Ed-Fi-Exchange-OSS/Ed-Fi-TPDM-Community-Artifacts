@@ -80,8 +80,12 @@ jobs:
           -replace '(?is)(.*tpdm.*)(\d).*(Core)(?:\.)(\d+\.\d+\.\d+)(.*PackageVersion.*)(\d+\.\d+\.\d+)'
             , '$1$2.Community.${{ env.tpdm_version }}${5}${{ env.tpdm_package_version }}'
           Out-File configuration.packages.json
-          cat configuration.packages.json
         working-directory: ./Ed-Fi-ODS-Implementation
+        
+      - name: Debugging with tmate
+        # You may pin to the exact commit or the version.
+        # uses: mxschmitt/action-tmate@8b4e4ac71822ed7e0ad5fb3d1c33483e9e8fb270
+        uses: mxschmitt/action-tmate@v3.11
         
       - name: Replace package name in create script
         run: |
