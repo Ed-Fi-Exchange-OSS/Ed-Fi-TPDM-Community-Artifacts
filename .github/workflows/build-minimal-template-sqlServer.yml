@@ -21,6 +21,7 @@ env:
   version_major: 5
   version_minor: 3
   tpdm_version: 1.1.0
+  tpdm_package_version: 5.3.561
   standard_version: v3.3.1-b
 
 jobs:
@@ -45,7 +46,6 @@ jobs:
       - name: Git long filename support
         run: |
           git config --system core.longpaths true
-          gci env: | where name -like '*version*'
         
       - uses: actions/checkout@v2
         with:
@@ -72,20 +72,15 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: Ed-Fi-TPDM-Extension
+
          
-      - name: Debugging with tmate
-        # You may pin to the exact commit or the version.
-        # uses: mxschmitt/action-tmate@8b4e4ac71822ed7e0ad5fb3d1c33483e9e8fb270
-        uses: mxschmitt/action-tmate@v3.11
-        with:
-          timeout-minutes: 15
-          
-      - name: Replace package name in packages config
+      - name: Replace package name and version in packages config
         run: |
           (Get-Content configuration.packages.json) `
-          -replace 'EdFi.Suite${{ env.version_suite }}.Ods.Extensions.TPDM.Core.${{ env.tpdm_version }}', 'EdFi.Suite${{ env.version_suite }}.Ods.Extensions.TPDM.Community.${{ env.tpdm_version }}' `
-          -replace '"PackageVersion": "5.3.38",','"PackageVersion": "5.3.67",' |
+          -replace '(?is)(.*tpdm.*)(\d).*(Core)(?:\.)(\d+\.\d+\.\d+)(.*PackageVersion.*)(\d+\.\d+\.\d+)'
+            , '$1$2.Community.${{ env.tpdm_version }}${5}${{ env.tpdm_package_version }}'
           Out-File configuration.packages.json
+          cat configuration.packages.json
         working-directory: ./Ed-Fi-ODS-Implementation
         
       - name: Replace package name in create script
