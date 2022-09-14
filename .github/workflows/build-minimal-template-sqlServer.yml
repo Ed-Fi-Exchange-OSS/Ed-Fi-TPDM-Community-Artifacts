@@ -76,9 +76,9 @@ jobs:
          
       - name: Replace package name and version in packages config
         run: |
-          (Get-Content configuration.packages.json -Raw)
-            -replace '(?ism)(?<="tpdm")(.*?)\d(.*?)Core\.(\d+.\d+\.\d+)(.*?)\d+.\d+\.\d+'
-            , '${1}3$2Community.${{ env.tpdm_version }}${4}${{ env.tpdm_package_version }}'
+          (Get-Content configuration.packages.json -Raw) `
+            -replace '(?ism)(?<="tpdm")(.*?)\d(.*?)Core\.(\d+.\d+\.\d+)(.*?)\d+.\d+\.\d+' `
+            , '${1}3$2Community.${{ env.tpdm_version }}${4}${{ env.tpdm_package_version }}' `
             | Out-File configuration.packages.json
         working-directory: ./Ed-Fi-ODS-Implementation
         
