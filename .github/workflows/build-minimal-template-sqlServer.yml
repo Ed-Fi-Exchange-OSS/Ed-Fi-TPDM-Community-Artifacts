@@ -76,10 +76,10 @@ jobs:
          
       - name: Replace package name and version in packages config
         run: |
-          (Get-Content configuration.packages.json) `
-          -replace '(?is)(.*tpdm.*)(\d).*(Core)(?:\.)(\d+\.\d+\.\d+)(.*PackageVersion.*)(\d+\.\d+\.\d+)'
-            , '$1$2.Community.${{ env.tpdm_version }}${5}${{ env.tpdm_package_version }}'
-          Out-File configuration.packages.json
+          (Get-Content configuration.packages.json -Raw)
+            -replace '(?ism)(?<="tpdm")(.*)(\d)(.*)(Core)\.(\d+\.\d+\.\d+)(.*PackageVersion.*)(\d+\.\d+\.\d+)'
+            , '$1$2$3Community.${{ env.tpdm_version }}${6}${{ env.tpdm_package_version }}'
+            | Out-File configuration.packages.json
         working-directory: ./Ed-Fi-ODS-Implementation
         
       - name: Debugging with tmate
