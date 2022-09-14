@@ -76,7 +76,7 @@ jobs:
       - name: Workaround for duplicake package references in EdFi.Ods.Sandbox.csproj
         run: |
           (Get-Content .\EdFi.Ods.Sandbox.csproj | Select-Object -Unique) | Out-File EdFi.Ods.Sandbox.csproj
-        working-directory: Ed-Fi-ODS
+        working-directory: Ed-Fi-ODS\Application\EdFi.Ods.Sandbox
         
       - name: Workaround for file copy
         run: |
