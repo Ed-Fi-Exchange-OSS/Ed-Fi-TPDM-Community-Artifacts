@@ -71,7 +71,13 @@ jobs:
       - name: Ed-Fi-Extension
         uses: actions/checkout@v2
         with:
-          path: Ed-Fi-TPDM-Extension        
+          path: Ed-Fi-TPDM-Extension   
+          
+      - name: Workaround for duplicake package references in EdFi.Ods.Sandbox.csproj
+        run: |
+          (Get-Content .\EdFi.Ods.Sandbox.csproj | Select-Object -Unique) | Out-File EdFi.Ods.Sandbox.csproj
+        working-directory: Ed-Fi-ODS
+        
       - name: Workaround for file copy
         run: |
           (get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1 -Raw).replace('-Destination "$directory\$xmlFile"', '-Destination "$directory\$($xmlFile.Name)"').replace('-Destination "$directory\$xsdFile"', '-Destination "$directory\$($xsdFile.Name)"') | set-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
