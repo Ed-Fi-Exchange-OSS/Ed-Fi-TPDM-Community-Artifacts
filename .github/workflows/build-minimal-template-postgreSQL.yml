@@ -28,6 +28,9 @@ env:
   standard_version: v3.3.1-b
 
 jobs:
+  ed-fi-repository-scanner:    
+    uses: ed-fi-alliance-oss/ed-fi-actions/.github/workflows/repository-scanner.yml@latest
+    
   build:
     runs-on: windows-latest
           
