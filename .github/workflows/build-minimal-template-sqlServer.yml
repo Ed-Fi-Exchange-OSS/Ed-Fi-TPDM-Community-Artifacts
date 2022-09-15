@@ -79,7 +79,7 @@ jobs:
           $first_part = $f | Select-String -Pattern '(?s)^.*?(?=\<PackageReference)' | Foreach {$_.matches.value} | Out-String
           $unique_packages = $f | Select-String -allmatches -Pattern '(?m)^.*?<PackageReference.*$' | Foreach {$_.Matches.value} | Select-Object -Unique | Out-String
           $last_part = $f | Select-String -Pattern '(?s)\<\/ItemGroup.*' | Foreach {$_.matches.value} | Out-String
-          $first_part + $unique_packages + $last_part 
+          $first_part + $unique_packages + $last_part > .\EdFi.Ods.Sandbox.csproj
         working-directory: Ed-Fi-ODS\Application\EdFi.Ods.Sandbox
         
       - name: Workaround for file copy
