@@ -52,28 +52,28 @@ jobs:
           git config --system core.longpaths true
 
       - name: Ed-Fi-ODS
-        uses: actions/checkout@v2
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
         with:
           repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS
           ref: ${{ env.version_informational }}
           path: Ed-Fi-ODS
 
-      - name: Checkout Ed-Fi-ODS-Implementation
-        uses: actions/checkout@v2
+      - name: Ed-Fi-ODS-Implementation
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
         with:
           repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation
           ref: ${{ env.version_informational }}
           path: Ed-Fi-ODS-Implementation
           
       - name: Ed-Fi-Standard
-        uses: actions/checkout@v2
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
         with:
           repository: Ed-Fi-Alliance-OSS/Ed-Fi-Standard
           ref: ${{ env.standard_version }}
           path: Ed-Fi-ODS-Standard
 
       - name: Ed-Fi-Extension
-        uses: actions/checkout@v2
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
         with:
           path: Ed-Fi-TPDM-Extension   
           
@@ -142,7 +142,7 @@ jobs:
         working-directory: ${{ github.workspace }}/Ed-Fi-TPDM-Extension
         
       - name: Upload artifact
-        uses: actions/upload-artifact@v2.3.0
+        uses: actions/upload-artifact@e448a9b857ee2131e752b06002bf0e093c65e571
         with:
           name: EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
           path: NugetPackages\EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
