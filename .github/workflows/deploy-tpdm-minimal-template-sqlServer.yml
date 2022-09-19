@@ -20,7 +20,7 @@ jobs:
           NUGET_AUTH_TOKEN: ${{ secrets.TPDM_AA_PUBLISH }} 
 
       - name: Download package
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@1cf11afe3f1874cee82a8d5a2b45c0fd63f0fa22
         with:
           workflow: build-minimal-template-sqlServer.yml
           path: publish
