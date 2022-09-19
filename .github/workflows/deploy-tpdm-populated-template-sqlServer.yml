@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@a71d1eb2c86af85faa8c772c03fb365e377e45ea
         with:
           source-url: ${{ env.AZURE_ARTIFACTS_FEED_URL }}
         env:
