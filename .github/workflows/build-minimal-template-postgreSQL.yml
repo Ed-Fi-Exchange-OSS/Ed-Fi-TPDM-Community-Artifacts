@@ -2,16 +2,35 @@ name: build TPDM Minimal Template postgreSQL
 
 on:
   workflow_dispatch:
+    inputs:
+      version_suite:
+        type: number
+        required: true
+      version_major:
+        type: number
+        required: true
+      version_minor:
+        type: number
+        required: true
+      standard_version:
+        type: string
+        required: true
+      tpdm_package_version:
+        type: string
+        required: true
 
 env:
   version_suite: 3
   version_major: 5
   version_minor: 3
-  version_patch: ${{ format('{0}{1}', github.run_number , github.run_attempt) }}
   tpdm_version: 1.1.0
+  tpdm_package_version: 5.3.561
   standard_version: v3.3.1-b
 
 jobs:
+  ed-fi-repository-scanner:    
+    uses: ed-fi-alliance-oss/ed-fi-actions/.github/workflows/repository-scanner.yml@latest
+    
   build:
     runs-on: windows-latest
           
@@ -19,53 +38,75 @@ jobs:
       - name: Set env variables
         shell: pwsh
         run: |
-          echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
-          echo "version_core=${{ format('{0}.{1}.{2}', env.version_major, env.version_minor , env.version_patch) }}" >> $env:GITHUB_ENV
+          $version_patch = ${{ format('{0}{1}', github.run_number , github.run_attempt) }}
+          if ("${{ github.event_name }}" -eq "workflow_dispatch") {
+            echo "version_informational=${{ format('v{0}.{1}', github.event.inputs.version_major , github.event.inputs.version_minor ) }}" >> $env:GITHUB_ENV
+            echo ("version_core=${{ format('{0}.{1}', github.event.inputs.version_major, github.event.inputs.version_minor) }}." + "$version_patch") >> $env:GITHUB_ENV
+            echo "standard_version=${{ github.event.inputs.standard_version }}" >> $env:GITHUB_ENV
+            echo "tpdm_package_version=${{ github.event.inputs.tpdm_package_version }}" >> $env:GITHUB_ENV
+          } else {
+            echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
+            echo ("version_core=${{ format('{0}.{1}', env.version_major, env.version_minor) }}." + "$version_patch") >> $env:GITHUB_ENV
+          }
           echo "temp=${{ github.workspace }}\temp" >> $env:GITHUB_ENV
           
       - name: Git long filename support
         run: git config --system core.longpaths true
         
-      - uses: actions/checkout@v2
-        with:
-          repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation
-          ref: ${{ env.version_informational }}
-          path: Ed-Fi-ODS-Implementation
-        
-      - name: Workarounds for file copy
-        run: |
-          (get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1 -Raw).replace('-Destination "$directory\$xmlFile"', '-Destination "$directory\$($xmlFile.Name)"').replace('-Destination "$directory\$xsdFile"', '-Destination "$directory\$($xsdFile.Name)"') | set-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
-        
-      - uses: actions/checkout@v2
+
+      - name: Ed-Fi-ODS
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
         with:
           repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS
           ref: ${{ env.version_informational }}
           path: Ed-Fi-ODS
 
-      - uses: actions/checkout@v2
+      - name: Ed-Fi-ODS-Implementation
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+        with:
+          repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation
+          ref: ${{ env.version_informational }}
+          path: Ed-Fi-ODS-Implementation
+          
+      - name: Ed-Fi-Standard
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
         with:
           repository: Ed-Fi-Alliance-OSS/Ed-Fi-Standard
           ref: ${{ env.standard_version }}
           path: Ed-Fi-ODS-Standard
 
-      - uses: actions/checkout@v2
+      - name: Ed-Fi-Extension
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
         with:
-          path: Ed-Fi-TPDM-Extension
+          path: Ed-Fi-TPDM-Extension   
           
+      - name: Workaround for duplicake package references in EdFi.Ods.Sandbox.csproj
+        run: |
+          $f = Get-Content .\EdFi.Ods.Sandbox.csproj -Raw
+          $first_part = $f | Select-String -Pattern '(?s)^.*?(?=\<PackageReference)' | Foreach {$_.matches.value} | Out-String
+          $unique_packages = $f | Select-String -allmatches -Pattern '(?m)^.*?<PackageReference.*$' | Foreach {$_.Matches.value} | Select-Object -Unique | Out-String
+          $last_part = $f | Select-String -Pattern '(?s)\<\/ItemGroup.*' | Foreach {$_.matches.value} | Out-String
+          $first_part + $unique_packages + $last_part > .\EdFi.Ods.Sandbox.csproj
+        working-directory: Ed-Fi-ODS\Application\EdFi.Ods.Sandbox
+        
+      - name: Workaround for file copy
+        run: |
+          (get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1 -Raw).replace('-Destination "$directory\$xmlFile"', '-Destination "$directory\$($xmlFile.Name)"').replace('-Destination "$directory\$xsdFile"', '-Destination "$directory\$($xsdFile.Name)"') | set-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
+      
+      - name: Replace package name and version in packages config
+        run: |
+          (Get-Content configuration.packages.json -Raw) `
+            -replace '(?ism)(?<="tpdm")(.*?)\d(.*?)Core\.(\d+.\d+\.\d+)(.*?)\d+.\d+\.\d+' `
+            , '${1}3$2Community.${{ env.tpdm_version }}${4}${{ env.tpdm_package_version }}' `
+            | Out-File configuration.packages.json
+        working-directory: ./Ed-Fi-ODS-Implementation
+        
       - name: Install PostgreSQL
         run: | 
           choco install postgresql11 --no-progress
           Stop-Service postgresql*
           Set-Content -Path "C:\Program Files\PostgreSQL\11\data\pg_hba.conf" -Value 'host    all    all    all    trust'
           Start-Service postgresql-x64-11
-          
-      - name: Replace package name in packages config
-        run: |
-          (Get-Content configuration.packages.json) `
-          -replace 'EdFi.Suite${{ env.version_suite }}.Ods.Extensions.TPDM.Core.${{ env.tpdm_version }}', 'EdFi.Suite${{ env.version_suite }}.Ods.Extensions.TPDM.Community.${{ env.tpdm_version }}' `
-          -replace '"PackageVersion": "5.3.38",','"PackageVersion": "5.3.67",' |
-          Out-File configuration.packages.json
-        working-directory: ./Ed-Fi-ODS-Implementation
         
       - name: Replace package name in create script
         run: |
@@ -108,7 +149,7 @@ jobs:
         working-directory: ${{ github.workspace }}/Ed-Fi-TPDM-Extension
         
       - name: Upload artifact
-        uses: actions/upload-artifact@v2.3.0
+        uses: actions/upload-artifact@e448a9b857ee2131e752b06002bf0e093c65e571
         with:
           name: EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.PostgreSQL.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
           path: NugetPackages\EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.PostgreSQL.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
