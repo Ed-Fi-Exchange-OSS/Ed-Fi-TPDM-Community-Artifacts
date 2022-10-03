@@ -1,6 +1,5 @@
 name: Test Nuget package
 on:
-  push:
   workflow_dispatch:
     inputs:
       version_suite:
@@ -38,8 +37,7 @@ jobs:
           if ("${{ github.event_name }}" -eq "workflow_dispatch") {
             echo "version_informational=${{ format('v{0}.{1}', github.event.inputs.version_major , github.event.inputs.version_minor ) }}" >> $env:GITHUB_ENV
             echo ("version_core=${{ format('{0}.{1}', github.event.inputs.version_major, github.event.inputs.version_minor) }}." + "$version_patch") >> $env:GITHUB_ENV
-            #echo "standard_version=${{ github.event.inputs.standard_version }}" >> $env:GITHUB_ENV
-            echo "tpdm_package_version=${{ github.event.inputs.tpdm_package_version }}" >> $env:GITHUB_ENV
+            echo "standard_version=${{ github.event.inputs.standard_version }}" >> $env:GITHUB_ENV
           } else {
             echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
             echo ("version_core=${{ format('{0}.{1}', env.version_major, env.version_minor) }}." + "$version_patch") >> $env:GITHUB_ENV
@@ -70,23 +68,11 @@ jobs:
           repository: Ed-Fi-Alliance-OSS/Ed-Fi-Standard
           ref: ${{ env.standard_version }}
           path: Ed-Fi-ODS-Standard
-          
+
       - name: Ed-Fi-Extension
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
         with:
           path: Ed-Fi-TPDM-Extension   
-          
-      - name: Download TPDM-Community-Extension Artifact
-        uses: dawidd6/action-download-artifact@1cf11afe3f1874cee82a8d5a2b45c0fd63f0fa22
-        with:
-          workflow: build-nuget-package.yml
-          repo: Ed-Fi-Exchange-OSS/TPDM-Community-Extension
-          path: Artifact
-      
-      - name: Rename Artifact folder
-        run: |
-          get-childitem -Path . -Directory -Filter "*" | Move-Item -Destination "NugetPackages"
-        working-directory: Artifact
           
       - name: Workaround for duplicake package references in EdFi.Ods.Sandbox.csproj
         run: |
@@ -97,10 +83,18 @@ jobs:
           $first_part + $unique_packages + $last_part > .\EdFi.Ods.Sandbox.csproj
         working-directory: Ed-Fi-ODS\Application\EdFi.Ods.Sandbox
         
-      - name: Workaround for file copy
+      - name: Download TPDM-Community-Extension Artifact
+        uses: dawidd6/action-download-artifact@1cf11afe3f1874cee82a8d5a2b45c0fd63f0fa22
+        with:
+          workflow: build-nuget-package.yml
+          repo: Ed-Fi-Exchange-OSS/TPDM-Community-Extension
+          path: Artifact
+
+      - name: Rename Artifact folder
         run: |
-          (get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1 -Raw).replace('-Destination "$directory\$xmlFile"', '-Destination "$directory\$($xmlFile.Name)"').replace('-Destination "$directory\$xsdFile"', '-Destination "$directory\$($xsdFile.Name)"') | set-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
-      
+          get-childitem -Path . -Directory -Filter "*" | Move-Item -Destination "NugetPackages"
+        working-directory: Artifact
+
       - name: Replace package name and version in packages config
         run: |
           $PackageSource = ('${{ github.workspace }}' -Replace '\\', '/') + '/Artifact/NugetPackages/"'
@@ -110,9 +104,11 @@ jobs:
             | Out-File configuration.packages.json
           (Get-Content configuration.packages.json) | sls '"tpdm"' -Context 0,3
           
-        working-directory: ./Ed-Fi-ODS-Implementation
-     
- 
+        
+      - name: Workaround for file copy
+        run: |
+          (get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1 -Raw).replace('-Destination "$directory\$xmlFile"', '-Destination "$directory\$($xmlFile.Name)"').replace('-Destination "$directory\$xsdFile"', '-Destination "$directory\$($xsdFile.Name)"') | set-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
+      
       - name: Replace package name in create script
         run: |
           (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1) `
@@ -138,5 +134,5 @@ jobs:
       - name: Create Database Template
         run: |
           Import-Module -Force -Scope Global ${{ github.workspace }}\Ed-Fi-ODS-Implementation\DatabaseTemplate\Modules\create-tpdm-template.psm1
-          Initialize-TPDMTemplate -samplePath "${{ github.workspace }}\Ed-Fi-TPDM-Extension\"
+          Initialize-TPDMTemplate -samplePath "D:\a\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Extension\"
         working-directory: ./Ed-Fi-TPDM-Extension
