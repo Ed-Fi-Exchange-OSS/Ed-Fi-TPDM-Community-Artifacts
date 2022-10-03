@@ -59,10 +59,14 @@ jobs:
           repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation
           ref: ${{ env.version_informational }}
           path: Ed-Fi-ODS-Implementation
+  
+      - name: Ed-Fi-Extension
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+        with:
+          path: Ed-Fi-TPDM-Extension   
           
       - name: Download TPDM-Community-Extension Artifact
         uses: dawidd6/action-download-artifact@1cf11afe3f1874cee82a8d5a2b45c0fd63f0fa22
-        
         with:
           workflow: build-nuget-package.yml
           repo: Ed-Fi-Exchange-OSS/TPDM-Community-Extension
@@ -123,5 +127,5 @@ jobs:
       - name: Create Database Template
         run: |
           Import-Module -Force -Scope Global ${{ github.workspace }}\Ed-Fi-ODS-Implementation\DatabaseTemplate\Modules\create-tpdm-template.psm1
-          Initialize-TPDMTemplate -samplePath "D:\a\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Extension\"
+          Initialize-TPDMTemplate -samplePath ".\"
         working-directory: ./Ed-Fi-TPDM-Extension
