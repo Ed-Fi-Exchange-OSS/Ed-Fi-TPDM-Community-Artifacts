@@ -127,5 +127,5 @@ jobs:
       - name: Create Database Template
         run: |
           Import-Module -Force -Scope Global ${{ github.workspace }}\Ed-Fi-ODS-Implementation\DatabaseTemplate\Modules\create-tpdm-template.psm1
-          Initialize-TPDMTemplate -samplePath ".\"
+          Initialize-TPDMTemplate -samplePath "${{ github.workspace }}\Ed-Fi-TPDM-Extension\"
         working-directory: ./Ed-Fi-TPDM-Extension
