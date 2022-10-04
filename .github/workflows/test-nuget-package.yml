@@ -1,31 +1,21 @@
 name: Test Nuget package
 
 on:
-  push:
   workflow_dispatch:
     inputs:
-      version_suite:
-        type: number
-        required: true
-      version_major:
-        type: number
-        required: true
-      version_minor:
-        type: number
-        required: true
+      tpdm_version:
+        type: string
+        description: "tpdm_version: TPDM version as noted in the Community Extension built nuget package artifact."
       Ed-Fi-ODS-ref:
         type: string
         required: false
-        description: "Ed-Fi-ODS-ref: checks out the specified branch/tag of the Ed-Fi-ODS repo (ignores versions)"
+        description: "Ed-Fi-ODS-ref: checks out the specified branch/tag of the Ed-Fi-ODS repo"
       Ed-Fi-ODS-Implementation-ref:
         type: string
         required: false
-        description: "Ed-Fi-ODS-Implementation-ref: checks out the specified branch/tag of the Ed-Fi-ODS-Implementation repo (ignores versions)"
+        description: "Ed-Fi-ODS-Implementation-ref: checks out the specified branch/tag of the Ed-Fi-ODS-Implementation repo"
 
 env:
-  version_suite: 3
-  version_major: 6
-  version_minor: 0
   tpdm_version: 1.1.0
   ods_ref: "ODS-5569"
   ods_ref_implementation: "ODS-5569"
@@ -42,21 +32,11 @@ jobs:
         shell: pwsh
         run: |
           $version_patch = ${{ format('{0}{1}', github.run_number , github.run_attempt) }}
-          if ("${{ github.event_name }}" -eq "workflow_dispatch") {
-            echo "version_informational=${{ format('v{0}.{1}', github.event.inputs.version_major , github.event.inputs.version_minor ) }}" >> $env:GITHUB_ENV
-            echo ("version_core=${{ format('{0}.{1}', github.event.inputs.version_major, github.event.inputs.version_minor) }}." + "$version_patch") >> $env:GITHUB_ENV
-            echo "standard_version=${{ github.event.inputs.standard_version }}" >> $env:GITHUB_ENV
-            if ("${{ github.event.inputs.Ed-Fi-ODS-ref  }}" -ne "") {
-              echo "ods_ref=${{ github.event.inputs.Ed-Fi-ODS-ref }}" >> $env:GITHUB_ENV
-            }
-            if ("${{ github.event.inputs.Ed-Fi-ODS-Implementation-ref  }}" -ne "") {
-              echo "ods_ref_implementation=${{ github.event.inputs.Ed-Fi-ODS-Implementation-ref }}" >> $env:GITHUB_ENV
-            }
-          } else {
-            #echo "ods_ref=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
-            #echo "ods_ref_implementation=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
-            echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
-            echo ("version_core=${{ format('{0}.{1}', env.version_major, env.version_minor) }}." + "$version_patch") >> $env:GITHUB_ENV
+          if ("${{ github.event.inputs.Ed-Fi-ODS-ref  }}" -ne "") {
+            echo "ods_ref=${{ github.event.inputs.Ed-Fi-ODS-ref }}" >> $env:GITHUB_ENV
+          }
+          if ("${{ github.event.inputs.Ed-Fi-ODS-Implementation-ref  }}" -ne "") {
+            echo "ods_ref_implementation=${{ github.event.inputs.Ed-Fi-ODS-Implementation-ref }}" >> $env:GITHUB_ENV
           }
           echo "temp=${{ github.workspace }}\temp" >> $env:GITHUB_ENV
           
