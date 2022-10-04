@@ -13,16 +13,22 @@ on:
       version_minor:
         type: number
         required: true
-      standard_version:
+      Ed-Fi-ODS-ref:
         type: string
-        required: true
+        required: false
+        description: "Ed-Fi-ODS-ref: checks out the specified branch/tag of the Ed-Fi-ODS repo (ignores versions)"
+      Ed-Fi-ODS-Implementation-ref:
+        type: string
+        required: false
+        description: "Ed-Fi-ODS-Implementation-ref: checks out the specified branch/tag of the Ed-Fi-ODS-Implementation repo (ignores versions)"
 
 env:
   version_suite: 3
   version_major: 6
   version_minor: 0
   tpdm_version: 1.1.0
-  standard_version: v4.0.0-a
+  ods_ref: "ODS-5569"
+  ods_ref_implementation: "ODS-5569"
 
 jobs:
   ed-fi-repository-scanner:    
@@ -40,7 +46,15 @@ jobs:
             echo "version_informational=${{ format('v{0}.{1}', github.event.inputs.version_major , github.event.inputs.version_minor ) }}" >> $env:GITHUB_ENV
             echo ("version_core=${{ format('{0}.{1}', github.event.inputs.version_major, github.event.inputs.version_minor) }}." + "$version_patch") >> $env:GITHUB_ENV
             echo "standard_version=${{ github.event.inputs.standard_version }}" >> $env:GITHUB_ENV
+            if ("${{ github.event.inputs.Ed-Fi-ODS-ref  }}" -ne "") {
+              echo "ods_ref=${{ github.event.inputs.Ed-Fi-ODS-ref }}" >> $env:GITHUB_ENV
+            }
+            if ("${{ github.event.inputs.Ed-Fi-ODS-Implementation-ref  }}" -ne "") {
+              echo "ods_ref_implementation=${{ github.event.inputs.Ed-Fi-ODS-Implementation-ref }}" >> $env:GITHUB_ENV
+            }
           } else {
+            echo "ods_ref=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
+            echo "ods_ref_implementation=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
             echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
             echo ("version_core=${{ format('{0}.{1}', env.version_major, env.version_minor) }}." + "$version_patch") >> $env:GITHUB_ENV
           }
@@ -54,22 +68,16 @@ jobs:
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
         with:
           repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS
-          ref: ${{ env.version_informational }}
+          ref: ${{ env.ods_ref }}
           path: Ed-Fi-ODS
 
       - name: Ed-Fi-ODS-Implementation
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
         with:
           repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation
-          ref: ${{ env.version_informational }}
+          ref: ${{ env.ods_ref_implementation }}
           path: Ed-Fi-ODS-Implementation
           
-      - name: Ed-Fi-Standard
-        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
-        with:
-          repository: Ed-Fi-Alliance-OSS/Ed-Fi-Standard
-          ref: ${{ env.standard_version }}
-          path: Ed-Fi-ODS-Standard
 
       - name: Ed-Fi-Extension
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
