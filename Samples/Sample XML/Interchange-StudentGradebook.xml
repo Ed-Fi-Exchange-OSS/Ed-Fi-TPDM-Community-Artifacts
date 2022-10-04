@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <InterchangeStudentGradebook xmlns:ann="http://ed-fi.org/annotation" xmlns="http://ed-fi.org/3.3.1-b" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/3.3.1-b ../../Schemas/Bulk/EXTENSION-Interchange-StudentGradebook-Extension.xsd">
 	<GradebookEntry>
-		<GradebookEntryTitle>Assignment 1</GradebookEntryTitle>
+		<GradebookEntryIdentifier>95907100001</GradebookEntryIdentifier>
+		<Namespace>uri://tpdm.ed-fi.org/</Namespace>
+		<Title>Assignment 1</Title>
+		<SourceSectionIdentifier>25590100102Trad220ALG112011</SourceSectionIdentifier>
 		<DateAssigned>2010-08-23</DateAssigned>
 		<SectionReference>
 			<SectionIdentity>
@@ -32,7 +35,10 @@
 		<DueDate>2010-11-02</DueDate>
 	</GradebookEntry>
 	<GradebookEntry>
-		<GradebookEntryTitle>Assignment 2</GradebookEntryTitle>
+		<GradebookEntryIdentifier>95907100002</GradebookEntryIdentifier>
+		<Namespace>uri://tpdm.ed-fi.org/</Namespace>
+		<SourceSectionIdentifier>25590100102Trad220ALG112011</SourceSectionIdentifier>
+		<Title>Assignment 2</Title>
 		<DateAssigned>2010-08-26</DateAssigned>
 		<SectionReference>
 			<SectionIdentity>
@@ -63,7 +69,10 @@
 		<DueDate>2011-04-05</DueDate>
 	</GradebookEntry>
 	<GradebookEntry>
-		<GradebookEntryTitle>Assignment 3</GradebookEntryTitle>
+		<GradebookEntryIdentifier>95907100003</GradebookEntryIdentifier>
+		<Namespace>uri://tpdm.ed-fi.org/</Namespace>
+		<SourceSectionIdentifier>25590100102Trad220ALG112011</SourceSectionIdentifier>
+		<Title>Assignment 3</Title>
 		<DateAssigned>2010-09-01</DateAssigned>
 		<SectionReference>
 			<SectionIdentity>
@@ -94,8 +103,11 @@
 		<DueDate>2010-11-07</DueDate>
 	</GradebookEntry>
 	<GradebookEntry>
-		<GradebookEntryTitle>Quiz 1</GradebookEntryTitle>
+		<Title>Quiz 1</Title>
 		<DateAssigned>2010-09-07</DateAssigned>
+		<GradebookEntryIdentifier>95907100004</GradebookEntryIdentifier>
+		<Namespace>uri://tpdm.ed-fi.org/</Namespace>
+		<SourceSectionIdentifier>25590100102Trad220ALG112011</SourceSectionIdentifier>
 		<SectionReference>
 			<SectionIdentity>
 				<SectionIdentifier>25590100102Trad220ALG112011</SectionIdentifier>
@@ -125,8 +137,11 @@
 		<DueDate>2010-11-14</DueDate>
 	</GradebookEntry>
 	<GradebookEntry>
-		<GradebookEntryTitle>Assignment 4</GradebookEntryTitle>
+		<Title>Assignment 4</Title>
 		<DateAssigned>2010-09-10</DateAssigned>
+		<GradebookEntryIdentifier>95907100005</GradebookEntryIdentifier>
+		<Namespace>uri://tpdm.ed-fi.org</Namespace>
+		<SourceSectionIdentifier>25590100102Trad220ALG112011</SourceSectionIdentifier>
 		<SectionReference>
 			<SectionIdentity>
 				<SectionIdentifier>25590100102Trad220ALG112011</SectionIdentifier>
@@ -156,8 +171,11 @@
 		<DueDate>2010-11-26</DueDate>
 	</GradebookEntry>
 	<GradebookEntry>
-		<GradebookEntryTitle>Assignment 5</GradebookEntryTitle>
+		<Title>Assignment 5</Title>
 		<DateAssigned>2010-09-15</DateAssigned>
+		<GradebookEntryIdentifier>95907100006</GradebookEntryIdentifier>
+		<Namespace>uri://tpdm.ed-fi.org/</Namespace>
+		<SourceSectionIdentifier>25590100102Trad220ALG112011</SourceSectionIdentifier>
 		<SectionReference>
 			<SectionIdentity>
 				<SectionIdentifier>25590100102Trad220ALG112011</SectionIdentifier>
@@ -187,7 +205,10 @@
 		<DueDate>2010-12-07</DueDate>
 	</GradebookEntry>
 	<GradebookEntry>
-		<GradebookEntryTitle>Assignment 6</GradebookEntryTitle>
+		<Title>Assignment 6</Title>
+		<GradebookEntryIdentifier>95907100007</GradebookEntryIdentifier>
+		<Namespace>uri://tpdm.ed-fi.org/</Namespace>
+		<SourceSectionIdentifier>25590100102Trad220ALG112011</SourceSectionIdentifier>
 		<DateAssigned>2010-09-21</DateAssigned>
 		<SectionReference>
 			<SectionIdentity>
@@ -218,7 +239,10 @@
 		<DueDate>2011-03-17</DueDate>
 	</GradebookEntry>
 	<GradebookEntry>
-		<GradebookEntryTitle>Unit 1 Test</GradebookEntryTitle>
+		<Title>Unit 1 Test</Title>
+		<GradebookEntryIdentifier>95907100008</GradebookEntryIdentifier>
+		<Namespace>uri://tpdm.ed-fi.org/</Namespace>
+		<SourceSectionIdentifier>25590100102Trad220ALG112011</SourceSectionIdentifier>
 		<DateAssigned>2010-09-29</DateAssigned>
 		<SectionReference>
 			<SectionIdentity>
@@ -249,7 +273,10 @@
 		<DueDate>2011-02-08</DueDate>
 	</GradebookEntry>
 	<GradebookEntry>
-		<GradebookEntryTitle>Assignment 7</GradebookEntryTitle>
+		<Title>Assignment 7</Title>
+		<GradebookEntryIdentifier>95907100009</GradebookEntryIdentifier>
+		<Namespace>uri://tpdm.ed-fi.org/</Namespace>
+		<SourceSectionIdentifier>25590100102Trad220ALG112011</SourceSectionIdentifier>
 		<DateAssigned>2010-09-30</DateAssigned>
 		<SectionReference>
 			<SectionIdentity>
@@ -280,7 +307,10 @@
 		<DueDate>2010-08-29</DueDate>
 	</GradebookEntry>
 	<GradebookEntry>
-		<GradebookEntryTitle>Assignment 8</GradebookEntryTitle>
+		<Title>Assignment 8</Title>
+		<GradebookEntryIdentifier>95907100010</GradebookEntryIdentifier>
+		<Namespace>uri://tpdm.ed-fi.org/</Namespace>
+		<SourceSectionIdentifier>25590100102Trad220ALG112011</SourceSectionIdentifier>
 		<DateAssigned>2010-10-01</DateAssigned>
 		<SectionReference>
 			<SectionIdentity>
