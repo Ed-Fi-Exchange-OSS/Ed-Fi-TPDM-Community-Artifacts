@@ -12,24 +12,22 @@ on:
       version_minor:
         type: number
         required: true
-      standard_version:
-        type: string
-        required: true
       tpdm_package_version:
         type: string
         required: true
 
 env:
   version_suite: 3
-  version_major: 5
-  version_minor: 3
+  version_major: 6
+  version_minor: 0
   tpdm_version: 1.1.0
-  tpdm_package_version: 5.3.561
-  standard_version: v3.3.1-b
+  tpdm_package_version: 6.0.1551
 
 jobs:
   ed-fi-repository-scanner:    
     uses: ed-fi-alliance-oss/ed-fi-actions/.github/workflows/repository-scanner.yml@latest
+    with:
+      config-file-path: ./.github/workflows/bidi-scanner/config.json
     
   build:
     runs-on: windows-latest
@@ -42,7 +40,6 @@ jobs:
           if ("${{ github.event_name }}" -eq "workflow_dispatch") {
             echo "version_informational=${{ format('v{0}.{1}', github.event.inputs.version_major , github.event.inputs.version_minor ) }}" >> $env:GITHUB_ENV
             echo ("version_core=${{ format('{0}.{1}', github.event.inputs.version_major, github.event.inputs.version_minor) }}." + "$version_patch") >> $env:GITHUB_ENV
-            echo "standard_version=${{ github.event.inputs.standard_version }}" >> $env:GITHUB_ENV
             echo "tpdm_package_version=${{ github.event.inputs.tpdm_package_version }}" >> $env:GITHUB_ENV
           } else {
             echo "version_informational=${{ format('v{0}.{1}', env.version_major , env.version_minor ) }}" >> $env:GITHUB_ENV
@@ -68,13 +65,6 @@ jobs:
           ref: ${{ env.version_informational }}
           path: Ed-Fi-ODS-Implementation
           
-      - name: Ed-Fi-Standard
-        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
-        with:
-          repository: Ed-Fi-Alliance-OSS/Ed-Fi-Standard
-          ref: ${{ env.standard_version }}
-          path: Ed-Fi-ODS-Standard
-
       - name: Ed-Fi-Extension
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
         with:
