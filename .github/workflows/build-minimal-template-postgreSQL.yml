@@ -23,10 +23,7 @@ env:
   tpdm_package_version: 6.0.1551
   standard_version: 4.0.0-a
 
-jobs:
-  ed-fi-repository-scanner:    
-    uses: ed-fi-alliance-oss/ed-fi-actions/.github/workflows/repository-scanner.yml@latest
-    
+jobs:    
   build:
     runs-on: windows-latest
           
