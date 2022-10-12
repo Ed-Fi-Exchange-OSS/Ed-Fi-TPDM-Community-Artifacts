@@ -103,10 +103,10 @@ jobs:
         
       - name: Install PostgreSQL
         run: | 
-          choco install postgresql11 --no-progress
+          choco install postgresql13 --no-progress
           Stop-Service postgresql*
-          Set-Content -Path "C:\Program Files\PostgreSQL\11\data\pg_hba.conf" -Value 'host    all    all    all    trust'
-          Start-Service postgresql-x64-11
+          Set-Content -Path "C:\Program Files\PostgreSQL\13\data\pg_hba.conf" -Value 'host    all    all    all    trust'
+          Start-Service postgresql-x64-13
         
       - name: Replace package name in create script
         run: |
