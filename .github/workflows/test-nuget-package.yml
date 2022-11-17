@@ -1,24 +1,25 @@
-name: Test Nuget package
+name: Test Community Extension package (unpublished)
 
 on:
   workflow_dispatch:
     inputs:
       tpdm_version:
         type: string
-        description: "tpdm_version: TPDM version as noted in the Community Extension built nuget package artifact."
+        required: false
+        description: "tpdm_version: TPDM version as noted in the Community Extension built nuget package artifact. Default: 1.1.0"
       Ed-Fi-ODS-ref:
         type: string
         required: false
-        description: "Ed-Fi-ODS-ref: checks out the specified branch/tag of the Ed-Fi-ODS repo"
+        description: "Ed-Fi-ODS-ref: checks out the specified branch/tag of the Ed-Fi-ODS repo. Default branch if not specified."
       Ed-Fi-ODS-Implementation-ref:
         type: string
         required: false
-        description: "Ed-Fi-ODS-Implementation-ref: checks out the specified branch/tag of the Ed-Fi-ODS-Implementation repo"
+        description: "Ed-Fi-ODS-Implementation-ref: checks out the specified branch/tag of the Ed-Fi-ODS-Implementation repo. Default branch if not specified."
 
 env:
-  tpdm_version: 1.1.0
-  ods_ref: "ODS-5569"
-  ods_ref_implementation: "ODS-5569"
+  tpdm_version: "1.1.0"
+  ods_ref: ""
+  ods_ref_implementation: ""
 
 jobs:
   ed-fi-repository-scanner:    
@@ -34,6 +35,9 @@ jobs:
         shell: pwsh
         run: |
           $version_patch = ${{ format('{0}{1}', github.run_number , github.run_attempt) }}
+          if ("${{ github.event.inputs.tpdm_version  }}" -ne "") {
+            echo "tpdm_version=${{ github.event.inputs.tpdm_version }}" >> $env:GITHUB_ENV
+          }
           if ("${{ github.event.inputs.Ed-Fi-ODS-ref  }}" -ne "") {
             echo "ods_ref=${{ github.event.inputs.Ed-Fi-ODS-ref }}" >> $env:GITHUB_ENV
           }
