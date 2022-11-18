@@ -4,6 +4,10 @@ on:
   push:
   workflow_dispatch:
     inputs:
+      ODS_version:
+        type: string
+        required: false
+        description: "ODS_version: Ed-Fi ODS/API version. Default: 6.1"
       tpdm_version:
         type: string
         required: false
@@ -19,6 +23,8 @@ on:
 
 env:
   tpdm_version: "1.1.0"
+  version_suite: "3"
+  ODS_version: "6.1"
   ods_ref: ""
   ods_ref_implementation: ""
 
@@ -45,6 +51,10 @@ jobs:
           if ("${{ github.event.inputs.Ed-Fi-ODS-Implementation-ref  }}" -ne "") {
             echo "ods_ref_implementation=${{ github.event.inputs.Ed-Fi-ODS-Implementation-ref }}" >> $env:GITHUB_ENV
           }
+          if ("${{ github.event.inputs.ODS_version  }}" -ne "") {
+            echo "ODS_version=${{ github.event.inputs.ODS_version }}" >> $env:GITHUB_ENV
+          }
+          echo ("version_core="+ "$ODS_version" + "." + "$version_patch") >> $env:GITHUB_ENV
           echo "temp=${{ github.workspace }}\temp" >> $env:GITHUB_ENV
           
       - name: Git long filename support
@@ -125,12 +135,12 @@ jobs:
           -OutputDirectory ${{ github.workspace }}/NugetPackages `
           -Version ${{ env.version_core }} `
           -Properties configuration=release `
-          -Properties "authors=Ed-Fi Alliance" `
-          -Properties "owners=Ed-Fi Alliance" `
-          -Properties "copyright=Copyright ©Ed-Fi Alliance, LLC. 2020" `
-          -Properties id=EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }} `
-          -Properties title=EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }} `
-          -Properties "description=EdFi Ods Minimal Template TPDM Community Database" `
+          -Properties authors="Ed-Fi Alliance" `
+          -Properties owners="Ed-Fi Alliance" `
+          -Properties copyright="Copyright ©Ed-Fi Alliance, LLC. 2020" `
+          -Properties id="EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}" `
+          -Properties title="EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}" `
+          -Properties description="EdFi Ods Minimal Template TPDM Community Database" `
           -NoPackageAnalysis -NoDefaultExcludes
         working-directory: ${{ github.workspace }}/Ed-Fi-TPDM-Extension
         
