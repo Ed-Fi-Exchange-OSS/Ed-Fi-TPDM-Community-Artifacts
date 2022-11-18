@@ -54,7 +54,7 @@ jobs:
           if ("${{ github.event.inputs.ODS_version  }}" -ne "") {
             echo "ODS_version=${{ github.event.inputs.ODS_version }}" >> $env:GITHUB_ENV
           }
-          echo ("version_core="+ "$ODS_version" + "." + "$version_patch") >> $env:GITHUB_ENV
+          echo ("version_core=${{ env.ODS_version }}." + "$version_patch") >> $env:GITHUB_ENV
           echo "temp=${{ github.workspace }}\temp" >> $env:GITHUB_ENV
           
       - name: Git long filename support
