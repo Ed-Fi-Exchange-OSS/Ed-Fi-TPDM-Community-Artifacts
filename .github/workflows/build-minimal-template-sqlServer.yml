@@ -1,7 +1,6 @@
 name: build TPDM Minimal Template sqlServer
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       ODS_version:
@@ -80,7 +79,7 @@ jobs:
         with:
           path: Ed-Fi-TPDM-Extension   
           
-      - name: Workaround for duplicake package references in EdFi.Ods.Sandbox.csproj
+      - name: Workaround for duplicate package references in EdFi.Ods.Sandbox.csproj
         run: |
           $f = Get-Content .\EdFi.Ods.Sandbox.csproj -Raw
           $first_part = $f | Select-String -Pattern '(?s)^.*?(?=\<PackageReference)' | Foreach {$_.matches.value} | Out-String

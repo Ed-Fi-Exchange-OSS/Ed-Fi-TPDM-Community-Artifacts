@@ -2,7 +2,11 @@ name: build TPDM Minimal Template postgreSQL
 
 on:
   workflow_dispatch:
-    inputs:
+    inputs:      
+      ODS_version:
+        type: string
+        required: false
+        description: "ODS_version: Ed-Fi ODS/API version. Default: 6.1"
       tpdm_version:
         type: string
         required: false
@@ -20,6 +24,7 @@ env:
   tpdm_version: "1.1.0"
   ods_ref: ""
   ods_ref_implementation: ""
+  ODS_version: "6.1"
 
 
 jobs:
@@ -45,6 +50,10 @@ jobs:
           if ("${{ github.event.inputs.Ed-Fi-ODS-Implementation-ref  }}" -ne "") {
             echo "ods_ref_implementation=${{ github.event.inputs.Ed-Fi-ODS-Implementation-ref }}" >> $env:GITHUB_ENV
           }
+          if ("${{ github.event.inputs.ODS_version  }}" -ne "") {
+            echo "ODS_version=${{ github.event.inputs.ODS_version }}" >> $env:GITHUB_ENV
+          }
+          echo ("version_core=${{ env.ODS_version }}." + "$version_patch") >> $env:GITHUB_ENV
           echo "temp=${{ github.workspace }}\temp" >> $env:GITHUB_ENV
           
       - name: Git long filename support
@@ -70,7 +79,7 @@ jobs:
         with:
           path: Ed-Fi-TPDM-Extension   
           
-      - name: Workaround for duplicake package references in EdFi.Ods.Sandbox.csproj
+      - name: Workaround for duplicate package references in EdFi.Ods.Sandbox.csproj
         run: |
           $f = Get-Content .\EdFi.Ods.Sandbox.csproj -Raw
           $first_part = $f | Select-String -Pattern '(?s)^.*?(?=\<PackageReference)' | Foreach {$_.matches.value} | Out-String
