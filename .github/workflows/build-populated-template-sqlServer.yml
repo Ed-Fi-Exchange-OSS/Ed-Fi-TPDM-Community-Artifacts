@@ -98,7 +98,7 @@ jobs:
       - name: Replace package name in create script
         run: |
           (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1) `
-          -replace 'EdFi.Ods.Populated.Template.TPDM.Core', 'EdFi.Ods.Populated.Template.TPDM.Community' ` |
+          -replace 'Core', 'Community' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1
       
       - name: Install SQL Server
@@ -142,4 +142,4 @@ jobs:
         uses: actions/upload-artifact@e448a9b857ee2131e752b06002bf0e093c65e571
         with:
           name: EdFi.Suite${{ env.version_suite }}.Ods.Populated.Template.TPDM.Community.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
-          path: NugetPackages\EdFi.Suite${{ env.version_suite }}.Ods.Populated.Template.TPDM.Community.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
+          path: NugetPackages\EdFi.Suite${{ env.version_suite }}.Ods.Populated.Template.TPDM.Community.${{ env.version_core }}.nupkg
