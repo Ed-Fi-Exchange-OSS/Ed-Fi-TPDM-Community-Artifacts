@@ -104,7 +104,7 @@ jobs:
       - name: Replace package name in create script
         run: |
           (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
-          -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Minimal.Template.TPDM.Community' ` |
+          -replace 'Core', 'Community' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
           
       - name: Remove Ed-Fi Databases
@@ -145,4 +145,4 @@ jobs:
         uses: actions/upload-artifact@e448a9b857ee2131e752b06002bf0e093c65e571
         with:
           name: EdFi.Suite3.Ods.Minimal.Template.TPDM.Community.PostgreSQL.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
-          path: NugetPackages\EdFi.Suite3.Ods.Minimal.Template.TPDM.Community.PostgreSQL.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
+          path: NugetPackages\EdFi.Suite3.Ods.Minimal.Template.TPDM.Community.PostgreSQL.${{ env.version_core }}.nupkg
