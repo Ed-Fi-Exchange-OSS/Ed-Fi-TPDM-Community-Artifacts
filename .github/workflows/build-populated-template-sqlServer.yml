@@ -25,6 +25,7 @@ env:
   ods_ref: ""
   ods_ref_implementation: ""
   ODS_version: "6.1"
+  version_suite: "3"
 
 
 jobs:
