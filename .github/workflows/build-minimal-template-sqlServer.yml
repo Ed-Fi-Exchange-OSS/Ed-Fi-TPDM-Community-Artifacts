@@ -122,6 +122,9 @@ jobs:
           Import-Module -Force -Scope Global ${{ github.workspace }}\Ed-Fi-ODS-Implementation\DatabaseTemplate\Modules\create-tpdm-minimal-template.psm1
           Initialize-TPDMMinimalTemplate -samplePath "D:\a\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Extension\"
         working-directory: ./Ed-Fi-TPDM-Extension
+        
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
 
       - name: Pack
         run: | 
