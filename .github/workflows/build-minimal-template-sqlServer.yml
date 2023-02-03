@@ -98,7 +98,7 @@ jobs:
       - name: Replace package name in create script
         run: |
           (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
-          -replace 'EdFi.Ods.Minimal.Template.TPDM.Core', 'EdFi.Ods.Minimal.Template.TPDM.Community' ` |
+          -replace 'Core', 'Community' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
 
       - name: Install SQL Server
@@ -123,9 +123,6 @@ jobs:
           Initialize-TPDMMinimalTemplate -samplePath "D:\a\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Extension\"
         working-directory: ./Ed-Fi-TPDM-Extension
         
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-
       - name: Pack
         run: | 
           nuget pack ${{ github.workspace }}/Ed-Fi-ODS-Implementation/DatabaseTemplate/Database/EdFi.Ods.Minimal.Template.TPDM.Community.nuspec `
@@ -140,6 +137,9 @@ jobs:
           -Properties description="EdFi Ods Minimal Template TPDM Community Database" `
           -NoPackageAnalysis -NoDefaultExcludes
         working-directory: ${{ github.workspace }}/Ed-Fi-TPDM-Extension
+        
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
         
       - name: Upload artifact
         uses: actions/upload-artifact@e448a9b857ee2131e752b06002bf0e093c65e571
