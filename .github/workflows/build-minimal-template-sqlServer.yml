@@ -137,10 +137,7 @@ jobs:
           -Properties description="EdFi Ods Minimal Template TPDM Community Database" `
           -NoPackageAnalysis -NoDefaultExcludes
         working-directory: ${{ github.workspace }}/Ed-Fi-TPDM-Extension
-        
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        
+               
       - name: Upload artifact
         uses: actions/upload-artifact@e448a9b857ee2131e752b06002bf0e093c65e571
         with:
