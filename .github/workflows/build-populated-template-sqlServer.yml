@@ -28,11 +28,6 @@ env:
 
 
 jobs:
-  ed-fi-repository-scanner:    
-    uses: ed-fi-alliance-oss/ed-fi-actions/.github/workflows/repository-scanner.yml@latest
-    with:
-      config-file-path: ./.github/workflows/bidi-scanner/config.json
-      
   build:
     runs-on: windows-latest
           
