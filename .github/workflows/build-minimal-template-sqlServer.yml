@@ -139,7 +139,7 @@ jobs:
         working-directory: ${{ github.workspace }}/Ed-Fi-TPDM-Extension
                
       - name: Upload artifact
-        uses: actions/upload-artifact@e448a9b857ee2131e752b06002bf0e093c65e571
+        uses: actions/upload-artifact@v3 #e448a9b857ee2131e752b06002bf0e093c65e571
         with:
           name: EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
           path: NugetPackages\EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.version_core }}.nupkg
