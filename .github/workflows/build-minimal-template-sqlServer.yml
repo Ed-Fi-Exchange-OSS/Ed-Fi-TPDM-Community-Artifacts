@@ -138,9 +138,7 @@ jobs:
           -NoPackageAnalysis -NoDefaultExcludes
         working-directory: ${{ github.workspace }}/Ed-Fi-TPDM-Extension
      
-      #- name: Debugging with tmate
-      #  uses: mxschmitt/action-tmate@v3.14
-      - name: Create temp folder for upload artifact
+      - name: Create temp folder for upload artifact action
         run: | 
           mkdir temp
      
@@ -149,4 +147,3 @@ jobs:
         with:
           name: EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
           path: NugetPackages\*.nupkg 
-          #EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.version_core }}.nupkg

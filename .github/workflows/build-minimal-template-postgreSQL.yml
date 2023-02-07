@@ -142,8 +142,12 @@ jobs:
           -NoPackageAnalysis -NoDefaultExcludes
         working-directory: ${{ github.workspace }}/Ed-Fi-TPDM-Extension
         
+      - name: Create temp folder for upload artifact action
+        run: | 
+          mkdir temp
+        
       - name: Upload artifact
         uses: actions/upload-artifact@e448a9b857ee2131e752b06002bf0e093c65e571
         with:
           name: EdFi.Suite3.Ods.Minimal.Template.TPDM.Community.PostgreSQL.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
-          path: NugetPackages\EdFi.Suite3.Ods.Minimal.Template.TPDM.Community.PostgreSQL.${{ env.version_core }}.nupkg
+          path: NugetPackages\*.nupkg
