@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/5.0.0" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/5.0.0 ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+    <PlanMilestonePhaseDescriptor>
+        <CodeValue>Phase1</CodeValue>
+		<ShortDescription>Phase1</ShortDescription>
+		<Description>Phase1</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PlanMilestonePhaseDescriptor</Namespace>
+    </PlanMilestonePhaseDescriptor>
+    <PlanMilestonePhaseDescriptor>
+        <CodeValue>Phase2</CodeValue>
+		<ShortDescription>Phase2</ShortDescription>
+		<Description>Phase2</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PlanMilestonePhaseDescriptor</Namespace>
+    </PlanMilestonePhaseDescriptor>
+    <PlanMilestonePhaseDescriptor>
+        <CodeValue>Phase3</CodeValue>
+		<ShortDescription>Phase3</ShortDescription>
+		<Description>Phase3</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PlanMilestonePhaseDescriptor</Namespace>
+    </PlanMilestonePhaseDescriptor>
+    <PlanMilestonePhaseDescriptor>
+        <CodeValue>Phase4</CodeValue>
+		<ShortDescription>Phase4</ShortDescription>
+		<Description>Phase4</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PlanMilestonePhaseDescriptor</Namespace>
+    </PlanMilestonePhaseDescriptor>
+</InterchangeDescriptors>
