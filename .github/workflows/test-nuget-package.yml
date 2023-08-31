@@ -18,7 +18,7 @@ on:
         description: "Ed-Fi-ODS-Implementation-ref: checks out the specified branch/tag of the Ed-Fi-ODS-Implementation repo. Default branch if not specified."
 
 env:
-  tpdm_version: "1.1.0"
+  tpdm_version: "1.2.0"
   ods_ref: ""
   ods_ref_implementation: ""
 
@@ -52,14 +52,14 @@ jobs:
         
 
       - name: Ed-Fi-ODS
-        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
         with:
           repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS
           ref: ${{ env.ods_ref }}
           path: Ed-Fi-ODS
 
       - name: Ed-Fi-ODS-Implementation
-        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
         with:
           repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation
           ref: ${{ env.ods_ref_implementation }}
@@ -67,19 +67,11 @@ jobs:
           
 
       - name: Ed-Fi-Extension
-        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
         with:
           path: Ed-Fi-TPDM-Extension   
           
-      - name: Workaround for duplicake package references in EdFi.Ods.Sandbox.csproj
-        run: |
-          $f = Get-Content .\EdFi.Ods.Sandbox.csproj -Raw
-          $first_part = $f | Select-String -Pattern '(?s)^.*?(?=\<PackageReference)' | Foreach {$_.matches.value} | Out-String
-          $unique_packages = $f | Select-String -allmatches -Pattern '(?m)^.*?<PackageReference.*$' | Foreach {$_.Matches.value} | Select-Object -Unique | Out-String
-          $last_part = $f | Select-String -Pattern '(?s)\<\/ItemGroup.*' | Foreach {$_.matches.value} | Out-String
-          $first_part + $unique_packages + $last_part > .\EdFi.Ods.Sandbox.csproj
-        working-directory: Ed-Fi-ODS\Application\EdFi.Ods.Sandbox
-        
+       
       - name: Download TPDM-Community-Extension Artifact
         uses: dawidd6/action-download-artifact@1cf11afe3f1874cee82a8d5a2b45c0fd63f0fa22
         with:
