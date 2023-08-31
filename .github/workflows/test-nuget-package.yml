@@ -101,8 +101,8 @@ jobs:
       
       - name: Replace package name in create script
         run: |
-          (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1) `
-          -replace 'EdFi.Ods.Populated.Template.TPDM.Core', 'EdFi.Ods.Populated.Template.TPDM.Community' ` |
+          ((Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1) `
+          -replace 'Core', 'Community') -replace "1.1.0", "${{ env.tpdm_version }}" ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1
       
       - name: Install SQL Server
@@ -118,7 +118,7 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           ./Initialize-PowershellForDevelopment.ps1
-          Initialize-DevelopmentEnvironment -UsePlugins -NoDeploy -ExtensionVersion ${{ env.tpdm_version }}
+          Initialize-DevelopmentEnvironment -UsePlugins -NoDeploy
         working-directory: ./Ed-Fi-ODS-Implementation
           
       - name: Create Database Template
