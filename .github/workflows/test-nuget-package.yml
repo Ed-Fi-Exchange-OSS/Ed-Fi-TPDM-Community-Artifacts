@@ -24,7 +24,7 @@ env:
 
 jobs:
   ed-fi-repository-scanner:    
-    uses: ed-fi-alliance-oss/ed-fi-actions/.github/workflows/repository-scanner.yml@latest
+    uses: ed-fi-alliance-oss/ed-fi-actions/.github/workflows/repository-scanner.yml@main
     with:
      config-file-path: ./.github/workflows/bidi-scanner/config.json
     
@@ -89,7 +89,7 @@ jobs:
           $PackageSource = ('${{ github.workspace }}' -Replace '\\', '/') + '/Artifact/NugetPackages/"'
           (Get-Content configuration.packages.json -Raw) `
             -replace '(?ism)(EdFi\.Suite3\.Ods\.Extensions\.TPDM)\.Core\.({ExtensionVersion}\.Standard\.{StandardVersion}).*?(PackageSource\"\:.*?\},)' `
-            , "`${1}.Community.`$2`",`"PackageSource`":`"$PackageSource`"}," `
+            , "`${1}.Community.`$2`",`"PackageSource`":`"$PackageSource}," `
             | Out-File configuration.packages.json
           (Get-Content configuration.packages.json) | sls '"tpdm"' -Context 0,3
         working-directory: Ed-Fi-ODS-Implementation
