@@ -8,7 +8,7 @@ name: Pkg EdFi.Ods.Extensions.TPDM
 on:
   push:
     branches:
-      - main
+      - TPDMDEV-790-1
   
   workflow_dispatch:
     inputs:
