@@ -75,7 +75,7 @@ jobs:
       - name: Download TPDM-Community-Extension Artifact
         uses: dawidd6/action-download-artifact@1cf11afe3f1874cee82a8d5a2b45c0fd63f0fa22
         with:
-          workflow: build-nuget-package.yml
+          workflow: "Pkg EdFi.Ods.Extensions.TPDM.yml"
           repo: Ed-Fi-Exchange-OSS/TPDM-Community-Extension
           path: Artifact
 
@@ -93,16 +93,19 @@ jobs:
             | Out-File configuration.packages.json
           (Get-Content configuration.packages.json) | sls '"tpdm"' -Context 0,3
         working-directory: Ed-Fi-ODS-Implementation
-          
-        
-      - name: Workaround for file copy
+
+      - name: Add tpdm_version to valid set
         run: |
-          (get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1 -Raw).replace('-Destination "$directory\$xmlFile"', '-Destination "$directory\$($xmlFile.Name)"').replace('-Destination "$directory\$xsdFile"', '-Destination "$directory\$($xsdFile.Name)"') | set-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
-      
+          (Get-Content .\Application\SolutionScripts\InitializeDevelopmentEnvironment.psm1 -Raw) `
+            -replace "(ValidateSet\()(.*?)(\))", '${1}$2,''${{ env.tpdm_version }}''$3' ` |
+            Out-File .\Application\SolutionScripts\InitializeDevelopmentEnvironment.psm1
+          (Get-Content .\Application\SolutionScripts\InitializeDevelopmentEnvironment.psm1) | sls '"ExtensionVersion"' -Context 0,3
+        working-directory: Ed-Fi-ODS-Implementation
+          
       - name: Replace package name in create script
         run: |
           ((Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1) `
-          -replace 'Core', 'Community') -replace "1.1.0", "${{ env.tpdm_version }}" ` |
+          -replace 'Core', 'Community') -replace "(extensionVersion\s+\=\s+\').*?(\')", '${1}${{ env.tpdm_version }}$2' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1
       
       - name: Install SQL Server
@@ -118,11 +121,11 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           ./Initialize-PowershellForDevelopment.ps1
-          Initialize-DevelopmentEnvironment -UsePlugins -NoDeploy
+          Initialize-DevelopmentEnvironment -UsePlugins -NoDeploy -ExtensionVersion "${{ env.tpdm_version }}"
         working-directory: ./Ed-Fi-ODS-Implementation
           
       - name: Create Database Template
         run: |
           Import-Module -Force -Scope Global ${{ github.workspace }}\Ed-Fi-ODS-Implementation\DatabaseTemplate\Modules\create-tpdm-template.psm1
-          Initialize-TPDMTemplate -samplePath "D:\a\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Extension\"
+          Initialize-TPDMTemplate -samplePath "D:\a\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Extension\" -ExtensionVersion "${{ env.tpdm_version }}"
         working-directory: ./Ed-Fi-TPDM-Extension
