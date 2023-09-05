@@ -1,7 +1,6 @@
 name: Test Community Extension package (unpublished)
 
 on:
-
   workflow_dispatch:
     inputs:
       tpdm_version:
@@ -49,7 +48,6 @@ jobs:
           
       - name: Git long filename support
         run: git config --system core.longpaths true
-        
 
       - name: Ed-Fi-ODS
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
@@ -65,13 +63,11 @@ jobs:
           ref: ${{ env.ods_ref_implementation }}
           path: Ed-Fi-ODS-Implementation
           
-
       - name: Ed-Fi-Extension
         uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
         with:
           path: Ed-Fi-TPDM-Extension   
           
-       
       - name: Download TPDM-Community-Extension Artifact
         uses: dawidd6/action-download-artifact@1cf11afe3f1874cee82a8d5a2b45c0fd63f0fa22
         with:
@@ -99,7 +95,7 @@ jobs:
           (Get-Content .\Application\SolutionScripts\InitializeDevelopmentEnvironment.psm1 -Raw) `
             -replace "(ValidateSet\()(.*?)(\))", '${1}$2,''${{ env.tpdm_version }}''$3' ` |
             Out-File .\Application\SolutionScripts\InitializeDevelopmentEnvironment.psm1
-          (Get-Content .\Application\SolutionScripts\InitializeDevelopmentEnvironment.psm1) | sls '"ExtensionVersion"' -Context 0,3
+          (Get-Content .\Application\SolutionScripts\InitializeDevelopmentEnvironment.psm1) | sls 'ExtensionVersion' -Context 3,3
         working-directory: Ed-Fi-ODS-Implementation
           
       - name: Replace package name in create script
@@ -107,6 +103,7 @@ jobs:
           ((Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1) `
           -replace 'Core', 'Community') -replace "(extensionVersion\s+\=\s+\').*?(\')", '${1}${{ env.tpdm_version }}$2' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1
+          (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-template.psm1 | sls 'ExtensionVersion' -Context 0,3
       
       - name: Install SQL Server
         run: choco install sql-server-2019 --no-progress --params="'/IgnorePendingReboot'"
