@@ -24,6 +24,7 @@ env:
   tpdm_version: "1.2.0"
   version_suite: "3"
   ODS_version: "7.0"
+  data_standard: "5.0.0"
   ods_ref: ""
   ods_ref_implementation: ""
 
@@ -122,15 +123,15 @@ jobs:
         
       - name: Pack
         run: | 
-          nuget pack ${{ github.workspace }}/Ed-Fi-ODS-Implementation/DatabaseTemplate/Database/EdFi.Ods.Minimal.Template.TPDM.Community.nuspec `
+          nuget pack ${{ github.workspace }}/Ed-Fi-ODS-Implementation/DatabaseTemplate/Database/EdFi.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.Standard.${{ env.data_standard }}.nuspec `
           -OutputDirectory ${{ github.workspace }}/NugetPackages `
           -Version ${{ env.version_core }} `
           -Properties configuration=release `
           -Properties authors="Ed-Fi Alliance" `
           -Properties owners="Ed-Fi Alliance" `
           -Properties copyright="Copyright ©Ed-Fi Alliance, LLC. 2020" `
-          -Properties id="EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}" `
-          -Properties title="EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}" `
+          -Properties id="EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.Standard.${{ env.data_standard }}" `
+          -Properties title="EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.Standard.${{ env.data_standard }}" `
           -Properties description="EdFi Ods Minimal Template TPDM Community Database" `
           -NoPackageAnalysis -NoDefaultExcludes
         working-directory: ${{ github.workspace }}/Ed-Fi-TPDM-Extension
