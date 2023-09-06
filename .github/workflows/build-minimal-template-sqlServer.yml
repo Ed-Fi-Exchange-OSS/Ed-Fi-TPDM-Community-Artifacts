@@ -112,7 +112,7 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           ./Initialize-PowershellForDevelopment.ps1
-          #Initialize-DevelopmentEnvironment -UsePlugins -NoDeploy -ExtensionVersion "${{ env.tpdm_version }}"
+          Initialize-DevelopmentEnvironment -UsePlugins -NoDeploy -ExtensionVersion "${{ env.tpdm_version }}"
         working-directory: ./Ed-Fi-ODS-Implementation
           
       - name: Create Database Template
