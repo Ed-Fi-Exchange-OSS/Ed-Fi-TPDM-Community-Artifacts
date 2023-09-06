@@ -6,11 +6,11 @@ on:
       ODS_version:
         type: string
         required: false
-        description: "ODS_version: Ed-Fi ODS/API version. Default: 6.1"
+        description: "ODS_version: Ed-Fi ODS/API version. Default: 7.0"
       tpdm_version:
         type: string
         required: false
-        description: "tpdm_version: TPDM version as noted in the Community Extension built nuget package artifact. Default: 1.1.0"
+        description: "tpdm_version: TPDM version as noted in the Community Extension built nuget package artifact. Default: 1.2.0"
       Ed-Fi-ODS-ref:
         type: string
         required: false
@@ -21,9 +21,9 @@ on:
         description: "Ed-Fi-ODS-Implementation-ref: checks out the specified branch/tag of the Ed-Fi-ODS-Implementation repo. Default branch if not specified."
 
 env:
-  tpdm_version: "1.1.0"
+  tpdm_version: "1.2.0"
   version_suite: "3"
-  ODS_version: "6.1"
+  ODS_version: "7.0"
   ods_ref: ""
   ods_ref_implementation: ""
 
@@ -78,7 +78,7 @@ jobs:
         run: |
           (Get-Content configuration.packages.json -Raw) `
             -replace '(?ism)(EdFi\.Suite3\.Ods\.Extensions\.TPDM)\.Core\.({ExtensionVersion}\.Standard\.{StandardVersion})' `
-            , '`${1}.Community.`$2' `
+            , '${1}.Community.$2' `
             | Out-File configuration.packages.json
         working-directory: ./Ed-Fi-ODS-Implementation
        
@@ -95,6 +95,7 @@ jobs:
           (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
           -replace 'Core', 'Community' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
+          (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) | sls 'ExtensionVersion' -Context 0,3
 
       - name: Install SQL Server
         run: choco install sql-server-2019 --no-progress --params="'/IgnorePendingReboot'"
