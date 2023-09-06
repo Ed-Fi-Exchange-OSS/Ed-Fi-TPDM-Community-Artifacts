@@ -78,7 +78,7 @@ jobs:
         run: |
           (Get-Content configuration.packages.json -Raw) `
             -replace '(?ism)(EdFi\.Suite3\.Ods\.Extensions\.TPDM)\.Core\.({ExtensionVersion}\.Standard\.{StandardVersion})(.*?)(PackageVersion\"\:\s+\").*?(\"\,)' `
-            , '${1}.Community.$2$3$4latest$5' `
+            , '${1}.Community.$2$5' `
             | Out-File configuration.packages.json
             (Get-Content configuration.packages.json) | sls '"tpdm"' -Context 0,3
         working-directory: ./Ed-Fi-ODS-Implementation
