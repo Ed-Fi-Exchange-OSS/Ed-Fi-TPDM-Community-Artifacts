@@ -6,11 +6,11 @@ on:
       ODS_version:
         type: string
         required: false
-        description: "ODS_version: Ed-Fi ODS/API version. Default: 6.1"
+        description: "ODS_version: Ed-Fi ODS/API version. Default: 7.0"
       tpdm_version:
         type: string
         required: false
-        description: "tpdm_version: TPDM version as noted in the Community Extension built nuget package artifact. Default: 1.1.0"
+        description: "tpdm_version: TPDM version as noted in the Community Extension built nuget package artifact. Default: 1.2.0"
       Ed-Fi-ODS-ref:
         type: string
         required: false
@@ -21,13 +21,14 @@ on:
         description: "Ed-Fi-ODS-Implementation-ref: checks out the specified branch/tag of the Ed-Fi-ODS-Implementation repo. Default branch if not specified."
 
 env:
-  tpdm_version: "1.1.0"
+  tpdm_version: "1.2.0"
+  version_suite: "3"
+  ODS_version: "7.0"
+  data_standard: "5.0.0"
   ods_ref: ""
   ods_ref_implementation: ""
-  ODS_version: "6.1"
-  version_suite: "3"
 
-jobs:    
+jobs:  
   build:
     runs-on: windows-latest
           
@@ -52,61 +53,57 @@ jobs:
           echo "temp=${{ github.workspace }}\temp" >> $env:GITHUB_ENV
           
       - name: Git long filename support
-        run: git config --system core.longpaths true
-        
+        run: |
+          git config --system core.longpaths true
 
       - name: Ed-Fi-ODS
-        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
         with:
           repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS
           ref: ${{ env.ods_ref }}
           path: Ed-Fi-ODS
 
       - name: Ed-Fi-ODS-Implementation
-        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
         with:
           repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation
           ref: ${{ env.ods_ref_implementation }}
           path: Ed-Fi-ODS-Implementation
           
       - name: Ed-Fi-Extension
-        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
         with:
           path: Ed-Fi-TPDM-Extension   
           
-      - name: Workaround for duplicate package references in EdFi.Ods.Sandbox.csproj
-        run: |
-          $f = Get-Content .\EdFi.Ods.Sandbox.csproj -Raw
-          $first_part = $f | Select-String -Pattern '(?s)^.*?(?=\<PackageReference)' | Foreach {$_.matches.value} | Out-String
-          $unique_packages = $f | Select-String -allmatches -Pattern '(?m)^.*?<PackageReference.*$' | Foreach {$_.Matches.value} | Select-Object -Unique | Out-String
-          $last_part = $f | Select-String -Pattern '(?s)\<\/ItemGroup.*' | Foreach {$_.matches.value} | Out-String
-          $first_part + $unique_packages + $last_part > .\EdFi.Ods.Sandbox.csproj
-        working-directory: Ed-Fi-ODS\Application\EdFi.Ods.Sandbox
-        
-      - name: Workaround for file copy
-        run: |
-          (get-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1 -Raw).replace('-Destination "$directory\$xmlFile"', '-Destination "$directory\$($xmlFile.Name)"').replace('-Destination "$directory\$xsdFile"', '-Destination "$directory\$($xsdFile.Name)"') | set-content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-database-template.psm1
-      
       - name: Replace package name and version in packages config
         run: |
           (Get-Content configuration.packages.json -Raw) `
-            -replace '(?ism)(?<="tpdm")(.*?)\d(.*?)Core\.(\d+.\d+\.\d+)(.*?)\d+.\d+\.\d+' `
-            , '${1}3$2Community.${{ env.tpdm_version }}${4}${{ env.tpdm_package_version }}' `
+            -replace '(?ism)(EdFi\.Suite3\.Ods\.Extensions\.TPDM)\.Core\.({ExtensionVersion}\.Standard\.{StandardVersion})(.*?)(PackageVersion\"\:\s+\").*?(\"\,)' `
+            , '${1}.Community.$2$5' `
             | Out-File configuration.packages.json
+            (Get-Content configuration.packages.json) | sls '"tpdm"' -Context 0,3
         working-directory: ./Ed-Fi-ODS-Implementation
-        
-      - name: Install PostgreSQL
-        run: | 
-          choco install postgresql13 --no-progress
-          Stop-Service postgresql*
-          Set-Content -Path "C:\Program Files\PostgreSQL\13\data\pg_hba.conf" -Value 'host    all    all    all    trust'
-          Start-Service postgresql-x64-13
+       
+      - name: Add tpdm_version to valid set
+        run: |
+          (Get-Content .\Application\SolutionScripts\InitializeDevelopmentEnvironment.psm1 -Raw) `
+            -replace "(ValidateSet\()(.*?)(\))", '${1}$2,''${{ env.tpdm_version }}''$3' ` |
+            Out-File .\Application\SolutionScripts\InitializeDevelopmentEnvironment.psm1
+          (Get-Content .\Application\SolutionScripts\InitializeDevelopmentEnvironment.psm1) | sls 'ExtensionVersion' -Context 1,0
+        working-directory: Ed-Fi-ODS-Implementation
         
       - name: Replace package name in create script
         run: |
           (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) `
           -replace 'Core', 'Community' ` |
           Out-File ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1
+          (Get-Content ./Ed-Fi-ODS-Implementation/DatabaseTemplate/Modules/create-tpdm-minimal-template.psm1) | sls 'ExtensionVersion' -Context 0,3
+      - name: Install PostgreSQL
+        run: | 
+          choco install postgresql13 --no-progress
+          Stop-Service postgresql*
+          Set-Content -Path "C:\Program Files\PostgreSQL\13\data\pg_hba.conf" -Value 'host    all    all    all    trust'
+          Start-Service postgresql-x64-13
           
       - name: Remove Ed-Fi Databases
         run: |
@@ -118,36 +115,36 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           ./Initialize-PowershellForDevelopment.ps1
-          Initialize-DevelopmentEnvironment -UsePlugins -NoDeploy -Engine PostgreSQL
+          Initialize-DevelopmentEnvironment -UsePlugins -NoDeploy -ExtensionVersion "${{ env.tpdm_version }}" -Engine PostgreSQL
         working-directory: ./Ed-Fi-ODS-Implementation
           
       - name: Create Database Template
         run: |
           Import-Module -Force -Scope Global ${{ github.workspace }}\Ed-Fi-ODS-Implementation\DatabaseTemplate\Modules\create-tpdm-minimal-template.psm1
-          Initialize-TPDMMinimalTemplate -samplePath "D:\a\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Community-Artifacts\Ed-Fi-TPDM-Extension\"  -Engine PostgreSQL
+          Initialize-TPDMMinimalTemplate -samplePath "${{ github.workspace }}\Ed-Fi-TPDM-Extension\" -ExtensionVersion "${{ env.tpdm_version }}" -Engine PostgreSQL
         working-directory: ./Ed-Fi-TPDM-Extension
-
+        
       - name: Pack
         run: | 
-          nuget pack ${{ github.workspace }}/Ed-Fi-ODS-Implementation/DatabaseTemplate/Database/EdFi.Ods.Minimal.Template.TPDM.Community.PostgreSQL.nuspec `
+          nuget pack ${{ github.workspace }}/Ed-Fi-ODS-Implementation/DatabaseTemplate/Database/EdFi.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.PostgreSQL.Standard.${{ env.data_standard }}.nuspec `
           -OutputDirectory ${{ github.workspace }}/NugetPackages `
           -Version ${{ env.version_core }} `
           -Properties configuration=release `
-          -Properties "authors=Ed-Fi Alliance" `
-          -Properties "owners=Ed-Fi Alliance" `
-          -Properties "copyright=Copyright ©Ed-Fi Alliance, LLC. 2020" `
-          -Properties id=EdFi.Suite3.Ods.Minimal.Template.TPDM.Community.PostgreSQL.${{ env.tpdm_version }} `
-          -Properties title=EdFi.Suite3.Ods.Minimal.Template.TPDM.Community.PostgreSQL.${{ env.tpdm_version }} `
-          -Properties "description=EdFi Ods Minimal Template TPDM Community Database for PostgreSQL" `
+          -Properties authors="Ed-Fi Alliance" `
+          -Properties owners="Ed-Fi Alliance" `
+          -Properties copyright="Copyright ©Ed-Fi Alliance, LLC. 2020" `
+          -Properties id="EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.PostgreSQL.Standard.${{ env.data_standard }}" `
+          -Properties title="EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.PostgreSQL.Standard.${{ env.data_standard }}" `
+          -Properties description="EdFi Ods Minimal Template TPDM Community Database" `
           -NoPackageAnalysis -NoDefaultExcludes
         working-directory: ${{ github.workspace }}/Ed-Fi-TPDM-Extension
-        
+     
       - name: Create temp folder for upload artifact action
         run: | 
           mkdir temp
-        
+     
       - name: Upload artifact
         uses: actions/upload-artifact@e448a9b857ee2131e752b06002bf0e093c65e571
         with:
-          name: EdFi.Suite3.Ods.Minimal.Template.TPDM.Community.PostgreSQL.${{ env.tpdm_version }}.${{ env.version_core }}.nupkg
-          path: NugetPackages\*.nupkg
+          name: EdFi.Suite${{ env.version_suite }}.Ods.Minimal.Template.TPDM.Community.${{ env.tpdm_version }}.PostgreSQL.Standard.${{ env.data_standard }}.${{ env.version_core }}.nupkg
+          path: NugetPackages\*.nupkg 
