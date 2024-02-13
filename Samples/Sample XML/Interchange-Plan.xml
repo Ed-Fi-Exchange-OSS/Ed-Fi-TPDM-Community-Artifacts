@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangePlan xmlns:ann="http://ed-fi.org/annotation" xmlns="http://ed-fi.org/5.0.0"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/5.0.0 ../../Schemas/Bulk/EXTENSION-Interchange-Plan-Extension.xsd">
+<Plan>
+  <EducationOrganizationReference>
+    <EducationOrganizationIdentity>
+      <EducationOrganizationId>255901</EducationOrganizationId>
+    </EducationOrganizationIdentity>
+  </EducationOrganizationReference>
+  <PlanName>Standard Certification Plan</PlanName>
+</Plan>
+<PlanPhase>
+  <PlanReference>
+    <PlanIdentity>
+      <EducationOrganizationReference>
+        <EducationOrganizationIdentity>
+          <EducationOrganizationId>255901</EducationOrganizationId>
+        </EducationOrganizationIdentity>
+      </EducationOrganizationReference>
+      <PlanName>Standard Certification Plan</PlanName>
+    </PlanIdentity>
+  </PlanReference>
+  <PlanPhaseName>SCP - Application</PlanPhaseName>
+  <PlanPhaseSequence>1</PlanPhaseSequence>
+  <PhasePlanDescription>Application to the Standard Certification Plan</PhasePlanDescription>
+  <PlanPhasePlanPlanMilestoneReference>
+    <PlanMilestoneIdentity>
+      <PlanMilestoneName>EDCI 3200</PlanMilestoneName>
+      <PlanMilestoneType>uri://tpdm.ed-fi.org/PlanMilestoneTypeDescriptor#Anchor Course</PlanMilestoneType>
+    </PlanMilestoneIdentity>
+  </PlanPhasePlanPlanMilestoneReference>
+</PlanPhase>
+<PlanMilestone>
+  <PlanMilestoneName>EDCI 3200</PlanMilestoneName>
+  <PlanMilestoneType>uri://tpdm.ed-fi.org/PlanMilestoneTypeDescriptor#Anchor Course</PlanMilestoneType>
+  <PlanMilestoneCode>EDCI 3200</PlanMilestoneCode>
+  <PlanMilestoneDescription>Suvery of Content Knowledge and Experience</PlanMilestoneDescription>
+</PlanMilestone>
+<PlanMilestone>
+  <PlanMilestoneName>Check Up - Midterm</PlanMilestoneName>
+  <PlanMilestoneType>uri://tpdm.ed-fi.org/PlanMilestoneTypeDescriptor#Meeting</PlanMilestoneType>
+  <PlanMilestoneCode>Check Up</PlanMilestoneCode>
+  <PlanMilestoneDescription>Meeting to discuss progress</PlanMilestoneDescription>
+</PlanMilestone>
+<PlanMilestone>
+  <PlanMilestoneName>Checkout - GPA</PlanMilestoneName>
+  <PlanMilestoneType>uri://tpdm.ed-fi.org/PlanMilestoneTypeDescriptor#GPA</PlanMilestoneType>
+  <PlanMilestoneDescription>GPA > 2.75?</PlanMilestoneDescription>
+</PlanMilestone>
+<PlanMilestone>
+  <PlanMilestoneName>Checkout - Acceptance Letter</PlanMilestoneName>
+  <PlanMilestoneType>uri://tpdm.ed-fi.org/PlanMilestoneTypeDescriptor#Documentation</PlanMilestoneType>
+  <PlanMilestoneDescription>Have they recieved their acceptance letter?</PlanMilestoneDescription>
+</PlanMilestone>
+<StudentPlan>
+  <StudentReference>
+    <StudentIdentity>
+      <StudentUniqueId>604822</StudentUniqueId>
+    </StudentIdentity>
+  </StudentReference>
+  <PlanReference>
+    <PlanIdentity>
+      <EducationOrganizationReference>
+        <EducationOrganizationIdentity>
+          <EducationOrganizationId>255901</EducationOrganizationId>
+        </EducationOrganizationIdentity>
+      </EducationOrganizationReference>
+      <PlanName>Standard Certification Plan</PlanName>
+    </PlanIdentity>
+  </PlanReference>
+</StudentPlan>
+<StudentPlanPhaseStatus>
+  <StudentPlanReference>
+    <StudentPlanIdentity>
+      <StudentReference>
+        <StudentIdentity>
+          <StudentUniqueId>604822</StudentUniqueId>
+        </StudentIdentity>
+      </StudentReference>
+      <PlanReference>
+        <PlanIdentity>
+          <EducationOrganizationReference>
+            <EducationOrganizationIdentity>
+              <EducationOrganizationId>255901</EducationOrganizationId>
+            </EducationOrganizationIdentity>
+          </EducationOrganizationReference>
+          <PlanName>Standard Certification Plan</PlanName>
+        </PlanIdentity>
+      </PlanReference>
+    </StudentPlanIdentity>
+  </StudentPlanReference>
+  <PlanPhaseReference>
+    <PlanPhaseIdentity>
+      <PlanReference>
+        <PlanIdentity>
+          <EducationOrganizationReference>
+            <EducationOrganizationIdentity>
+              <EducationOrganizationId>255901</EducationOrganizationId>
+            </EducationOrganizationIdentity>
+          </EducationOrganizationReference>
+          <PlanName>Standard Certification Plan</PlanName>
+        </PlanIdentity>
+      </PlanReference>
+      <PlanPhaseName>SCP - Application</PlanPhaseName>
+    </PlanPhaseIdentity>
+  </PlanPhaseReference>
+  <CompletionIndicator>true</CompletionIndicator>
+  <PlanPhaseStatusEvent>
+    <PlanPhaseStatus>uri://tpdm.ed-fi.org/PlanPhaseStatusDescriptor#Complete</PlanPhaseStatus>
+    <PlanPhaseStatusDate>2023-06-20</PlanPhaseStatusDate>
+  </PlanPhaseStatusEvent>
+  <Period>
+    <BeginDate>2023-02-01</BeginDate>
+    <EndDate>2023-06-20</EndDate>
+  </Period>
+</StudentPlanPhaseStatus>
+<StudentPlanMilestoneStatus>
+  <StudentPlanReference>
+    <StudentPlanIdentity>
+      <StudentReference>
+        <StudentIdentity>
+          <StudentUniqueId>604822</StudentUniqueId>
+        </StudentIdentity>
+      </StudentReference>
+      <PlanReference>
+        <PlanIdentity>
+          <EducationOrganizationReference>
+            <EducationOrganizationIdentity>
+              <EducationOrganizationId>255901</EducationOrganizationId>
+            </EducationOrganizationIdentity>
+          </EducationOrganizationReference>
+          <PlanName>Standard Certification Plan</PlanName>
+        </PlanIdentity>
+      </PlanReference>
+    </StudentPlanIdentity>    
+  </StudentPlanReference>
+  <PlanMilestoneReference>
+    <PlanMilestoneIdentity>
+      <PlanMilestoneName>EDCI 3200</PlanMilestoneName>
+      <PlanMilestoneType>uri://tpdm.ed-fi.org/PlanMilestoneTypeDescriptor#Anchor Course</PlanMilestoneType>
+    </PlanMilestoneIdentity>
+  </PlanMilestoneReference>
+  <CompletionIndicator>true</CompletionIndicator>
+  <PlanMilestoneStatusEvent>
+    <PlanMilestoneStatus>uri://tpdm.ed-fi.org/PlanMilestoneStatus#Complete</PlanMilestoneStatus>
+    <PlanMilestoneStatusDate>2023-05-15</PlanMilestoneStatusDate>
+  </PlanMilestoneStatusEvent>
+</StudentPlanMilestoneStatus>
+<StudentPlanMilestoneStatus>
+  <StudentPlanReference>
+    <StudentPlanIdentity>
+      <StudentReference>
+        <StudentIdentity>
+          <StudentUniqueId>604822</StudentUniqueId>
+        </StudentIdentity>
+      </StudentReference>
+      <PlanReference>
+        <PlanIdentity>
+          <EducationOrganizationReference>
+            <EducationOrganizationIdentity>
+              <EducationOrganizationId>255901</EducationOrganizationId>
+            </EducationOrganizationIdentity>
+          </EducationOrganizationReference>
+          <PlanName>Standard Certification Plan</PlanName>
+        </PlanIdentity>
+      </PlanReference>
+    </StudentPlanIdentity>    
+  </StudentPlanReference>
+  <PlanMilestoneReference>
+    <PlanMilestoneIdentity>
+      <PlanMilestoneName>Checkout - GPA</PlanMilestoneName>
+      <PlanMilestoneType>uri://tpdm.ed-fi.org/PlanMilestoneTypeDescriptor#GPA</PlanMilestoneType>
+    </PlanMilestoneIdentity>
+  </PlanMilestoneReference>
+  <CompletionIndicator>true</CompletionIndicator>
+</StudentPlanMilestoneStatus>
+<StudentPlanMilestoneStatus>
+  <StudentPlanReference>
+    <StudentPlanIdentity>
+      <StudentReference>
+        <StudentIdentity>
+          <StudentUniqueId>604822</StudentUniqueId>
+        </StudentIdentity>
+      </StudentReference>
+      <PlanReference>
+        <PlanIdentity>
+          <EducationOrganizationReference>
+            <EducationOrganizationIdentity>
+              <EducationOrganizationId>255901</EducationOrganizationId>
+            </EducationOrganizationIdentity>
+          </EducationOrganizationReference>
+          <PlanName>Standard Certification Plan</PlanName>
+        </PlanIdentity>
+      </PlanReference>
+    </StudentPlanIdentity>    
+  </StudentPlanReference>
+  <PlanMilestoneReference>
+    <PlanMilestoneIdentity>
+      <PlanMilestoneName>Checkout - Acceptance Letter</PlanMilestoneName>
+      <PlanMilestoneType>uri://tpdm.ed-fi.org/PlanMilestoneTypeDescriptor#Documentation</PlanMilestoneType>
+    </PlanMilestoneIdentity>
+  </PlanMilestoneReference>
+  <CompletionIndicator>true</CompletionIndicator>
+</StudentPlanMilestoneStatus>
+</InterchangePlan>

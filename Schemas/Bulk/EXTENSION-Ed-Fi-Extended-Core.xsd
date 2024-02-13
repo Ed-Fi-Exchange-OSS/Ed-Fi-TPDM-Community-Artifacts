@@ -1846,9 +1846,9 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-PlanMilestone">
+  <xs:complexType name="EXTENSION-Plan">
     <xs:annotation>
-      <xs:documentation></xs:documentation>
+      <xs:documentation>A scheme for achieving milestones organized by phases for students to follow and be tracked against.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Domain Entity</ann:TypeGroup>
       </xs:appinfo>
@@ -1861,14 +1861,33 @@
               <xs:documentation>A reference to the Education Organization associated with the plan.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="StudentReference" type="StudentReferenceType">
+          <xs:element name="PlanName" type="EXTENSION-PlanName">
             <xs:annotation>
-              <xs:documentation>A reference to the Student associiated with the plan.</xs:documentation>
+              <xs:documentation>The name of the plan.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="PlanMilestoneCode" type="EXTENSION-PlanMilestoneCode">
+          <xs:element name="GraduationPlanReference" type="GraduationPlanReferenceType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>The code or identifier associated with an element associated with the plan milestone (e.g., course, certification, etc)</xs:documentation>
+              <xs:documentation>The graduation plan associated with this plan.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PlanMilestone">
+    <xs:annotation>
+      <xs:documentation>A significant event or achievement as part of a plan.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="PlanMilestoneName" type="EXTENSION-PlanMilestoneName">
+            <xs:annotation>
+              <xs:documentation>The descriptive name of the milestone.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="PlanMilestoneType" type="EXTENSION-PlanMilestoneTypeDescriptorReferenceType">
@@ -1879,27 +1898,53 @@
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
-          <xs:element name="PlanMilestonePhase" type="EXTENSION-PlanMilestonePhaseDescriptorReferenceType">
+          <xs:element name="PlanMilestoneCode" type="EXTENSION-PlanMilestoneCode" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>The phase in time when the milestone is planned.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-PlanMilestonePhaseDescriptor</ann:Descriptor>
-              </xs:appinfo>
+              <xs:documentation>The code or identifier associated with an element associated with the plan milestone (e.g., course, certification, etc)</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="PlanMilestoneName" type="EXTENSION-PlanMilestoneName">
+          <xs:element name="PlanMilestoneDescription" type="Description" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>The name for the milestone</xs:documentation>
+              <xs:documentation>Additional information describing the plan's milestone to be achieved.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="PlanMilestoneStatus" type="EXTENSION-PlanMilestoneStatus" minOccurs="0">
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PlanPhase">
+    <xs:annotation>
+      <xs:documentation>A stage in the process of a student achieving milestones.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="PlanReference" type="EXTENSION-PlanReferenceType">
             <xs:annotation>
-              <xs:documentation>The dated status of the milestone achieved.</xs:documentation>
+              <xs:documentation>A reference to the plan associated with the phase.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="GraduationPlanReference" type="GraduationPlanReferenceType" minOccurs="0">
+          <xs:element name="PlanPhaseName" type="EXTENSION-PlanPhaseName">
             <xs:annotation>
-              <xs:documentation>The graduation plan associated with the student's plan.</xs:documentation>
+              <xs:documentation>The name of the phase associated with the plan.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PlanPhaseSequence" type="xs:int" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicates the number in order, starting with 1, that the phases are organized into.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PhasePlanDescription" type="Description" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Additional information describing the plan's phase</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PlanPhasePlanPlanMilestoneReference" type="EXTENSION-PlanMilestoneReferenceType" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>A reference to the plan milestones associated with this phase</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -2469,6 +2514,113 @@
           <xs:element name="AssignmentPassed" type="xs:boolean" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Indication of whether the assignment was passed or not.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPlan">
+    <xs:annotation>
+      <xs:documentation>The entity representing the association or assignment of the student to the plan being pursued.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="StudentReference" type="StudentReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the student associated with the plan.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PlanReference" type="EXTENSION-PlanReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the plan associated with or assigned to the student.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Period" type="Period" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The time periods for which the student was assigned and pursing the plan.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPlanMilestoneStatus">
+    <xs:annotation>
+      <xs:documentation>The status of the student's achievement of the plan milestone.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="StudentPlanReference" type="EXTENSION-StudentPlanReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the student's plan assignment or association.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PlanMilestoneReference" type="EXTENSION-PlanMilestoneReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the PlanMilestone against which the status is being recorded.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CompletionIndicator" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicator on wether the student has completed the plan milestone.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PlanMilestoneStatusEvent" type="EXTENSION-PlanMilestoneStatusEvent" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The student's milestone status and the date of rthe status change.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PlanPhaseReference" type="EXTENSION-PlanPhaseReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The phase in time when the milestone status was achieved.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPlanPhaseStatus">
+    <xs:annotation>
+      <xs:documentation>The status of the student's association with the plan's phase.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="StudentPlanReference" type="EXTENSION-StudentPlanReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the student's plan assignment or association.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PlanPhaseReference" type="EXTENSION-PlanPhaseReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the phase in time associated with the status.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CompletionIndicator" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicator on wether the student has completed the phase associated with the plan.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PlanPhaseStatusEvent" type="EXTENSION-PlanPhaseStatusEvent" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The student's phase status and the date of the status change.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Period" type="Period" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The time periods associated with the phase status.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -3062,9 +3214,9 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-PlanMilestonePhaseDescriptor">
+  <xs:complexType name="EXTENSION-PlanMilestoneStatusDescriptor">
     <xs:annotation>
-      <xs:documentation>The phase in time when the milestone is planned.</xs:documentation>
+      <xs:documentation>The status achieved for the milestone.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -3076,6 +3228,17 @@
   <xs:complexType name="EXTENSION-PlanMilestoneTypeDescriptor">
     <xs:annotation>
       <xs:documentation>The type of milestone defined for the student's plan.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PlanPhaseStatusDescriptor">
+    <xs:annotation>
+      <xs:documentation>The student's status associated with entering or completing the phase.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -4545,9 +4708,9 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-PlanMilestoneIdentityType">
+  <xs:complexType name="EXTENSION-PlanIdentityType">
     <xs:annotation>
-      <xs:documentation>Identity of a PlanMilestone.</xs:documentation>
+      <xs:documentation>Identity of a Plan.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Identity</ann:TypeGroup>
       </xs:appinfo>
@@ -4558,14 +4721,24 @@
           <xs:documentation>A reference to the Education Organization associated with the plan.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="StudentReference" type="StudentReferenceType">
+      <xs:element name="PlanName" type="EXTENSION-PlanName">
         <xs:annotation>
-          <xs:documentation>A reference to the Student associiated with the plan.</xs:documentation>
+          <xs:documentation>The name of the plan.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="PlanMilestoneCode" type="EXTENSION-PlanMilestoneCode">
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PlanMilestoneIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a PlanMilestone.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PlanMilestoneName" type="EXTENSION-PlanMilestoneName">
         <xs:annotation>
-          <xs:documentation>The code or identifier associated with an element associated with the plan milestone (e.g., course, certification, etc)</xs:documentation>
+          <xs:documentation>The descriptive name of the milestone.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="PlanMilestoneType" type="EXTENSION-PlanMilestoneTypeDescriptorReferenceType">
@@ -4574,19 +4747,6 @@
           <xs:appinfo>
             <ann:Descriptor>EXTENSION-PlanMilestoneTypeDescriptor</ann:Descriptor>
           </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="PlanMilestonePhase" type="EXTENSION-PlanMilestonePhaseDescriptorReferenceType">
-        <xs:annotation>
-          <xs:documentation>The phase in time when the milestone is planned.</xs:documentation>
-          <xs:appinfo>
-            <ann:Descriptor>EXTENSION-PlanMilestonePhaseDescriptor</ann:Descriptor>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="PlanMilestoneName" type="EXTENSION-PlanMilestoneName">
-        <xs:annotation>
-          <xs:documentation>The name for the milestone</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -4604,6 +4764,64 @@
           <xs:element name="PlanMilestoneIdentity" type="EXTENSION-PlanMilestoneIdentityType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Identity of a PlanMilestone.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PlanPhaseIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a PlanPhase.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PlanReference" type="EXTENSION-PlanReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the plan associated with the phase.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PlanPhaseName" type="EXTENSION-PlanPhaseName">
+        <xs:annotation>
+          <xs:documentation>The name of the phase associated with the plan.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PlanPhaseReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a PlanPhase. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="PlanPhaseIdentity" type="EXTENSION-PlanPhaseIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a PlanPhase.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PlanReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a Plan. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="PlanIdentity" type="EXTENSION-PlanIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a Plan.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -4926,6 +5144,123 @@
           <xs:element name="StaffEducatorPreparationProgramAssociationIdentity" type="EXTENSION-StaffEducatorPreparationProgramAssociationIdentityType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Identity of a StaffEducatorPreparationProgramAssociation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPlanIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a StudentPlan.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StudentReference" type="StudentReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the student associated with the plan.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PlanReference" type="EXTENSION-PlanReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the plan associated with or assigned to the student.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPlanMilestoneStatusIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a StudentPlanMilestoneStatus.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StudentPlanReference" type="EXTENSION-StudentPlanReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the student's plan assignment or association.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PlanMilestoneReference" type="EXTENSION-PlanMilestoneReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the PlanMilestone against which the status is being recorded.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPlanMilestoneStatusReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a StudentPlanMilestoneStatus. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="StudentPlanMilestoneStatusIdentity" type="EXTENSION-StudentPlanMilestoneStatusIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a StudentPlanMilestoneStatus.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPlanPhaseStatusIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a StudentPlanPhaseStatus.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StudentPlanReference" type="EXTENSION-StudentPlanReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the student's plan assignment or association.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PlanPhaseReference" type="EXTENSION-PlanPhaseReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the phase in time associated with the status.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPlanPhaseStatusReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a StudentPlanPhaseStatus. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="StudentPlanPhaseStatusIdentity" type="EXTENSION-StudentPlanPhaseStatusIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a StudentPlanPhaseStatus.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPlanReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a StudentPlan. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="StudentPlanIdentity" type="EXTENSION-StudentPlanIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a StudentPlan.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -5475,9 +5810,9 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
-  <xs:simpleType name="EXTENSION-PlanMilestonePhaseDescriptorReferenceType">
+  <xs:simpleType name="EXTENSION-PlanMilestoneStatusDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>The phase in time when the milestone is planned.</xs:documentation>
+      <xs:documentation>The status achieved for the milestone.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -5487,6 +5822,15 @@
   <xs:simpleType name="EXTENSION-PlanMilestoneTypeDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>The type of milestone defined for the student's plan.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-PlanPhaseStatusDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>The student's status associated with entering or completing the phase.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -6030,6 +6374,57 @@
       <xs:element name="MilestoneStatusDescription" type="EXTENSION-MilestoneStatusDescription" minOccurs="0">
         <xs:annotation>
           <xs:documentation>Additional information associated with the milestine status achieved.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PlanMilestoneStatusEvent">
+    <xs:annotation>
+      <xs:documentation>An event recongnizing the change in status for the milestone</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Common</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PlanMilestoneStatus" type="EXTENSION-PlanMilestoneStatusDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>The student's status associated with the plan milestone.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-PlanMilestoneStatusDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PlanMilestoneStatusDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The month, day and year associated with the change in the plan milestone status.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Description" type="Description" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Additional information associated with the milestone status achieved.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PlanPhaseStatusEvent">
+    <xs:annotation>
+      <xs:documentation>An event recongnizing the change in status for the phase</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Common</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PlanPhaseStatus" type="EXTENSION-PlanPhaseStatusDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>The student's status associated with entering or completing the phase</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-PlanPhaseStatusDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PlanPhaseStatusDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The month, day and year on which the status was achieved for the phase</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -6585,6 +6980,30 @@
   <xs:simpleType name="EXTENSION-PlanMilestoneName">
     <xs:annotation>
       <xs:documentation>The name for the milestone</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="60" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-PlanName">
+    <xs:annotation>
+      <xs:documentation>The name for the plan associated with plan milestones</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="60" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-PlanPhaseName">
+    <xs:annotation>
+      <xs:documentation>The name for the plan associated with plan milestones</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Simple</ann:TypeGroup>
       </xs:appinfo>

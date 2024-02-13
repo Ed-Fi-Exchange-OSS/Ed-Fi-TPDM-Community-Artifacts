@@ -22,7 +22,12 @@
         <xs:element name="CredentialEvent" type="EXTENSION-CredentialEvent" />
         <xs:element name="Person" type="Person" />
         <xs:element name="FinancialAid" type="EXTENSION-FinancialAid" />
+        <xs:element name="Plan" type="EXTENSION-Plan" />
         <xs:element name="PlanMilestone" type="EXTENSION-PlanMilestone" />
+        <xs:element name="PlanPhase" type="EXTENSION-PlanPhase" />
+        <xs:element name="StudentPlan" type="EXTENSION-StudentPlan" />
+        <xs:element name="StudentPlanMilestoneStatus" type="EXTENSION-StudentPlanMilestoneStatus" />
+        <xs:element name="StudentPlanPhaseStatus" type="EXTENSION-StudentPlanPhaseStatus" />
         <xs:element name="CandidateRelationshipToStaffAssociation" type="EXTENSION-CandidateRelationshipToStaffAssociation" />
         <xs:element name="CandidateEducatorPreparationProgramAssociation" type="EXTENSION-CandidateEducatorPreparationProgramAssociation" />
         <xs:element name="StudentSchoolAssociation" type="StudentSchoolAssociation" />
