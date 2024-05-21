@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/5.1.0" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/5.1.0 ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<PathMilestoneStatusDescriptor>
+		<CodeValue>Attempting</CodeValue>
+		<ShortDescription>Attempting</ShortDescription>
+		<Description>Attempting</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneStatusDescriptor</Namespace>
+	</PathMilestoneStatusDescriptor>
+	<PathMilestoneStatusDescriptor>
+		<CodeValue>Complete</CodeValue>
+		<ShortDescription>Complete</ShortDescription>
+		<Description>Complete</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneStatusDescriptor</Namespace>
+	</PathMilestoneStatusDescriptor>
+	<PathMilestoneStatusDescriptor>
+		<CodeValue>Fail</CodeValue>
+		<ShortDescription>Fail</ShortDescription>
+		<Description>Fail</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneStatusDescriptor</Namespace>
+	</PathMilestoneStatusDescriptor>
+	<PathMilestoneStatusDescriptor>
+		<CodeValue>In Remediation</CodeValue>
+		<ShortDescription>In Remediation</ShortDescription>
+		<Description>In Remediation</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneStatusDescriptor</Namespace>
+	</PathMilestoneStatusDescriptor>
+	<PathMilestoneStatusDescriptor>
+		<CodeValue>Pass</CodeValue>
+		<ShortDescription>Pass</ShortDescription>
+		<Description>Pass</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneStatusDescriptor</Namespace>
+	</PathMilestoneStatusDescriptor>
+	<PathMilestoneStatusDescriptor>
+		<CodeValue>Scheduled</CodeValue>
+		<ShortDescription>Scheduled</ShortDescription>
+		<Description>Scheduled</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneStatusDescriptor</Namespace>
+	</PathMilestoneStatusDescriptor>
+	<PathMilestoneStatusDescriptor>
+		<CodeValue>Waiver</CodeValue>
+		<ShortDescription>Waiver</ShortDescription>
+		<Description>Waiver</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneStatusDescriptor</Namespace>
+	</PathMilestoneStatusDescriptor>
+</InterchangeDescriptors>

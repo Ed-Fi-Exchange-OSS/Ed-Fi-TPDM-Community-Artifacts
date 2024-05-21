@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/5.1.0" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/5.1.0 ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Anchor Course</CodeValue>
+		<ShortDescription>Anchor Course</ShortDescription>
+		<Description>Anchor Course</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Apprenticeship</CodeValue>
+		<ShortDescription>Apprenticeship</ShortDescription>
+		<Description>Apprenticeship</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Assessment</CodeValue>
+		<ShortDescription>Assessment</ShortDescription>
+		<Description>Assessment</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Course</CodeValue>
+		<ShortDescription>Course</ShortDescription>
+		<Description>Course</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>CPE (Continuing Professional Education)</CodeValue>
+		<ShortDescription>CPE (Continuing Professional Education)</ShortDescription>
+		<Description>CPE (Continuing Professional Education)</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Certification</CodeValue>
+		<ShortDescription>Certification</ShortDescription>
+		<Description>Certification</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Certification Exam</CodeValue>
+		<ShortDescription>Certification Exam</ShortDescription>
+		<Description>Certification Exam</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Clinical Teaching</CodeValue>
+		<ShortDescription>Clinical Teaching</ShortDescription>
+		<Description>Clinical Teaching</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Diploma</CodeValue>
+		<ShortDescription>Diploma</ShortDescription>
+		<Description>Diploma</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Documentation</CodeValue>
+		<ShortDescription>Documentation</ShortDescription>
+		<Description>Documentation</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Employment</CodeValue>
+		<ShortDescription>Employment</ShortDescription>
+		<Description>Employment</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Endorsement</CodeValue>
+		<ShortDescription>Endorsement</ShortDescription>
+		<Description>Endorsement</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Fieldwork</CodeValue>
+		<ShortDescription>Fieldwork</ShortDescription>
+		<Description>Fieldwork</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Honor</CodeValue>
+		<ShortDescription>Honor</ShortDescription>
+		<Description>Honor</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Project</CodeValue>
+		<ShortDescription>Project</ShortDescription>
+		<Description>Project</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Service</CodeValue>
+		<ShortDescription>Service</ShortDescription>
+		<Description>Service</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+	<PathMilestoneTypeDescriptor>
+		<CodeValue>Training</CodeValue>
+		<ShortDescription>Training</ShortDescription>
+		<Description>Training</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor</Namespace>
+	</PathMilestoneTypeDescriptor>
+</InterchangeDescriptors>
