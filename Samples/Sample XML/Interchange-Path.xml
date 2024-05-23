@@ -3,7 +3,7 @@
 <Path>
   <EducationOrganizationReference>
     <EducationOrganizationIdentity>
-      <EducationOrganizationId>255901</EducationOrganizationId>
+      <EducationOrganizationId>6</EducationOrganizationId>
     </EducationOrganizationIdentity>
   </EducationOrganizationReference>
   <PathName>Standard Certification Path</PathName>
@@ -13,7 +13,7 @@
     <PathIdentity>
       <EducationOrganizationReference>
         <EducationOrganizationIdentity>
-          <EducationOrganizationId>255901</EducationOrganizationId>
+          <EducationOrganizationId>6</EducationOrganizationId>
         </EducationOrganizationIdentity>
       </EducationOrganizationReference>
       <PathName>Standard Certification Path</PathName>
@@ -61,7 +61,7 @@
     <PathIdentity>
       <EducationOrganizationReference>
         <EducationOrganizationIdentity>
-          <EducationOrganizationId>255901</EducationOrganizationId>
+          <EducationOrganizationId>6</EducationOrganizationId>
         </EducationOrganizationIdentity>
       </EducationOrganizationReference>
       <PathName>Standard Certification Path</PathName>
