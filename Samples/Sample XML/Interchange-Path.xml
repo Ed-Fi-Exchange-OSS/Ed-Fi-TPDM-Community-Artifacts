@@ -141,7 +141,7 @@
   </PathMilestoneReference>
   <CompletionIndicator>true</CompletionIndicator>
   <PathMilestoneStatusEvent>
-    <PathMilestoneStatus>uri://tpdm.ed-fi.org/PathMilestoneStatus#Complete</PathMilestoneStatus>
+    <PathMilestoneStatus>uri://tpdm.ed-fi.org/PathMilestoneStatusDescriptor#Complete</PathMilestoneStatus>
     <PathMilestoneStatusDate>2023-05-15</PathMilestoneStatusDate>
   </PathMilestoneStatusEvent>
 </StudentPathMilestoneStatus>
