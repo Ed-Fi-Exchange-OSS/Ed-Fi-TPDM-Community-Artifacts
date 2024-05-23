@@ -168,7 +168,7 @@
   <PathMilestoneReference>
     <PathMilestoneIdentity>
       <PathMilestoneName>Checkout - GPA</PathMilestoneName>
-      <PathMilestoneType>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor#GPA</PathMilestoneType>
+      <PathMilestoneType>uri://tpdm.ed-fi.org/PathMilestoneTypeDescriptor#Documentation</PathMilestoneType>
     </PathMilestoneIdentity>
   </PathMilestoneReference>
   <CompletionIndicator>true</CompletionIndicator>
