@@ -1,5 +1,7 @@
 # Ed-Fi-TPDM-Extension
 
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Ed-Fi-Exchange-OSS/Ed-Fi-TPDM-Community-Artifacts/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Ed-Fi-Exchange-OSS/Ed-Fi-TPDM-Community-Artifacts)
+
 This repository holds Sample Data and other useful resources for the Teacher Preparation Data Model (TPDM) extension
 
 For more information, see:
