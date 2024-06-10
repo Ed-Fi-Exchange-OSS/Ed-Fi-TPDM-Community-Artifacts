@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeDescriptors xmlns="http://ed-fi.org/5.1.0" xmlns:ann="http://ed-fi.org/annotation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ed-fi.org/5.1.0 ../Schemas/Bulk/EXTENSION-Interchange-Descriptors-Extension.xsd">
+	<PathPhaseStatusDescriptor>
+		<CodeValue>Active</CodeValue>
+		<ShortDescription>Active</ShortDescription>
+		<Description>Active</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathPhaseStatusDescriptor</Namespace>
+	</PathPhaseStatusDescriptor>
+	<PathPhaseStatusDescriptor>
+		<CodeValue>Complete</CodeValue>
+		<ShortDescription>Complete</ShortDescription>
+		<Description>Complete</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathPhaseStatusDescriptor</Namespace>
+	</PathPhaseStatusDescriptor>
+	<PathPhaseStatusDescriptor>
+		<CodeValue>Inactive</CodeValue>
+		<ShortDescription>Inactive</ShortDescription>
+		<Description>Inactive</Description>
+		<Namespace>uri://tpdm.ed-fi.org/PathPhaseStatusDescriptor</Namespace>
+	</PathPhaseStatusDescriptor>
+</InterchangeDescriptors>

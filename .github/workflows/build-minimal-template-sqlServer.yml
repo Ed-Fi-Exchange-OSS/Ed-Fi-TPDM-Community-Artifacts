@@ -6,7 +6,7 @@ on:
       ODS_version:
         type: string
         required: false
-        description: "ODS_version: Ed-Fi ODS/API version. Default: 7.0"
+        description: "ODS_version: Ed-Fi ODS/API version. Default: 7.2"
       tpdm_version:
         type: string
         required: false
@@ -23,8 +23,8 @@ on:
 env:
   tpdm_version: "1.2.0"
   version_suite: "3"
-  ODS_version: "7.0"
-  data_standard: "5.0.0"
+  ODS_version: "7.2"
+  data_standard: "5.1.0"
   ods_ref: ""
   ods_ref_implementation: ""
 
@@ -118,7 +118,7 @@ jobs:
       - name: Create Database Template
         run: |
           Import-Module -Force -Scope Global ${{ github.workspace }}\Ed-Fi-ODS-Implementation\DatabaseTemplate\Modules\create-tpdm-minimal-template.psm1
-          Initialize-TPDMMinimalTemplate -samplePath "${{ github.workspace }}\Ed-Fi-TPDM-Extension\" -ExtensionVersion "${{ env.tpdm_version }}"
+          Initialize-TPDMMinimalTemplate -samplePath "${{ github.workspace }}\Ed-Fi-TPDM-Extension\" -ExtensionVersion "${{ env.tpdm_version }}" -StandardVersion "${{ env.data_standard }}"
         working-directory: ./Ed-Fi-TPDM-Extension
         
       - name: Pack

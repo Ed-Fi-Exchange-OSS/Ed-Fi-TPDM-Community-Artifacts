@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ed-fi.org/4.0.0" xmlns:ann="http://ed-fi.org/annotation" targetNamespace="http://ed-fi.org/4.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ed-fi.org/5.1.0" xmlns:ann="http://ed-fi.org/annotation" targetNamespace="http://ed-fi.org/5.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
   <xs:include schemaLocation="Ed-Fi-Core.xsd" />
   <xs:annotation>
-    <xs:documentation>===== Ed-Fi 4.0.0 Extensions =====</xs:documentation>
+    <xs:documentation>===== Ed-Fi 5.0.0 Extensions =====</xs:documentation>
   </xs:annotation>
   <xs:annotation>
     <xs:documentation>===== Domain Entities =====</xs:documentation>
@@ -458,11 +458,11 @@
               <xs:documentation>An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race. The term, "Spanish origin," can be used in addition to "Hispanic or Latino."</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="OldEthnicity" type="OldEthnicityDescriptorReferenceType" minOccurs="0">
+          <xs:element name="OldEthnicity" type="EXTENSION-OldEthnicityDescriptorReferenceType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Previous definition of Ethnicity combining Hispanic/Latino and race: 1 - American Indian or Alaskan Native 2 - Asian or Pacific Islander 3 - Black, not of Hispanic origin 4 - Hispanic 5 - White, not of Hispanic origin.</xs:documentation>
               <xs:appinfo>
-                <ann:Descriptor>OldEthnicityDescriptor</ann:Descriptor>
+                <ann:Descriptor>EXTENSION-OldEthnicityDescriptor</ann:Descriptor>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -819,6 +819,11 @@
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-CertificationExamStatusDescriptor</ann:Descriptor>
               </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CertificationExamStudentAssessmentReference" type="StudentAssessmentReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Reference to a detailed result for Assessment taken by a student.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1312,6 +1317,16 @@
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
+          <xs:element name="Comments" type="EXTENSION-Comments" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Any comments about the evaluation to be captured.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ActualDuration" type="Duration" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The actual or estimated number of clock minutes during which the evaluation was conducted.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -1668,6 +1683,111 @@
           <xs:element name="TotalBudgeted" type="EXTENSION-CompensationPackageAmount" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Including salary, the fully loaded cost budgeted for this teacher.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-Path">
+    <xs:annotation>
+      <xs:documentation>A scheme for achieving milestones organized by phases for students to follow and be tracked against.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the Education Organization associated with the path.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PathName" type="EXTENSION-PathName">
+            <xs:annotation>
+              <xs:documentation>The name of the path.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GraduationPlanReference" type="GraduationPlanReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The graduation plan associated with this path.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PathMilestone">
+    <xs:annotation>
+      <xs:documentation>A significant event or achievement as part of a path.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="PathMilestoneName" type="EXTENSION-PathMilestoneName">
+            <xs:annotation>
+              <xs:documentation>The descriptive name of the milestone.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PathMilestoneType" type="EXTENSION-PathMilestoneTypeDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>The type of milestone defined for the student's path.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-PathMilestoneTypeDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PathMilestoneCode" type="EXTENSION-PathMilestoneCode" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The code or identifier associated with an element associated with the path milestone (e.g., course, certification, etc)</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PathMilestoneDescription" type="Description" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Additional information describing the path's milestone to be achieved.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PathPhase">
+    <xs:annotation>
+      <xs:documentation>A stage in the process of a student achieving milestones.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="PathReference" type="EXTENSION-PathReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the path associated with the phase.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PathPhaseName" type="EXTENSION-PathPhaseName">
+            <xs:annotation>
+              <xs:documentation>The name of the phase associated with the path.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PathPhaseSequence" type="xs:int" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicates the number in order, starting with 1, that the phases are organized into.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PhasePathDescription" type="Description" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Additional information describing the path's phase</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PathPhasePathMilestoneReference" type="EXTENSION-PathMilestoneReferenceType" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>A reference to the path milestones associated with this phase</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -2391,6 +2511,113 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPath">
+    <xs:annotation>
+      <xs:documentation>The entity representing the association or assignment of the student to the path being pursued.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="StudentReference" type="StudentReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the student associated with the path.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PathReference" type="EXTENSION-PathReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the path associated with or assigned to the student.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Period" type="Period" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The time periods for which the student was assigned and pursing the path.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPathMilestoneStatus">
+    <xs:annotation>
+      <xs:documentation>The status of the student's achievement of the path milestone.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="StudentPathReference" type="EXTENSION-StudentPathReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the student's path assignment or association.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PathMilestoneReference" type="EXTENSION-PathMilestoneReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the PathMilestone against which the status is being recorded.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CompletionIndicator" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicator on whether the student has completed the path milestone.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PathMilestoneStatusEvent" type="EXTENSION-PathMilestoneStatusEvent" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The student's milestone status and the date of the status change.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PathPhaseReference" type="EXTENSION-PathPhaseReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The phase in time when the milestone status was achieved.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPathPhaseStatus">
+    <xs:annotation>
+      <xs:documentation>The status of the student's association with the path's phase.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="StudentPathReference" type="EXTENSION-StudentPathReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the student's path assignment or association.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PathPhaseReference" type="EXTENSION-PathPhaseReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the phase in time associated with the status.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CompletionIndicator" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicator on whether the student has completed the phase associated with the path.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PathPhaseStatusEvent" type="EXTENSION-PathPhaseStatusEvent" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The student's phase status and the date of the status change.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Period" type="Period" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The time periods associated with the phase status.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-SurveyResponseExtension">
     <xs:annotation>
       <xs:documentation></xs:documentation>
@@ -2890,6 +3117,17 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-OldEthnicityDescriptor">
+    <xs:annotation>
+      <xs:documentation>Previous definition of Ethnicity combining Hispanic/Latino and Race.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-OpenStaffPositionEventStatusDescriptor">
     <xs:annotation>
       <xs:documentation>The descriptor holds the status of the milestone (e.g., pending, completed, cancelled).</xs:documentation>
@@ -2915,6 +3153,39 @@
   <xs:complexType name="EXTENSION-OpenStaffPositionReasonDescriptor">
     <xs:annotation>
       <xs:documentation>The descriptor holds the reason for the open staff position (e.g., new position, replacement, etc.).</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PathMilestoneStatusDescriptor">
+    <xs:annotation>
+      <xs:documentation>The student's status associated with the path milestone.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PathMilestoneTypeDescriptor">
+    <xs:annotation>
+      <xs:documentation>The type of milestone defined for the student's path.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PathPhaseStatusDescriptor">
+    <xs:annotation>
+      <xs:documentation>The student's status associated with entering or completing the phase.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -4299,6 +4570,126 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-PathIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a Path.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the Education Organization associated with the path.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PathName" type="EXTENSION-PathName">
+        <xs:annotation>
+          <xs:documentation>The name of the path.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PathMilestoneIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a PathMilestone.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PathMilestoneName" type="EXTENSION-PathMilestoneName">
+        <xs:annotation>
+          <xs:documentation>The descriptive name of the milestone.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PathMilestoneType" type="EXTENSION-PathMilestoneTypeDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>The type of milestone defined for the student's path.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-PathMilestoneTypeDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PathMilestoneReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a PathMilestone. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="PathMilestoneIdentity" type="EXTENSION-PathMilestoneIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a PathMilestone.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PathPhaseIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a PathPhase.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PathReference" type="EXTENSION-PathReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the path associated with the phase.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PathPhaseName" type="EXTENSION-PathPhaseName">
+        <xs:annotation>
+          <xs:documentation>The name of the phase associated with the path.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PathPhaseReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a PathPhase. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="PathPhaseIdentity" type="EXTENSION-PathPhaseIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a PathPhase.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PathReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a Path. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="PathIdentity" type="EXTENSION-PathIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a Path.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-PerformanceEvaluationIdentityType">
     <xs:annotation>
       <xs:documentation>Identity of a PerformanceEvaluation.</xs:documentation>
@@ -4722,6 +5113,123 @@
           <xs:element name="StaffEducatorPreparationProgramAssociationIdentity" type="EXTENSION-StaffEducatorPreparationProgramAssociationIdentityType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Identity of a StaffEducatorPreparationProgramAssociation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPathIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a StudentPath.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StudentReference" type="StudentReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the student associated with the path.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PathReference" type="EXTENSION-PathReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the path associated with or assigned to the student.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPathMilestoneStatusIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a StudentPathMilestoneStatus.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StudentPathReference" type="EXTENSION-StudentPathReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the student's path assignment or association.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PathMilestoneReference" type="EXTENSION-PathMilestoneReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the PathMilestone against which the status is being recorded.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPathMilestoneStatusReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a StudentPathMilestoneStatus. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="StudentPathMilestoneStatusIdentity" type="EXTENSION-StudentPathMilestoneStatusIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a StudentPathMilestoneStatus.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPathPhaseStatusIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a StudentPathPhaseStatus.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StudentPathReference" type="EXTENSION-StudentPathReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the student's path assignment or association.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PathPhaseReference" type="EXTENSION-PathPhaseReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the phase in time associated with the status.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPathPhaseStatusReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a StudentPathPhaseStatus. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="StudentPathPhaseStatusIdentity" type="EXTENSION-StudentPathPhaseStatusIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a StudentPathPhaseStatus.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentPathReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a StudentPath. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="StudentPathIdentity" type="EXTENSION-StudentPathIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a StudentPath.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -5199,6 +5707,15 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-OldEthnicityDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>Previous definition of Ethnicity combining Hispanic/Latino and Race.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-OpenStaffPositionEventStatusDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>The descriptor holds the status of the milestone (e.g., pending, completed, cancelled).</xs:documentation>
@@ -5220,6 +5737,33 @@
   <xs:simpleType name="EXTENSION-OpenStaffPositionReasonDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>The descriptor holds the reason for the open staff position (e.g., new position, replacement, etc.).</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-PathMilestoneStatusDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>The student's status associated with the path milestone.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-PathMilestoneTypeDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>The type of milestone defined for the student's path.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-PathPhaseStatusDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>The student's status associated with entering or completing the phase.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -5749,6 +6293,57 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-PathMilestoneStatusEvent">
+    <xs:annotation>
+      <xs:documentation>An event recongnizing the change in status for the milestone</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Common</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PathMilestoneStatus" type="EXTENSION-PathMilestoneStatusDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>The student's status associated with the Path milestone.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-PathMilestoneStatusDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PlanMilestoneStatusDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The month, day and year associated with the change in the path milestone status.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Description" type="Description" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Additional information associated with the milestone status achieved.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PathPhaseStatusEvent">
+    <xs:annotation>
+      <xs:documentation>An event recongnizing the change in status for the phase</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Common</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PathPhaseStatus" type="EXTENSION-PathPhaseStatusDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>The student's status associated with entering or completing the phase</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-PathPhaseStatusDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PathPhaseStatusDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The month, day and year on which the status was achieved for the phase</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-RatingLevel">
     <xs:annotation>
       <xs:documentation>The descriptive level(s) of ratings (cut scores) for evaluation.</xs:documentation>
@@ -6261,6 +6856,18 @@
       <xs:maxLength value="255" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-MilestoneStatusDescription">
+    <xs:annotation>
+      <xs:documentation>Additional information associated with the milestone status achieved.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="60" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-Notes">
     <xs:annotation>
       <xs:documentation>Additional notes about the prospect.</xs:documentation>
@@ -6271,6 +6878,54 @@
     <xs:restriction base="xs:string">
       <xs:minLength value="1" />
       <xs:maxLength value="255" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-PathMilestoneCode">
+    <xs:annotation>
+      <xs:documentation>The code or identifier associated with an element associated with the path milestone (e.g., course, certification, etc)</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="60" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-PathMilestoneName">
+    <xs:annotation>
+      <xs:documentation>The name for the milestone</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="60" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-PathName">
+    <xs:annotation>
+      <xs:documentation>The name for the path associated with path milestones</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="60" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-PathPhaseName">
+    <xs:annotation>
+      <xs:documentation>The name for the path associated with path milestones</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="60" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-PositionControlNumber">
