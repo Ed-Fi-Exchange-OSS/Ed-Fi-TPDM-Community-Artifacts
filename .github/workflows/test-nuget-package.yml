@@ -16,6 +16,8 @@ on:
         required: false
         description: "Ed-Fi-ODS-Implementation-ref: checks out the specified branch/tag of the Ed-Fi-ODS-Implementation repo. Default branch if not specified."
 
+permissions: read-all
+
 env:
   tpdm_version: "1.2.0"
   ods_ref: ""
